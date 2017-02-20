@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+<head>
+<meta charset="utf-8" />
+<title>Inscription</title>
+</head>
+<body layout:fragment="content">
+	<div class="jumbotron text-center">
+		<h1>Inscrivez-vous!</h1>
+		<p>Ouvrez-vous au monde de Spring</p>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 text-center">
+				<h3>Free</h3>
+			</div>
+			<div class="col-md-4 text-center">
+				<h3>First</h3>
+			</div>
+			<div class="col-md-4 text-center">
+				<h3>First Premium</h3>
+			</div>
+		</div>
+		<div class="container-fluid"></div>
+		<div class="row">
+			<div class="col-md-4 text-center">
+				<p>Suivez les cours de bases, en illimité.</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<p>Suivez les cours avancés, Apprenez les entrailles de Spring</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<p>Acces illimité a tout le contenu du site cours, tutoriaux et
+					code source</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 text-center">
+				<p>Gratuit!</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<p>10 Euros/Mois</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<p>200 Euros</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 text-center">
+				<a href="/inscform" ><button class="btn btn-success">Choisir!</button></a>
+			</div>
+			<div class="col-md-4 text-center">
+				<a href="/inscform" ><button type="submit" class="btn btn-success">Choisir!</button></a>
+			</div>
+			<div class="col-md-4 text-center">
+				<a href="/inscform" ><button type="submit" class="btn btn-success">Choisir!</button></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
