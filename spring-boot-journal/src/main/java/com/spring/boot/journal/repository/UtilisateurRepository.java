@@ -6,4 +6,5 @@ import com.spring.boot.journal.entities.Utilisateur;
 
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
 
+	public Utilisateur findByEmail(String email);
 }

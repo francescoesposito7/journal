@@ -1,11 +1,14 @@
 package com.spring.boot.journal.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,10 +16,12 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+@SuppressWarnings("serial")
 @Entity
 public class Utilisateur implements Serializable {
 	
 	@Id @GeneratedValue
+	@Column(name="USER_ID")
 	private Long id;
 	
 	@NotEmpty
@@ -45,6 +50,10 @@ public class Utilisateur implements Serializable {
 	private String motDePasse;
 	
 	private String photo; 
+	
+	// Creation TABLE utilisateur_roles 
+	@ManyToMany
+	private Collection<Role> roles;
 
 	private boolean active;
 
@@ -64,6 +73,10 @@ public class Utilisateur implements Serializable {
 		this.setActive(false);
 	}
 
+	public void addRole(Role role) {
+		this.roles.add(role);
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -90,6 +103,11 @@ public class Utilisateur implements Serializable {
 
 	public String getPhoto() {
 		return photo;
+	}
+	
+
+	public Collection<Role> getRole() {
+		return roles;
 	}
 	
 	public boolean isActive() {
@@ -128,5 +146,8 @@ public class Utilisateur implements Serializable {
 		this.active = active;
 	}
 	
+	public void setRole(Collection<Role> roles) {
+		this.roles=roles;
+	}
 	
 }

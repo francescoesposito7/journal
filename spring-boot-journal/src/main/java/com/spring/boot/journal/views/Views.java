@@ -3,7 +3,7 @@ package com.spring.boot.journal.views;
 public enum Views {
 	
 	VIEW_INDEX("index"),
-	VIEW_ACCEUIL("accueil"),
+	VIEW_ACCUEIL("accueil"),
 	VIEW_INSCRIPTION("inscription"),
 	VIEW_NEWS("news"),
 	VIEW_LOGIN("login"),

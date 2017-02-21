@@ -18,5 +18,4 @@ public class NewsRestService {
 	public List<News> listNews(){
 		return repo.findAll();
 	}
-	
 }

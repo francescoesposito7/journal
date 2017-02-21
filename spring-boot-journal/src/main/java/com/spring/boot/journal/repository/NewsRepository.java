@@ -21,5 +21,5 @@ public interface NewsRepository extends JpaRepository<News, Long> {
 			
 	List<News> findByTitleContaining(@Param("word") String word);
 			
-	List<News> findBySummaryContaining(@Param("word") String word); 
+	List<News> findBySummaryContaining(@Param("word") String word);
 }
