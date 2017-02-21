@@ -1,22 +1,22 @@
 package com.spring.boot.journal.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.boot.journal.entities.Utilisateur;
-import com.spring.boot.journal.repository.JournalRepository;
+import com.spring.boot.journal.repository.NewsRepository;
+import com.spring.boot.journal.services.NewsRestService;
 import com.spring.boot.journal.views.Views;
 
 
-@RestController
-public class JournalController {
-
+@Controller
+public class EntryController{
 	
 	@Autowired
-	JournalRepository repo;	
+	NewsRestService serviceNews;
 	
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView modelAndView){
@@ -40,7 +40,7 @@ public class JournalController {
 	@RequestMapping(value="/news", method = RequestMethod.GET)
 	public ModelAndView news(ModelAndView modelAndView){
 		modelAndView.setViewName(Views.VIEW_NEWS.getPage());
-		modelAndView.addObject("journal", repo.findAll());
+		modelAndView.addObject("listNews", serviceNews.listNews());
 		return modelAndView;
 	}
 	

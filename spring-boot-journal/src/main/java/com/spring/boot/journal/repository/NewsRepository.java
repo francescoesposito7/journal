@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.spring.boot.journal.domain.JournalEntry;
 
-public interface JournalRepository extends JpaRepository<JournalEntry, Long> {
+public interface NewsRepository extends JpaRepository<JournalEntry, Long> {
 			
 	List<JournalEntry> findByCreatedAfter(@Param("after") @DateTimeFormat(iso = ISO.DATE) Date date);
 			
