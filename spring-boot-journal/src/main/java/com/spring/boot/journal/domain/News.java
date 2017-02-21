@@ -28,7 +28,7 @@ public class News {
 		this.title = title;
 		this.summary = summary;
 		this.created = format.parse(date);
-	} 
+	}
 
 	News() {
 	}
