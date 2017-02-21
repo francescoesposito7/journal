@@ -45,7 +45,7 @@ public class Utilisateur implements Serializable {
 	private String motDePasse;
 	
 	private String photo; 
-	
+
 	private boolean active;
 
 	public Utilisateur() {

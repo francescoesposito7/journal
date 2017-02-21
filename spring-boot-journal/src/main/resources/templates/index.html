@@ -19,15 +19,17 @@
 }
 
 /* Add a gray background color and some padding to the footer */
-footer {
+myFooter {
 	background-color: #f2f2f2;
-	padding: 25px;
+	    line-height: 24px;
+	/* padding: 25px; */
 }
 </style>
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse">
+<header>
+	<div class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -54,14 +56,25 @@ footer {
 				</ul>
 			</div>
 		</div>
-	</nav>
-
-	<div layout:fragment="content">
-		<img th:src="@{/img/acceuil.jpg}" class="img-responsive img-circle"
-			alt="acceuil" width="1700" />
 	</div>
+</header>
+	
+	<section layout:fragment="content">
+		<!-- <img th:src="@{/img/acceuil.jpg}" class="img-responsive img-circle"
+			alt="acceuil"  /> -->
+	</section>
+	
+	<footer>
+			<small>@Francesco Esposito GestionCompte</small><br />
+			<small>@Francesco Esposito GestionCompte</small><br />
+			<small>@Francesco Esposito GestionCompte</small><br />
+			<small>@Francesco Esposito GestionCompte</small><br />
+			<small>@Francesco Esposito GestionCompte</small><br />
+			<small>@Francesco Esposito GestionCompte</small>
+	</footer>
 
+<!-- <footer>
 	<nav class="navbar navbar-default navbar-fixed-bottom"></nav>
-
+</footer> -->
 </body>
 </html>

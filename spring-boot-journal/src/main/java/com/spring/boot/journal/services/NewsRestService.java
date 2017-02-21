@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.boot.journal.domain.JournalEntry;
+import com.spring.boot.journal.domain.News;
 import com.spring.boot.journal.repository.NewsRepository;
+
 
 @RestController
 public class NewsRestService {
@@ -14,7 +15,7 @@ public class NewsRestService {
 	@Autowired
 	NewsRepository repo;
 	
-	public List<JournalEntry> listNews(){
+	public List<News> listNews(){
 		return repo.findAll();
 	}
 	

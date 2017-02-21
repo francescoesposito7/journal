@@ -14,8 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
-@Table(name = "entry")
-public class JournalEntry {
+public class News {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -25,13 +24,13 @@ public class JournalEntry {
 	@Transient
 	private final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-	public JournalEntry(String title, String summary, String date) throws ParseException {
+	public News(String title, String summary, String date) throws ParseException {
 		this.title = title;
 		this.summary = summary;
 		this.created = format.parse(date);
-	}
+	} 
 
-	JournalEntry() {
+	News() {
 	}
 
 	public Long getId() {
