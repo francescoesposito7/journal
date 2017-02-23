@@ -40,6 +40,11 @@ public class Utilisateur implements Serializable {
 	
 	@NotEmpty
 	@NotNull
+	@Size(max=30)
+	private String username;
+	
+	@NotEmpty
+	@NotNull
 	@Email
 	@Size(max=30)
 	private String email;
@@ -47,8 +52,9 @@ public class Utilisateur implements Serializable {
 	@NotEmpty
 	@NotNull
 	@Size(min=4)
-	private String motDePasse;
+	private String password;
 	
+	@Size(max=30)
 	private String photo; 
 	
 	// Creation TABLE utilisateur_roles 
@@ -62,13 +68,14 @@ public class Utilisateur implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Utilisateur(String nom, String prenom, Date dateNaissance, String email, String motDePasse, String photo) {
+	public Utilisateur(String nom, String prenom, Date dateNaissance, String username,String email, String password, String photo) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
-		this.email = email;
-		this.motDePasse = motDePasse;
+		this.username = username;
+		this.email=email;
+		this.password = password;
 		this.photo = photo;
 		this.setActive(false);
 	}
@@ -93,12 +100,16 @@ public class Utilisateur implements Serializable {
 		return dateNaissance;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
-
-	public String getMotDePasse() {
-		return motDePasse;
+	
+	public String getPassword() {
+		return password;
 	}
 
 	public String getPhoto() {
@@ -130,12 +141,16 @@ public class Utilisateur implements Serializable {
 		this.dateNaissance = dateNaissance;
 	}
 
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = email; 
 	}
 
-	public void setMotDePasse(String motDePasse) {
-		this.motDePasse = motDePasse;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public void setPhoto(String photo) {

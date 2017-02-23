@@ -1,7 +1,5 @@
 package com.spring.boot.journal.service.impl;
 
-
-
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +23,7 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     
 	@Override
-	public Utilisateur findUserbyEmail(String email) {
+	public Utilisateur findUserbyUsername (String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -41,11 +39,15 @@ public class UserServiceImpl implements UserService {
 		role.getUtilisateurs().add(user);
 		user.setRole(new ArrayList<Role>());
 		user.getRole().add(role);
-		
-		user.setMotDePasse(bCryptPasswordEncoder.encode(user.getMotDePasse()));
+		user.setActive(true);
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		
 		userRepository.save(user);
-		
 	}
 
+	@Override
+	public Utilisateur findUserbyEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -1,3 +1,4 @@
+--NEWS
 INSERT INTO NEWS(title,summary,created) VALUES('Get to know Spring Boot','Today I will learn Spring Boot','2016-01-02 00:00:00.00');
 INSERT INTO NEWS(title,summary,created) VALUES('Simple Spring Boot Project','I will do my first Spring Boot project','2016-01-03 00:00:00.00');
 INSERT INTO NEWS(title,summary,created) VALUES('Spring Boot Reading','Read more about Spring Boot','2016-02-02 00:00:00.00');
@@ -9,3 +10,19 @@ INSERT INTO ROLE(roles) VALUES('FISRT');
 INSERT INTO ROLE(roles) VALUES('PREMIUM');
 INSERT INTO ROLE(roles) VALUES('ADMIN');
 INSERT INTO ROLE(roles) VALUES('ACTUATOR');
+
+-- UTILISATEUR
+INSERT INTO UTILISATEUR(nom,prenom,username,email,password,active,date_naissance,photo) VALUES('Esposito','Francesco','frank','francescoesposito7@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',TRUE,'1982-11-18 00:00:00.00','photo.jpeg');
+INSERT INTO UTILISATEUR(nom,prenom,username,email,password,active,date_naissance,photo) VALUES('Lefaix','Jimmy','jimmy','jimmy@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',TRUE,'1991-10-26 00:00:00.00','photo.jpeg');
+
+
+-- JOIN TABLE
+INSERT INTO UTILISATEUR_ROLES(utilisateurs_user_id,roles_role_id) 
+VALUES((SELECT user_id FROM UTILISATEUR WHERE username='frank'),
+		(SELECT role_id FROM ROLE WHERE roles='ADMIN'));
+		
+INSERT INTO UTILISATEUR_ROLES(utilisateurs_user_id,roles_role_id) 
+VALUES((SELECT user_id FROM UTILISATEUR WHERE username='jimmy'),
+		(SELECT role_id FROM ROLE WHERE roles='USER'));
+
+

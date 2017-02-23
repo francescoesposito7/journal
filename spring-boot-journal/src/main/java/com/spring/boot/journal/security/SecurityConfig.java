@@ -15,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
-	
 	@Autowired
 	private DataSource dataSource;
 	
@@ -50,7 +49,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.and()
 				.formLogin().loginPage("/login");
-		
 		
 		http
 			.exceptionHandling().accessDeniedPage("/403");

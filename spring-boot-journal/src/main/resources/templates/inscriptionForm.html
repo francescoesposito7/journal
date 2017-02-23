@@ -46,14 +46,19 @@
 								th:errors="*{dateNaissance}"></span>
 						</div>
 						<div class="form-group">
+							<label class="control-label">Username</label> <input type="text"
+								th:field="*{username}" class="form-control" /> <span
+								class="text-danger" th:errors="*{username}"></span>
+						</div> 
+						<div class="form-group">
 							<label class="control-label">Email</label> <input type="email"
 								th:field="*{email}" class="form-control" /> <span
 								class="text-danger" th:errors="*{email}"></span>
 						</div>
 						<div class="form-group">
 							<label class="control-label">Mot De Passe</label> <input
-								type="password" th:field="*{motDePasse}" class="form-control" />
-							<span class="text-danger" th:errors="*{motDePasse}"></span>
+								type="password" th:field="*{password}" class="form-control" />
+							<span class="text-danger" th:errors="*{password}"></span>
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">Confirmation</label> <input

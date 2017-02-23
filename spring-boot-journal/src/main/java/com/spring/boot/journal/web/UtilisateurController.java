@@ -45,10 +45,15 @@ public class UtilisateurController {
 									BindingResult bindingResult,
 									@RequestParam(name="picture") MultipartFile file) throws IllegalStateException, IOException, ParseException{
 		
-		Utilisateur userExists = userService.findUserbyEmail(user.getEmail());
+		Utilisateur userExists = userService.findUserbyUsername(user.getUsername());
+		
 		
 		//Control si la mail est dejà utilisé
-		if(userExists != null){
+		if(userService.findUserbyUsername(user.getUsername()) != null){
+			bindingResult
+			.rejectValue("usename", "username.user",
+					"Username dejà enregistré. S'il vous plait inserer un username valide!");
+		}else if( userService.findUserbyEmail(user.getEmail()) != null){
 			bindingResult
 			.rejectValue("email", "error.user",
 					"Email dejà enregistré. S'il vous plait inserer une email valide!");
