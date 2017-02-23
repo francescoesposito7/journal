@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+<head>
+<title>Inscription Success</title>
+
+<style>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+.footer {
+ 	margin-top : 50px;
+	background-color: #6A6B6A;
+}
+</style>
+</head>
+
+<body layout:fragment="content">
+	
+		<div>
+			<p align="center" style="font-size:36px;color:#6DB33E">INSCRIPTION SUCCESS : Lorem Ipsum</p>
+		</div>
+			<img th:src="@{/img/springuniverse.png}" class="img-responsive img-circle displayed" alt="acceuil" />
+
+</body>
+</html>

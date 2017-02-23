@@ -24,27 +24,34 @@
 			</div>
 
 			<div class="panel-body">
-				<form>
+				<form th:action="@{SendUsQuestions}" method="post"
+						th:object="${contact}">
+					
 					<div class="form-group">
-						<label for="pNom">Votre Nom (Requis)</label> <input type="text"
-							class="form-control" id="pNom" placeholder="Nom" />
+						<label for="pNom">Votre Nom (Requis)</label>
+						<input type="text" th:field="*{nom}" class="form-control" />
+						<span class="text-danger" th:errors="*{nom}"></span>
 					</div>
+					
 					<div class="form-group">
-						<label for="pMail">Votre Email (Requis)</label> <input
-							type="email" class="form-control" id="pMail" placeholder="Email" />
+						<label for="pMail">Votre Email (Requis)</label>
+						<input type="email" th:field="*{email}" class="form-control" />
+						<span class="text-danger" th:errors="*{email}"></span>
 					</div>
+					
 					<div class="form-group">
-						<label for="pSujet">Sujet</label> <input type="text"
-							class="form-control" id="pSujet" placeholder="Sujet" />
+						<label for="pObjet">Sujet</label> 
+						<input type="text" th:field="*{objet}" class="form-control" />
+						<span class="text-danger" th:errors="*{objet}"></span>
 					</div>
+					
 					<div class="form-group">
 						<label for="pSujet">Sujet</label>
-						<textarea name="pMessage" class="form-control"
-							placeholder="Message"></textarea>
+						<textarea name="pMessage" th:field="*{sujet}" class="form-control" placeholder="Message"></textarea>
+						<span class="text-danger" th:errors="*{sujet}"></span>
 					</div>
 					<div class="checkbox">
-						<label> <input type="checkbox" /> Check me out
-						</label>
+						<label> <input type="checkbox" /> Check me out </label>
 					</div>
 					<button type="submit" class="btn btn-default">Envoyer</button>
 				</form>

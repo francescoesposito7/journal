@@ -45,20 +45,22 @@ public class UtilisateurController {
 	@RequestMapping(value="/SaveUtilisateur",method=RequestMethod.POST)
 	public String saveUtilisateur( @Valid Utilisateur user,
 									BindingResult bindingResult,
-									@RequestParam(name="picture") MultipartFile file) throws IllegalStateException, IOException, ParseException{
+									@RequestParam(name="picture") MultipartFile file,
+									@Value(value="type") String type) throws IllegalStateException, IOException, ParseException{		
 		
-		Utilisateur userExists = userService.findUserbyUsername(user.getUsername());
-		
-		
-		//Control si la mail est dejà utilisé
+		System.out.println("-------------> "+type);
+		//Control si l'username est dejà utilisé
 		if(userService.findUserbyUsername(user.getUsername()) != null){
 			bindingResult
 			.rejectValue("username", "username.user",
-					"Username dejà enregistré. S'il vous plait inserer un username valide!");
-		}else if( userService.findUserbyEmail(user.getEmail()) != null){
+					"Nom d'utilisateur déjà utilisé. Veuillez utiliser un autre nom");		
+		}
+		
+		//Control si la mail est dejà utilisé
+		if ( userService.findUserbyEmail(user.getEmail()) != null){
 			bindingResult
-			.rejectValue("email", "error.user",
-					"Email dejà enregistré. S'il vous plait inserer une email valide!");
+			.rejectValue("email", "email.user",
+				"Email dejà utilisé. Veuillez utiliser un autre email");
 		}
 		
 		//Si il y a des error dans le formularie on reste la
@@ -85,7 +87,7 @@ public class UtilisateurController {
 			file.transferTo(new File(imageDir+user.getId()));
 		}
 		
-		return "redirect:acceuil";
+		return "redirect:iscriptionSuccess";
 	}
 	
 	@RequestMapping(value="/getPhoto",produces=MediaType.IMAGE_JPEG_VALUE)

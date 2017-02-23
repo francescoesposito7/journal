@@ -5,9 +5,11 @@ public enum Views {
 	VIEW_INDEX("index"),
 	VIEW_ACCUEIL("acceuil"),
 	VIEW_INSCRIPTION("inscription"),
+	VIEW_INSCRIPTION_SUCCESS("inscriptionSuccess"),
 	VIEW_NEWS("news"),
 	VIEW_LOGIN("login"),
 	VIEW_CONTACT("contact"),
+	VIEW_CONTACT_SUCCESS("contactSuccess"),
 	VIEW_INSCFORM("inscriptionForm");
 
 	private String page;

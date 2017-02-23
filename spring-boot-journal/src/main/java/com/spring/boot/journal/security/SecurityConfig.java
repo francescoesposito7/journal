@@ -2,6 +2,7 @@ package com.spring.boot.journal.security;
 
 import javax.sql.DataSource;
 
+import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -47,8 +48,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/", "/*").permitAll()
 				.antMatchers("/user/**").hasRole("USER")
 				.antMatchers("/admin/**").hasRole("ADMIN")
+				
 				.and()
-				.formLogin().loginPage("/login");
+				.formLogin().loginPage("/login")
+				
+				.and()
+				.rememberMe();
 		
 		http
 			.exceptionHandling().accessDeniedPage("/403");

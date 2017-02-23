@@ -20,10 +20,16 @@ public class InscriptionController {
 	
 	@RequestMapping(value="/inscform", method = RequestMethod.GET)
 	public ModelAndView inscFormulaire(ModelAndView modelAndView,
-			@RequestParam (name="type", defaultValue="1") String param){
+			@RequestParam (name="type", defaultValue="0") String param){
 		modelAndView.addObject("type", param);
 		modelAndView.addObject("utilisateur", new Utilisateur());
 		modelAndView.setViewName(Views.VIEW_INSCFORM.getPage());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/iscriptionSuccess", method = RequestMethod.GET)
+	public ModelAndView contactSuccess(ModelAndView modelAndView){
+		modelAndView.setViewName(Views.VIEW_INSCRIPTION_SUCCESS.getPage());
 		return modelAndView;
 	}
 }
