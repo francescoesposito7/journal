@@ -12,53 +12,63 @@
 		<p>Ouvrez-vous au monde de Spring</p>
 	</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4 text-center">
+	<div class="col-md-1"></div>
+
+	<div class="col-md-3">
+		<div class="panel panel-default text-center">
+			<div class="panel-heading">
 				<h3>Free</h3>
 			</div>
-			<div class="col-md-4 text-center">
-				<h3>First</h3>
-			</div>
-			<div class="col-md-4 text-center">
-				<h3>First Premium</h3>
-			</div>
-		</div>
-		<div class="container-fluid"></div>
-		<div class="row">
-			<div class="col-md-4 text-center">
-				<p>Suivez les cours de bases, en illimité.</p>
-			</div>
-			<div class="col-md-4 text-center">
-				<p>Suivez les cours avancés, Apprenez les entrailles de Spring</p>
-			</div>
-			<div class="col-md-4 text-center">
-				<p>Acces illimité a tout le contenu du site cours, tutoriaux et
-					code source</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 text-center">
-				<p>Gratuit!</p>
-			</div>
-			<div class="col-md-4 text-center">
-				<p>10 Euros/Mois</p>
-			</div>
-			<div class="col-md-4 text-center">
-				<p>200 Euros</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 text-center">
-				<a href="/inscform" ><button class="btn btn-success">Choisir!</button></a>
-			</div>
-			<div class="col-md-4 text-center">
-				<a href="/inscform" ><button type="submit" class="btn btn-success">Choisir!</button></a>
-			</div>
-			<div class="col-md-4 text-center">
-				<a href="/inscform" ><button type="submit" class="btn btn-success">Choisir!</button></a>
+			<div class="panel-body">
+				<div>
+					<p>Suivez les cours et tutoriaux de bases,familiarisez vous avec le framework spring</p>
+				</div>
+				<div>
+					<p>Gratuit!</p>
+				</div>
+				<a th:href="@{inscform?type=1}"><button class="btn btn-success">Choisir!</button></a>
 			</div>
 		</div>
 	</div>
+
+	<div class="col-md-1"></div>
+
+	<div class="col-md-3">
+		<div class="panel panel-default text-center">
+			<div class="panel-heading">
+				<h3>First</h3>
+			</div>
+			<div class="panel-body">
+				<div>
+					<p>Suivez les cours avancés, Apprenez les entrailles de Spring.</p>
+				</div>
+				<div>
+					<p>10 Euros/Mois</p>
+				</div>
+					<a th:href="@{inscform?type=2}"><button class="btn btn-success">Choisir!</button></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-3">
+		<div class="panel panel-default text-center">
+			<div class="panel-heading text-center">
+				<h3>First Premium</h3>
+			</div>
+			<div class="panel-body">
+				<div>
+					<p>Acces illimité a tout le contenu du site cours, tutoriaux et
+						code source</p>
+				</div>
+				<div>
+					<p>200 Euros</p>
+				</div>
+				<a th:href="@{inscform?type=3}"><button class="btn btn-success">Choisir!</button></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-1"></div>
+	
 </body>
 </html>

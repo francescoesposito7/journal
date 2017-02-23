@@ -24,7 +24,7 @@ public class EntryController{
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/accueil", method = RequestMethod.GET)
+	@RequestMapping(value="/acceuil", method = RequestMethod.GET)
 	public ModelAndView acceuil(ModelAndView modelAndView){
 		modelAndView.setViewName(Views.VIEW_ACCUEIL.getPage());
 		return modelAndView;

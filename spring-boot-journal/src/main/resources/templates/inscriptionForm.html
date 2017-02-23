@@ -10,61 +10,120 @@
 	margin-top: 40px;
 	border-color: threeddarkshadow;
 }
+
+.display-td {
+	margin-left: 10px;
+}
 </style>
 </head>
 <body layout:fragment="content">
-	<div class="col-md-4"></div>
-	<div class="container col-md-4">
-		<div class="panel panel-default">
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="container col-md-4">
+			<div class="panel panel-default">
 
-			<div class="panel-heading text-center">
-				<h2>Formulaire</h2>
-			</div>
+				<div class="panel-heading text-center">
+					<h2>Formulaire</h2>
+				</div>
 
-			<div class="panel-body">
-				<form th:action="@{SaveUtilisateur}" method="post" th:object="${utilisateur}" 
-				enctype="multipart/form-data">
-					<div class="form-group">
-						<label class="control-label">Nom</label>
-						<input type="text" th:field="*{nom}" class="form-control"/>
-						<span class="text-danger" th:errors="*{nom}"></span>
-					</div>
-					<div class="form-group">
-						<label class="control-label">Prenom</label>
-						<input type="text" th:field="*{prenom}" class="form-control"/>
-						<span class="text-danger" th:errors="*{prenom}"></span>
-					</div>
-					<div class="form-group">
-						<label class="control-label">Date Naissance</label>
-						<input type="date" th:field="*{dateNaissance}" class="form-control" pattern="yyyy-MM-dd"/>
-						<span class="text-danger" th:errors="*{dateNaissance}"></span>
-					</div>
-					<div class="form-group">
-						<label class="control-label">Email</label>
-						<input type="email" th:field="*{email}" class="form-control"/>
-						<span class="text-danger" th:errors="*{email}"></span>					
-					</div>
-					<div class="form-group">
-						<label class="control-label">Mot De Passe</label>
-						<input type="password" th:field="*{motDePasse}" class="form-control"/>
-						<span class="text-danger" th:errors="*{motDePasse}"></span>	
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Confirmation</label> <input
-							type="password" class="form-control" id="exampleInputPassword1"
-							placeholder="Confirmation" />
-					</div>
-					<div class="form-group">
-						<label class="control-label">Photo:</label>
-						<input type="file" name="picture" class="form-control"/>
-						<span class="text-danger" th:errors="*{photo}"></span>					
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" /> Check me out
-						</label>
-					</div>
-					<button type="submit" class="btn btn-default">Envoyer</button>
-				</form>
+				<div class="panel-body">
+					<form th:action="@{SaveUtilisateur}" method="post"
+						th:object="${utilisateur}" enctype="multipart/form-data">
+						<div class="form-group">
+							<label class="control-label">Nom</label> <input type="text"
+								th:field="*{nom}" class="form-control" /> <span
+								class="text-danger" th:errors="*{nom}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Prenom</label> <input type="text"
+								th:field="*{prenom}" class="form-control" /> <span
+								class="text-danger" th:errors="*{prenom}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Date Naissance</label> <input
+								type="date" th:field="*{dateNaissance}" class="form-control"
+								pattern="yyyy-MM-dd" /> <span class="text-danger"
+								th:errors="*{dateNaissance}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Email</label> <input type="email"
+								th:field="*{email}" class="form-control" /> <span
+								class="text-danger" th:errors="*{email}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Mot De Passe</label> <input
+								type="password" th:field="*{motDePasse}" class="form-control" />
+							<span class="text-danger" th:errors="*{motDePasse}"></span>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Confirmation</label> <input
+								type="password" class="form-control" id="exampleInputPassword1"
+								placeholder="Confirmation" />
+						</div>
+						<div class="form-group">
+							<label class="control-label">Photo:</label> <input type="file"
+								name="picture" class="form-control" /> <span
+								class="text-danger" th:errors="*{photo}"></span>
+						</div>
+						<div></div>	
+						<div class="panel panel-default credit-card-box" th:if="${type}!=1">
+							<div class="panel-heading display-table">
+								<div class="row display-tr">
+									<div class="panel-title display-td">
+										<h3>Choix du paiement</h3>
+									</div>
+									<div class="display-td">
+										<img class="img-responsive pull-right"
+											src="http://i76.imgup.net/accepted_c22e0.png" />
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label for="cardNumber">Numero de carte</label>
+											<div class="input-group">
+												<input type="tel" class="form-control" name="cardNumber"
+													placeholder="Valid Card Number" autocomplete="cc-number"></input>
+												<span class="input-group-addon"><i
+													class="fa fa-credit-card"></i></span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-7 col-md-7">
+										<div class="form-group">
+											<label for="cardExpiry"><span class="hidden-xs">Date
+													d'expiration</span></label> <input type="tel" class="form-control"
+												name="cardExpiry" placeholder="MM / YY"
+												autocomplete="cc-exp" />
+										</div>
+									</div>
+									<div class="col-xs-5 col-md-5 pull-right">
+										<div class="form-group">
+											<label for="cardCVC">Cryptogramme visuel</label> <input
+												type="tel" class="form-control" name="cardCVC"
+												placeholder="CVC" autocomplete="cc-csc" />
+										</div>
+									</div>
+								</div>
+								<div class="row" style="display: none;">
+									<div class="col-xs-12">
+										<p class="payment-errors"></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="checkbox">
+							<label> <input type="checkbox" />J'ai lu et j'accepte
+								les Conditions Générales de Vente*
+							</label>
+						</div>
+						<button type="submit" class="btn btn-succes pull-right">Envoyer</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
