@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.spring.boot.journal.entities.Role;
 import com.spring.boot.journal.entities.Utilisateur;
@@ -13,6 +14,7 @@ import com.spring.boot.journal.repository.RoleRepository;
 import com.spring.boot.journal.repository.UtilisateurRepository;
 import com.spring.boot.journal.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired

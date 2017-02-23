@@ -7,5 +7,5 @@ import com.spring.boot.journal.entities.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long>{
 
-	public Role findByRole(String role);
+	public Role findByRoles(String role);
 }

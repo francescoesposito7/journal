@@ -1,29 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="index">
+<html 	xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="index">
 <head>
 <meta charset="utf-8" />
 <title>News</title>
 <style>
-.body {
-	background-color: #eeeeee;
-}
-
-.thumbnail{
+.thumbnail {
 	border-color: gray;
 }
-.list-group-item{
+.list-group-item {
 	background-color: #Aed581;
 	border-color: gray;
+	margin-left: 10px;
 }
-.jumbotron {
-	background-color:#bdbdbd;
-	text-decoration: underline;
-	font-family: Stencil Std, fantasy;
-	font-size: x-large;
-	
- }
 </style>
 </head>
 <body layout:fragment="content" class="body">
@@ -39,7 +29,8 @@
 				<button type="button" class="list-group-item">decembre 2016</button>
 				<button type="button" class="list-group-item">novembre 2016</button>
 				<button type="button" class="list-group-item">octobre 2016</button>
-				<button type="button" class="list-group-item">septembre 2016</button>
+				<button type="button" class="list-group-item">septembre
+					2016</button>
 				<button type="button" class="list-group-item">aout 2016</button>
 				<button type="button" class="list-group-item">juillet 2016</button>
 				<button type="button" class="list-group-item">juin 2016</button>
