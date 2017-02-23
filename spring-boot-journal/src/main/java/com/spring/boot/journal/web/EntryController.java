@@ -30,12 +30,6 @@ public class EntryController{
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/inscription", method = RequestMethod.GET)
-	public ModelAndView login(ModelAndView modelAndView){
-		modelAndView.setViewName(Views.VIEW_INSCRIPTION.getPage());
-		return modelAndView;
-	}
-	
 	@RequestMapping(value="/news", method = RequestMethod.GET)
 	public ModelAndView news(ModelAndView modelAndView){
 		modelAndView.setViewName(Views.VIEW_NEWS.getPage());
@@ -52,13 +46,6 @@ public class EntryController{
 	@RequestMapping(value="/contact", method = RequestMethod.GET)
 	public ModelAndView contact(ModelAndView modelAndView){
 		modelAndView.setViewName(Views.VIEW_CONTACT.getPage());
-		return modelAndView;
-	}
-	
-	@RequestMapping(value="/inscform", method = RequestMethod.GET)
-	public ModelAndView inscFormulaire(ModelAndView modelAndView){
-		modelAndView.addObject("utilisateur", new Utilisateur());
-		modelAndView.setViewName(Views.VIEW_INSCFORM.getPage());
 		return modelAndView;
 	}
 	
