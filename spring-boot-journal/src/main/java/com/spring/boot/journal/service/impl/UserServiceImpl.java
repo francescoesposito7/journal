@@ -25,12 +25,15 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Utilisateur findUserbyUsername (String username) {
 		return userRepository.findByUsername(username);
+
 	}
 
 	@Override
-	public void saveUser(Utilisateur user) {
+	public void saveUser(Utilisateur user,String type) {
 		
 		//Definition role utilisateur
+		
+		
 		//TODO changer le method se saisie role
 		/*---->*/Role role = roleRepository.findOne((long) 1);
 		
@@ -40,11 +43,13 @@ public class UserServiceImpl implements UserService {
 		user.getRole().add(role);
 		user.setActive(true);
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
 		userRepository.save(user);
 	}
 
 	@Override
 	public Utilisateur findUserbyEmail(String email) {
 		return userRepository.findByEmail(email);
+
 	}
 }
