@@ -9,6 +9,5 @@ public class SpringBootJournalApplication{
 	public static void main(String[] args) {
 		
 		SpringApplication.run(SpringBootJournalApplication.class, args);
-		//abc
 	}
 }
