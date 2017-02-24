@@ -24,8 +24,7 @@ public class UserServiceImpl implements UserService {
     
 	@Override
 	public Utilisateur findUserbyUsername (String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findByUsername(username);
 	}
 
 	@Override
@@ -41,13 +40,11 @@ public class UserServiceImpl implements UserService {
 		user.getRole().add(role);
 		user.setActive(true);
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		
 		userRepository.save(user);
 	}
 
 	@Override
 	public Utilisateur findUserbyEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findByEmail(email);
 	}
 }

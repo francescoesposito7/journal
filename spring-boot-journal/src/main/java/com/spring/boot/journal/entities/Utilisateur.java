@@ -40,12 +40,14 @@ public class Utilisateur implements Serializable {
 	
 	@NotEmpty
 	@NotNull
+	@Column(unique=true)
 	@Size(max=30)
 	private String username;
 	
 	@NotEmpty
 	@NotNull
 	@Email
+	@Column(unique=true)
 	@Size(max=30)
 	private String email;
 	

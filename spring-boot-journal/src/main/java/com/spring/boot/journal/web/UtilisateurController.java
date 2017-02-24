@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+
 import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.spring.boot.journal.entities.Utilisateur;
 import com.spring.boot.journal.repository.RoleRepository;
 import com.spring.boot.journal.repository.UtilisateurRepository;
@@ -51,7 +53,7 @@ public class UtilisateurController {
 		//Control si la mail est dejà utilisé
 		if(userService.findUserbyUsername(user.getUsername()) != null){
 			bindingResult
-			.rejectValue("usename", "username.user",
+			.rejectValue("username", "username.user",
 					"Username dejà enregistré. S'il vous plait inserer un username valide!");
 		}else if( userService.findUserbyEmail(user.getEmail()) != null){
 			bindingResult
@@ -83,7 +85,7 @@ public class UtilisateurController {
 			file.transferTo(new File(imageDir+user.getId()));
 		}
 		
-		return "redirect:accueil";
+		return "redirect:acceuil";
 	}
 	
 	@RequestMapping(value="/getPhoto",produces=MediaType.IMAGE_JPEG_VALUE)
