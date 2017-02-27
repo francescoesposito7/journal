@@ -8,5 +8,6 @@ import com.spring.boot.journal.entities.NewsFeed;
 @Repository("newsFeedRepository")
 public interface NewsFeedRepository extends JpaRepository<NewsFeed, Long>{
 	
+	public NewsFeed findTopByOrderByUriDesc();
 	
 }

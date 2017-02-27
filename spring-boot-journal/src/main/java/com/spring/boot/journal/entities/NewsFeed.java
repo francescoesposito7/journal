@@ -99,10 +99,4 @@ public class NewsFeed {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
-	
-	
-	
-
 }

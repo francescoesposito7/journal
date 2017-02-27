@@ -15,6 +15,10 @@ INSERT INTO ROLE(roles) VALUES('ACTUATOR');
 INSERT INTO UTILISATEUR(nom,prenom,username,email,password,password_confirmation,type_compte,active,date_naissance,photo) VALUES('Esposito','Francesco','frank','francescoesposito7@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',0,TRUE,'1982-11-18 00:00:00.00','photo.jpeg');
 INSERT INTO UTILISATEUR(nom,prenom,username,email,password,password_confirmation,type_compte,active,date_naissance,photo) VALUES('Lefaix','Jimmy','jimmy','jimmy@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',0,TRUE,'1991-10-26 00:00:00.00','photo.jpeg');
 
+INSERT INTO UTILISATEUR(nom,prenom,username,email,password,password_confirmation,type_compte,active,date_naissance,date_inscription,photo) VALUES('Esposito','Francesco','frak','francescoes@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',1,FALSE,'1982-11-18 00:00:00.00','2017-03-02 00:00:00.00','photo.jpeg');
+INSERT INTO UTILISATEUR(nom,prenom,username,email,password,password_confirmation,type_compte,active,date_naissance,date_inscription,photo) VALUES('Esposito','Francesco','frnk','frcoesposito7@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',1,FALSE,'1982-11-18 00:00:00.00','2007-03-03 00:00:00.00','photo.jpeg');
+INSERT INTO UTILISATEUR(nom,prenom,username,email,password,password_confirmation,type_compte,active,date_naissance,date_inscription,photo) VALUES('Esposito','Francesco','fank','ancescoesposito7@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',1,FALSE,'1982-11-18 00:00:00.00','2017-03-10 00:00:00.00','photo.jpeg');
+
 --CONTACT
 INSERT INTO CONTACT(nom,email,objet,sujet) VALUES('test1','test@test.it','test','test');
 INSERT INTO CONTACT(nom,email,objet,sujet) VALUES('test2','test@test.it','test','test');

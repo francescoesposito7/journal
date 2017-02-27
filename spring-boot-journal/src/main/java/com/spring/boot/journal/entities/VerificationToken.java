@@ -29,7 +29,6 @@ public class VerificationToken {
 
 	public VerificationToken() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public VerificationToken(String token, Utilisateur user, Date dateExpiration) {

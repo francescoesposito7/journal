@@ -35,20 +35,55 @@ public class RSSFeedParser {
 		
 		SyndFeed feed = new SyndFeedInput().build(new XmlReader(new URL(url)));
 		List<SyndEntry> entryList = feed.getEntries();
+
+		if(feedRepository.findTopByOrderByUriDesc()==null){
 		
-		
-		
-		for (int i=0;i<entryList.size();i++){
-			NewsFeed newsFeed = new NewsFeed();
-			newsFeed.setAuthor(entryList.get(i).getAuthor());
-			newsFeed.setLink(entryList.get(i).getLink());
-			newsFeed.setUpdatedDate((entryList.get(i).getUpdatedDate().toString()));
-			newsFeed.setTitle(entryList.get(i).getTitle());
-			newsFeed.setContent(entryList.get(i).getContents().get(0).getValue().replace('"', '\''));
-			newsFeed.setCategory(entryList.get(i).getCategories().get(0).getName());
+			for (int i=0;i<entryList.size();i++){
+							
+				NewsFeed newsFeed = new NewsFeed();
+				
+				newsFeed.setAuthor(entryList.get(i).getAuthor());
+				newsFeed.setLink(entryList.get(i).getLink());
+				newsFeed.setUpdatedDate((entryList.get(i).getUpdatedDate().toString()));
+				newsFeed.setTitle(entryList.get(i).getTitle());
+				newsFeed.setContent(entryList.get(i).getContents().get(0).getValue().replace('"', '\''));
+				newsFeed.setCategory(entryList.get(i).getCategories().get(0).getName());
+				
+				int uriId=Integer.valueOf(entryList.get(i).getUri().substring(25));
+				
+				newsFeed.setUri(uriId);
 			
-			feedRepository.save(newsFeed);
+				feedRepository.save(newsFeed);			
+			}
+		}else{
+			
+			int oldUriFeed=feedRepository.findTopByOrderByUriDesc().getUri();
+			
+			for (int i=0;i<entryList.size();i++){
+				
+				NewsFeed newsFeed = new NewsFeed();
+				
+				newsFeed.setAuthor(entryList.get(i).getAuthor());
+				newsFeed.setLink(entryList.get(i).getLink());
+				newsFeed.setUpdatedDate((entryList.get(i).getUpdatedDate().toString()));
+				newsFeed.setTitle(entryList.get(i).getTitle());
+				newsFeed.setContent(entryList.get(i).getContents().get(0).getValue().replace('"', '\''));
+				newsFeed.setCategory(entryList.get(i).getCategories().get(0).getName());
+				
+				int uriId=Integer.valueOf(entryList.get(i).getUri().substring(25));
+				
+				newsFeed.setUri(uriId);
+			
+				if(oldUriFeed<uriId ){
+					feedRepository.save(newsFeed);
+					System.out.println("***");
+				}else
+					if(oldUriFeed>uriId){
+						break;
+					}			
+			}
 		}
+			
 		
 		
 	}
