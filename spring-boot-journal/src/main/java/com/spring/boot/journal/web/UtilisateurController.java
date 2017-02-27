@@ -47,8 +47,9 @@ public class UtilisateurController {
 									BindingResult bindingResult,
 									@RequestParam(name="picture") MultipartFile file,
 									@Value(value="type") String type) throws IllegalStateException, IOException, ParseException{		
+
 		
-		System.out.println("-------------> "+type);
+		System.out.println("--------------------> "+type.valueOf(type));
 		//Control si l'username est dejà utilisé
 		if(userService.findUserbyUsername(user.getUsername()) != null){
 			bindingResult
@@ -67,7 +68,7 @@ public class UtilisateurController {
 		if(bindingResult.hasErrors()){
 			return "inscriptionForm";
 		}else{
-			userService.saveUser(user);
+			userService.saveUser(user,type);
 		}
 		
 		//Creation dossier pour les images des tous les utilisateur 

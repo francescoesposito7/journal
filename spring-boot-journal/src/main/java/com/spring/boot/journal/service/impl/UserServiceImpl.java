@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void saveUser(Utilisateur user) {
+	public void saveUser(Utilisateur user,String type) {
 		
 		//Definition role utilisateur
 		
