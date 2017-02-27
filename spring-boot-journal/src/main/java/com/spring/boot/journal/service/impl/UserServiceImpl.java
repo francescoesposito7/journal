@@ -31,8 +31,7 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private VerificationTokenRepository tokenRepository;
-    @Autowired
-    private RegistrationService regService;
+
     
 
 
@@ -41,7 +40,6 @@ public class UserServiceImpl implements UserService {
 
 		
 		//Definition role utilisateur
-		System.out.println("***********************************"+user.getTypeCompte());
 		Role role = roleRepository.findOne((long) 1);
 		
 		role.setUtilisateurs(new ArrayList<Utilisateur>());

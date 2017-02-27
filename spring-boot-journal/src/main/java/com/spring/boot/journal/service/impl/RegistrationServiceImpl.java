@@ -19,7 +19,7 @@ public class RegistrationServiceImpl implements RegistrationService{
 	@Autowired
     private UserService service;
 	
-	@Autowired
+	/*@Autowired
     private MessageSource messages;
 	
 	/* @Autowired
