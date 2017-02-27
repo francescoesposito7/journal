@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.boot.journal.entities.Utilisateur;
-import com.spring.boot.journal.entities.temp.TempUser;
 import com.spring.boot.journal.views.Views;
 
 @Controller

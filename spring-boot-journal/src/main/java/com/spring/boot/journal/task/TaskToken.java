@@ -26,7 +26,7 @@ public class TaskToken {
 
 	        Date now = Date.from(Instant.now());
 
-	        passwordTokenRepository.deleteAllExpiredSince(now);
-	        tokenRepository.deleteAllExpiredSince(now);
+	       // passwordTokenRepository.deleteAllExpiredSince(now);
+	        //tokenRepository.deleteAllExpiredSince(now);
 	    }
 }

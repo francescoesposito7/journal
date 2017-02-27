@@ -79,8 +79,9 @@ public class UtilisateurController {
 		
 		}else{
 			
-			regService.confirmRegistration(user);
 			userService.saveUser(user);
+			regService.confirmRegistration(user);
+			
 			
 		}
 		

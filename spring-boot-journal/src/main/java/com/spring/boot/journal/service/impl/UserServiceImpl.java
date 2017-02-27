@@ -41,8 +41,8 @@ public class UserServiceImpl implements UserService {
 
 		
 		//Definition role utilisateur
-		
-		Role role = roleRepository.findOne((long) user.getTypeCompte());
+		System.out.println("***********************************"+user.getTypeCompte());
+		Role role = roleRepository.findOne((long) 1);
 		
 		role.setUtilisateurs(new ArrayList<Utilisateur>());
 		role.getUtilisateurs().add(user);

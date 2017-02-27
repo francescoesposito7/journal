@@ -30,14 +30,16 @@ public class RegistrationController {
 
 	
 	 @RequestMapping(value = "/registrationConfirm", method = RequestMethod.GET)
-	    public String confirmRegistration(final Locale locale, final Model model, @RequestParam("token") final String token) throws UnsupportedEncodingException {
+	    public String confirmRegistration(final Locale locale, 
+	    								  final Model model,
+	    								  @RequestParam("token") final String token) throws UnsupportedEncodingException {
 	        
 	    	final String result = userService.validateVerificationToken(token);
 	    	final Utilisateur user = userService.getUser(token);
 	    	
 	    	if (result.equals("valid")) {
 
-	            model.addAttribute("message", messages.getMessage("message.accountVerified", null, locale));
+	            //model.addAttribute("message", messages.getMessage("message.accountVerified", null, locale));
 	            return "redirect:/login";
 	        }
 
