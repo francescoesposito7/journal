@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.boot.journal.entities.Utilisateur;
 import com.spring.boot.journal.repository.RoleRepository;
 import com.spring.boot.journal.repository.UtilisateurRepository;
+import com.spring.boot.journal.service.RegistrationService;
 import com.spring.boot.journal.service.UserService;
 
 
@@ -37,6 +38,9 @@ public class UtilisateurController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+    private RegistrationService regService;
 	
 	@Value("${dir.images}")
 	private String imageDir;
@@ -62,7 +66,6 @@ public class UtilisateurController {
 				"Email dejà utilisé. Veuillez utiliser un autre email");
 		}
 		
-		System.out.println("------------------> "+user.getPassword()+"  "+user.getPasswordConfirmation());
 		
 		if(!user.getPassword().equals(user.getPasswordConfirmation())){
 			bindingResult
@@ -73,8 +76,12 @@ public class UtilisateurController {
 		//Si il y a des error dans le formularie on reste la
 		if(bindingResult.hasErrors()){
 			return "inscriptionForm";
+		
 		}else{
-			userService.saveUser(user,type);
+			
+			regService.confirmRegistration(user);
+			userService.saveUser(user);
+			
 		}
 		
 		//Creation dossier pour les images des tous les utilisateur 
