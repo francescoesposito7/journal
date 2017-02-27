@@ -29,13 +29,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void saveUser(Utilisateur user,String type) {
+	public void saveUser(Utilisateur user,int type) {
 		
 		//Definition role utilisateur
 		
-		
-		//TODO changer le method se saisie role
-		/*---->*/Role role = roleRepository.findOne((long) 1);
+		Role role = roleRepository.findOne((long) type);
 		
 		role.setUtilisateurs(new ArrayList<Utilisateur>());
 		role.getUtilisateurs().add(user);

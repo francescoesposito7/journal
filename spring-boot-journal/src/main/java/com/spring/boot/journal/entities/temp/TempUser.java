@@ -1,14 +1,8 @@
-package com.spring.boot.journal.entities;
+package com.spring.boot.journal.entities.temp;
 
-import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -18,14 +12,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.spring.boot.journal.service.validator.ValidEmail;
 import com.spring.boot.journal.service.validator.ValidPassword;
 
-@SuppressWarnings("serial")
-@Entity
-public class Utilisateur implements Serializable {
-	
-	@Id @GeneratedValue
-	@Column(name="USER_ID")
-	private Long id;
-	
+
+public class TempUser {
+
 	@NotEmpty
 	@NotNull
 	@Size(max=30)
@@ -55,7 +44,7 @@ public class Utilisateur implements Serializable {
 	
 	@NotEmpty
 	@NotNull
-	@Size(min=4)
+	@Size(min=4,max=20)
 	@ValidPassword
 	private String password;
 	
@@ -65,42 +54,12 @@ public class Utilisateur implements Serializable {
 	@ValidPassword
 	private String passwordConfirmation;
 	
-	private int typeCompte;
-	
 	@Size(max=30)
 	private String photo; 
 	
-	// Creation TABLE utilisateur_roles 
-	@ManyToMany
-	private Collection<Role> roles;
-
-	private boolean active;
-
-	public Utilisateur() {
+	public TempUser() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public Utilisateur(String nom, String prenom, Date dateNaissance, String username,String email, String password,String passwordConfirm,int typeCompte, String photo) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
-		this.username = username;
-		this.email=email;
-		this.password = password;
-		this.passwordConfirmation = passwordConfirm;
-		this.typeCompte=typeCompte;
-		this.photo = photo;
-		this.setActive(false);
-	}
-
-	public void addRole(Role role) {
-		this.roles.add(role);
-	}
-	
-	public Long getId() {
-		return id;
 	}
 
 	public String getNom() {
@@ -130,26 +89,9 @@ public class Utilisateur implements Serializable {
 	public String getPasswordConfirmation() {
 		return passwordConfirmation;
 	}
-	
-	public int getTypeCompte(){
-		return typeCompte;
-	}
 
 	public String getPhoto() {
 		return photo;
-	}
-	
-
-	public Collection<Role> getRole() {
-		return roles;
-	}
-	
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public void setNom(String nom) {
@@ -184,16 +126,4 @@ public class Utilisateur implements Serializable {
 		this.photo = photo;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-	
-	public void setRole(Collection<Role> roles) {
-		this.roles=roles;
-	}
-	
-	public void setTypeCompte(int typeCompte){
-		this.typeCompte=typeCompte;
-	}
-	
 }

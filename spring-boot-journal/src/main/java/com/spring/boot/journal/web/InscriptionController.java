@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.boot.journal.entities.Utilisateur;
+import com.spring.boot.journal.entities.temp.TempUser;
 import com.spring.boot.journal.views.Views;
 
 @Controller
@@ -21,8 +22,9 @@ public class InscriptionController {
 	@RequestMapping(value="/inscform", method = RequestMethod.GET)
 	public ModelAndView inscFormulaire(ModelAndView modelAndView,
 			@RequestParam (name="type", defaultValue="0") String param){
-		modelAndView.addObject("type", param);
-		modelAndView.addObject("utilisateur", new Utilisateur());
+		Utilisateur user = new Utilisateur();
+		user.setTypeCompte(Integer.valueOf(param));
+		modelAndView.addObject("utilisateur", user);
 		modelAndView.setViewName(Views.VIEW_INSCFORM.getPage());
 		return modelAndView;
 	}

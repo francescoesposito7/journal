@@ -57,13 +57,13 @@
 						</div>
 						<div class="form-group">
 							<label class="control-label">Mot De Passe</label> <input
-								type="password" th:field="*{password}" class="form-control" />
+							 type="password" th:field="*{password}" class="form-control" />
 							<span class="text-danger" th:errors="*{password}"></span>
 						</div>
 						<div class="form-group">
-							<label for="exampleInputPassword1">Confirmation</label> <input
-								type="password" class="form-control" id="exampleInputPassword1"
-								placeholder="Confirmation" />
+							<label class="control-label">Confirmation</label> <input
+								 type="password" th:field="*{passwordConfirmation}" class="form-control" />
+								 <span class="text-danger" th:errors="*{passwordConfirmation}"></span>
 						</div>
 						<div class="form-group">
 							<label class="control-label">Photo:</label> <input type="file"

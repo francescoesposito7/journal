@@ -45,11 +45,9 @@ public class UtilisateurController {
 	@RequestMapping(value="/SaveUtilisateur",method=RequestMethod.POST)
 	public String saveUtilisateur( @Valid Utilisateur user,
 									BindingResult bindingResult,
-									@RequestParam(name="picture") MultipartFile file,
-									@Value(value="type") String type) throws IllegalStateException, IOException, ParseException{		
+									@RequestParam(name="picture") MultipartFile file) throws IllegalStateException, IOException, ParseException{		
 
 		
-		System.out.println("--------------------> "+type.valueOf(type));
 		//Control si l'username est dejà utilisé
 		if(userService.findUserbyUsername(user.getUsername()) != null){
 			bindingResult
@@ -62,6 +60,14 @@ public class UtilisateurController {
 			bindingResult
 			.rejectValue("email", "email.user",
 				"Email dejà utilisé. Veuillez utiliser un autre email");
+		}
+		
+		System.out.println("------------------> "+user.getPassword()+"  "+user.getPasswordConfirmation());
+		
+		if(!user.getPassword().equals(user.getPasswordConfirmation())){
+			bindingResult
+			.rejectValue("passwordConfirmation", "passwordConfirmation.user",
+				"Password doesn't match!");
 		}
 		
 		//Si il y a des error dans le formularie on reste la
