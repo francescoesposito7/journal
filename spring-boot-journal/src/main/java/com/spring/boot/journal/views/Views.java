@@ -10,7 +10,8 @@ public enum Views {
 	VIEW_LOGIN("login"),
 	VIEW_CONTACT("contact"),
 	VIEW_CONTACT_SUCCESS("contactSuccess"),
-	VIEW_INSCFORM("inscriptionForm");
+	VIEW_INSCFORM("inscriptionForm"),
+	VIEW_ADMIN_HOME("admin/adminConsole");
 
 	private String page;
 

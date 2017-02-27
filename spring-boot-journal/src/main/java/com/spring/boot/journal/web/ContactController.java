@@ -30,4 +30,6 @@ public class ContactController {
 		
 		return "redirect:contactSuccess";
 	}
+	
+	
 }

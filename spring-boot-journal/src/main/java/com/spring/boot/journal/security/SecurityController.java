@@ -18,6 +18,7 @@ public class SecurityController {
 	
 	@RequestMapping("/")
 	private String home(){
+		
 		return "redirect:/acceuil";
 	}
 	

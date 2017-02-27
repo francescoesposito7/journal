@@ -2,7 +2,6 @@ package com.spring.boot.journal.security;
 
 import javax.sql.DataSource;
 
-import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

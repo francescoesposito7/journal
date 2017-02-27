@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorator="admin/adminTemplate">
+<head>
+    <title>Admin Console</title>
+    
+<style>
+
+.spacer{
+	margin-top: 30px;
+}
+</style>
+</head>
+<body layout:fragment="content">
+ 
+ 	<div class="container spacer" >
+		<table class="table table-striped">
+			 <thead>
+				<tr>
+				<th>ID</th> <th>Nom</th> <th>Email</th> <th>Objet</th>
+				</tr>		
+			 </thead>
+			 <tbody>
+				 <tr th:each="c:${pageMail.content}">
+				  	 <td th:text="${c.id}"></td>
+				 	 <td th:text="${c.nom}"></td>
+				 	 <td th:text="${c.email}"></td>		 
+				 	 <td th:text="${c.objet}"></td>
+				 	 <td><a onclick="return confirm('Etes vous sure?')" th:href="@{answer(id=${c.id})}">Supprimer</a></td>
+			 	 	<td><a th:href="@{edit(id=${c.id})}">Answer</a></td>
+			 	</tr>
+			 </tbody>
+		</table>
+	</div>
+	
+	<div class="container">
+		 <ul class="nav nav-pills">
+			 <li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
+			 	<a th:text="${p}" th:href="@{home(page=${p})}"></a>
+			 </li>
+		 </ul>
+	</div> 
+	  
+</body>
+</html>
