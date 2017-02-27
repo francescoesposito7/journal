@@ -59,4 +59,33 @@ public class RegistrationServiceImpl implements RegistrationService{
         return email;
     }
 
+	@Override
+	public void resendPassword(Utilisateur user) {
+		
+		final String token = UUID.randomUUID().toString();
+		service.createVerificationTokenForUser(user, token);
+		
+		final SimpleMailMessage email = resendMailPassword(/*event,*/ user, token);
+		System.out.println("----> EMAIL : "+email);		
+	}
+	
+	private final SimpleMailMessage resendMailPassword(/*final OnRegistrationCompleteEvent event,*/ final Utilisateur user, final String token) {
+        final String recipientAddress = user.getEmail();
+        
+        final String subject = "Registration Confirmation";
+        
+        final String confirmationUrl = /*"------------------>"event.getAppUrl()*/"http://localhost:8080" + "/resendPassword?token=" + token;
+        System.out.println("----> CONFIRMATION URL : "+confirmationUrl);
+        
+       // final String message = messages.getMessage("You registered successfully. We will send you a confirmation message to your email account.", null,null/*, event.getLocale()*/);
+        final String message = "Reset your password. Click on the link!";
+        final SimpleMailMessage email = new SimpleMailMessage();
+        
+        email.setTo(recipientAddress);
+        email.setSubject(subject);
+        email.setText(message + " \r\n" + confirmationUrl);
+        email.setFrom(environment.getProperty("support.email"));
+        return email;
+    }
+
 }

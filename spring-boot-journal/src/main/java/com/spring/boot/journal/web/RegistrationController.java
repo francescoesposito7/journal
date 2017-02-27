@@ -51,4 +51,27 @@ public class RegistrationController {
 	        
 	        return "redirect:/badUser";
 	    }
+	 
+	 
+	 @RequestMapping(value = "/resendPassword", method = RequestMethod.GET)
+	    public String resendPassword(final Locale locale, 
+	    							 final Model model,
+	    							 @RequestParam("token") final String token) throws UnsupportedEncodingException {
+	        
+	    	final String result = userService.validateVerificationToken(token);
+	    	final Utilisateur user = userService.getUser(token);
+	    	
+	    	if (result.equals("valid")) {
+	    		userRepository.save(user);
+	            return "redirect:/login";
+	        }
+
+	    	
+	    	
+	        model.addAttribute("message", messages.getMessage("auth.message." + result, null, locale));
+	        model.addAttribute("expired", "expired".equals(result));
+	        model.addAttribute("token", token);
+	        
+	        return "redirect:/badUser";
+	    }
 }
