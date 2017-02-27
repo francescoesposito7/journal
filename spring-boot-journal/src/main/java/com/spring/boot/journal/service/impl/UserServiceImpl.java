@@ -1,7 +1,9 @@
 package com.spring.boot.journal.service.impl;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,7 +15,6 @@ import com.spring.boot.journal.entities.VerificationToken;
 import com.spring.boot.journal.repository.RoleRepository;
 import com.spring.boot.journal.repository.UtilisateurRepository;
 import com.spring.boot.journal.repository.VerificationTokenRepository;
-import com.spring.boot.journal.service.RegistrationService;
 import com.spring.boot.journal.service.UserService;
 
 @Service
@@ -47,6 +48,7 @@ public class UserServiceImpl implements UserService {
 		user.setRole(new ArrayList<Role>());
 		user.getRole().add(role);
 		user.setActive(false);
+		user.setDateInscription(Date.from(Instant.now()));
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		userRepository.save(user);		
 	}

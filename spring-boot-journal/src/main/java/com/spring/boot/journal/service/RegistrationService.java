@@ -7,4 +7,6 @@ public interface RegistrationService {
 	public void confirmRegistration(Utilisateur user);
 	
 	public void resendPassword(Utilisateur user);
+	
+	public void updatePassword(Utilisateur user);
 }

@@ -41,13 +41,15 @@ public class RegistrationController {
 
 	            //model.addAttribute("message", messages.getMessage("message.accountVerified", null, locale));
 	            return "redirect:/login";
+	        }else {
+	        	userRepository.delete(user);
 	        }
 
-	    	userRepository.delete(user);
 	    	
-	        model.addAttribute("message", messages.getMessage("auth.message." + result, null, locale));
-	        model.addAttribute("expired", "expired".equals(result));
-	        model.addAttribute("token", token);
+	    	
+	       //model.addAttribute("message", messages.getMessage("auth.message." + result, null, locale));
+	        //model.addAttribute("expired", "expired".equals(result));
+	        //model.addAttribute("token", token);
 	        
 	        return "redirect:/badUser";
 	    }
@@ -68,10 +70,10 @@ public class RegistrationController {
 
 	    	
 	    	
-	        model.addAttribute("message", messages.getMessage("auth.message." + result, null, locale));
+	       /* model.addAttribute("message", messages.getMessage("auth.message." + result, null, locale));
 	        model.addAttribute("expired", "expired".equals(result));
 	        model.addAttribute("token", token);
-	        
+	        */
 	        return "redirect:/badUser";
 	    }
 }

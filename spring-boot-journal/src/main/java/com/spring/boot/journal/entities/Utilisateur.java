@@ -39,6 +39,9 @@ public class Utilisateur implements Serializable {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateNaissance;
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date dateInscription;
+	
 	
 	@NotEmpty
 	@NotNull
@@ -114,6 +117,10 @@ public class Utilisateur implements Serializable {
 	public Date getDateNaissance() {
 		return dateNaissance;
 	}
+	
+	public Date getDateInscription() {
+		return dateInscription;
+	}
 
 	public String getUsername() {
 		return username;
@@ -162,6 +169,10 @@ public class Utilisateur implements Serializable {
 
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
+	}
+	
+	public void setDateInscription(Date dateInscription) {
+		this.dateInscription = dateInscription;
 	}
 
 	public void setUsername(String username) {

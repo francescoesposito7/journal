@@ -88,4 +88,10 @@ public class RegistrationServiceImpl implements RegistrationService{
         return email;
     }
 
+	@Override
+	public void updatePassword(Utilisateur user) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

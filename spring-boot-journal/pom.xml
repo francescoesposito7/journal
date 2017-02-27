@@ -84,6 +84,14 @@
 		
 		<!-- Password Validation - END - -->
 		
+		<!-- Password Validation - END - -->
+		<dependency>
+    		<groupId>com.rometools</groupId>
+   			<artifactId>rome</artifactId>
+    		<version>1.7.1</version>
+		</dependency>
+		<!-- Password Validation - END - -->
+		
 	</dependencies>
 
 	<build>
