@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorator="admin/adminTemplate">
+<head>
+<meta charset="UTF-8"/>
+<script src="/js/tinymce/tinymce.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/prism.css" />
+<script src="/js/prism.js"></script>
+<script>
+tinymce.init({
+    selector: "textarea",
+    height: '500px',
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste codesample save"
+    ],
+    link_list: window.__link_list_url,
+    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table | code fullscreen | codesample | save'
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body layout:fragment="content">
+	<form class = "form-vertical" th:action="@{saveSource}" method="post">
+	<textarea name="source"></textarea>
+	<!-- <button class="btn btn-success pull-right" type="submit">Save</button> -->
+	</form>
+</body>
+</html>
+

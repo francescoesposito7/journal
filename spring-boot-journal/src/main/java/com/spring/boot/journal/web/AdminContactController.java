@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,6 +39,12 @@ public class AdminContactController {
 		return model;
 	}
 	
+	@RequestMapping(value="/edit")
+	public String editContenu(@ModelAttribute("source") String source, ModelAndView model){
+		model.addObject("source", source);
+		return "admin/creationContenu";
+	}
+	
 	@RequestMapping(value="/supprimer")
 	public String supprimer(Long id,ModelAndView model){
 		
@@ -49,5 +57,11 @@ public class AdminContactController {
 	public String edit(Long id){
 		
 		return "adminConsole";
+	}
+	
+	@PostMapping
+	public String saveSource(@ModelAttribute("source") String source){
+		System.out.println(source);
+		return "admin/creationContenu";
 	}
 }
