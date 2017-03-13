@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+<head>
+<meta charset="UTF-8" />
+<title>Messagerie</title>
+</head>
+<body layout:fragment="content">
+
+	<div class="container-fluid">
+		<div class="col-md-2"></div>
+		<ul class="nav nav-pills">
+			<li role="Profil"><a th:href="@{profil}">Profil</a></li>
+			<li role="Parametres"><a th:href="@{parametres}">Paramètres</a></li>
+			<li role="MesCours"><a th:href="@{courses}">Mes cours</a></li>
+			<li role="MesMessages"><a th:href="@{messages}">Mes messages</a></li>
+		</ul>
+	</div>
+	<div class="container">
+		<h3>Mes Messages</h3>
+		<table class="table table-stripped">
+			<thead>
+				<tr>
+					<th class="col-md-2">Expediteur</th>
+					<th class="col-md-4">Sujet</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr th:each="m:${pagesMessages.content}">
+					<td th:text="${m.expediteur}"></td>
+					<td th:text="${e.sujet}"></td>
+					<td th:text="${e.photo}"></td>
+					<td><a onclick="return confirm('etes vous sur ?')" th:href="@{supprimer(id=${e.id})}">Supprimer</a></td>
+				</tr> -->
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

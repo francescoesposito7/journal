@@ -19,13 +19,14 @@ public class NewsFeed {
 	private String updatedDate;
 	@Column(columnDefinition="TEXT")
 	private String content;
+	private int uri;
 	
 	public NewsFeed() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public NewsFeed(String title, String category, String link, String author, String id_Feed, String updatedDate, String content) {
+	public NewsFeed(String title, String category, String link, String author, String id_Feed, String updatedDate, String content, int Uri) {
 		super();
 		this.title = title;
 		this.link = link;
@@ -34,6 +35,7 @@ public class NewsFeed {
 		this.id_Feed = id_Feed;
 		this.updatedDate = updatedDate;
 		this.content = content;
+		this.uri = Uri;
 	}
 
 	public Long getId() {
@@ -67,6 +69,9 @@ public class NewsFeed {
 	public String getContent() {
 		return content;
 	}
+	public int getUri() {
+		return uri;
+	}
 
 	public void setId(Long id) {
 		this.id = id;
@@ -98,5 +103,8 @@ public class NewsFeed {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public void setUri(int uri) {
+		this.uri = uri;
 	}
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+<head>
+<meta charset="utf-8" />
+<title>Articles</title>
+<style>
+.containerNews{
+	margin-top: 50px;
+}
+</style>
+</head>
+<body layout:fragment="content">
+<div class="col-md-2"></div>
+	<div class="col-md-6 containerNews">
+		<h4><a href="" th:utext="${cat}"></a></h4>
+		<h2 th:text="${title}"></h2>
+		<label>Auteur :</label><i th:text="${aut}"></i><br/>
+		<label>Date :</label><p th:text="${date}"></p>
+		<label>Source :</label><a th:href="${link}" th:utext="${link}"></a>
+		<article th:remove="tag" th:utext="${content}"></article>
+	</div>
+	<div class="col-md-4"></div>
+</body>
+</html>
