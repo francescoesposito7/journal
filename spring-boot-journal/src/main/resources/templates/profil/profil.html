@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+<head>
+<meta charset="UTF-8" />
+<title>Profil</title>
+</head>
+<body layout:fragment="content">
+	<div class="container-fluid">
+		<div class="col-md-2"></div>
+		<ul class="nav nav-pills">
+			<li role="Profil"><a th:href="@{profil}">Profil</a></li>
+			<li role="Parametres"><a th:href="@{parametres}">Paramètres</a></li>
+			<li role="MesCours"><a th:href="@{courses}">Mes cours</a></li>
+			<li role="MesMessages"><a th:href="@{messages}">Mes messages</a></li>
+		</ul>
+	</div>
+	<div class="col-md-3"></div>
+	<div class="col-md-6 container">
+		<h3>Mon Profil</h3>
+		<div class="media">
+			<img class="media-object" th:src="@{/img/avatar_defaut.png}"
+				alt="memberAvatar" width="150" height="150" />
+		</div>
+		<br />
+		<div th:object="${user}">
+			<label>Username :</label><font th:text="*{username}"></font><br /> <label>Nom
+				:</label><font th:text="*{nom}"></font><br /> <label>Prenom :</label><font
+				th:text="*{prenom}"></font><br /> <label>Langue :</label><font></font><br />
+			<label>Date d'inscription :</label><font></font><br />
+		</div>
+	</div>
+	<div class="col-md-3"></div>
+</body>
+</html>

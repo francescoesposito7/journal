@@ -7,25 +7,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap-social.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/font-awesome.min.css}" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
 }
-
-.resizer{
-	widht : 40px;
-	height : 25px;
+.modal {
+	margin-top: 100px;
 }
 
+.panelConnexion {
+	margin-top: 10px;
+}
 /* Add a gray background color and some padding to the footer */
 .footer {
- 	margin-top : 50px;
+	margin-top: 50px;
 	background-color: #6A6B6A;
 }
 </style>
@@ -43,35 +47,137 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-				<a class="navbar-brand " href="#"><img th:src="@{/img/iconLogo.png}" class="img-responsive img-circle resizer"
-			alt="acceuil" /> </a>
-					<li ><a th:href="@{acceuil}">Accueil</a></li>
-					<li ><a href="/news">News</a></li>
-					<li ><a href="#"><span
+					<li><a href="/acceuil">Accueil</a></li>
+					<li><a href="/news">News</a></li>
+					<li><a href="/Test"><span
 							class="glyphicon glyphicon-education"></span> Cours</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/inscription"><span
+					<li th:if="${#httpServletRequest.getRemoteUser() == null}"><a
+						href="/inscription"><span
 							class="glyphicon glyphicon-floppy-saved"></span> Inscription</a></li>
-					<li><a href="/login"><span
+					<li th:if="${#httpServletRequest.getRemoteUser() == null}"><a
+						href="" data-toggle="modal" data-target="#loginMod"><span
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
-					<li><a href="/contact"><span
+					<li><a href="" data-toggle="modal" data-target="#contactMod"><span
 							class="glyphicon glyphicon-envelope"></span> Contact</a></li>
-					<li><a th:href="@{/logout}" th:text="${#httpServletRequest.getRemoteUser()}"></a></li>		
+					<li th:if="${#httpServletRequest.getRemoteUser() != null}"
+						class="dropdown"><a
+						th:text="${#httpServletRequest.getRemoteUser()}"
+						class="dropdown-toggle" id="drop1" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false"><span
+							class="caret"></span> </a>
+						<ul class="dropdown-menu" aria-labelledby="drop1">
+							<li><a th:href="@{/profil}">Mon Compte</a></li>
+							<li><a th:href="@{/parametres}">Parametres</a></li>
+							<li><a th:href="@{/courses}">Mes cours</a></li>
+							<li><a th:href="@{/messages}">Mes messages</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a th:href="@{/logout}">Logout</a></li>
+						</ul></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	
-	<div class="row">
-	<div layout:fragment="content">
-		<img th:src="@{/img/acceuil.jpg}" class="img-responsive img-circle"
-			alt="acceuil" width="1700" />
-	</div>
+
+	<div>
+		<div layout:fragment="content">
+		</div>
 	</div>
 	
-	<footer class="footer" >blablabla
-	<div class="centered">blablabla</div>
-	</footer>
+	<!-- Modal login -->
+	<div class="modal fade" id="loginMod" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Connexion</h4>
+				</div>
+				<div class="modal-body">
+					<br /> <a class="btn btn-block btn-social btn-lg btn-facebook"
+						onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-lg']);"><span
+						class="fa fa-facebook-official" aria-hidden="true"></span>Se
+						connecter avec Facebook</a> <a
+						class="btn btn-block btn-social btn-lg btn-google"
+						onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-lg']);"><span
+						class="fa fa-google" aria-hidden="true"></span>Se connecter avec
+						Google</a> <br />
+					<div class="panel panel-default panelConnexion">
+						<div class="panel-body">
+							<form th:action="@{/login}" method="post">
+								<div class="form-group">
+									<label for="email">Email</label> <input type="text"
+										class="form-control" name="username" placeholder="Username" />
+								</div>
+								<div class="form-group">
+									<label for="email">Password</label> <input type="password"
+										class="form-control" name="password" placeholder="Password" />
+								</div>
+								<div class="checkbox">
+									<label> <input type="checkbox" />Se souvenir de moi
+									</label>
+								</div>
+								<div class="pull-right">
+									<a>Mot de passe oublié ?...</a>
+								</div>
+								<br />
+								<button type="submit" class="btn btn-success">Login</button>
+							</form>
+							<br /> <label>Pas encore enregistré ? <a>Inscrivez-vous
+									gratuitement</a></label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Contact -->
+	<div class="modal fade" id="contactMod" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Contactez-Nous</h4>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{SendUsQuestions}" method="post"
+						th:object="${contact}">
+						<div class="form-group">
+							<label for="pNom">Votre Nom (Requis)</label> <input type="text"
+								class="form-control" id="pNom" placeholder="Nom" />
+						</div>
+						<div class="form-group">
+							<label for="pMail">Votre Email (Requis)</label> <input
+								type="email" class="form-control" id="pMail" placeholder="Email" />
+						</div>
+						<div class="form-group">
+							<label for="pSujet">Sujet</label> <input type="text"
+								class="form-control" id="pSujet" placeholder="Sujet" />
+						</div>
+						<div class="form-group">
+							<label for="pSujet">Message</label>
+							<textarea name="pMessage" class="form-control"
+								placeholder="Message"></textarea>
+						</div>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+						<button type="submit" class="btn btn-success">Envoyer</button>
+					</form>
+				</div>
+			</div> 
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$('.dropdown-toggle').dropdown()
+	</script>
 </body>
 </html>

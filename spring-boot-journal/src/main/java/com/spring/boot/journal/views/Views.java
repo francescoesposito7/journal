@@ -11,8 +11,12 @@ public enum Views {
 	VIEW_CONTACT("contact"),
 	VIEW_CONTACT_SUCCESS("contactSuccess"),
 	VIEW_INSCFORM("inscriptionForm"),
-	VIEW_ADMIN_HOME("admin/adminConsole");
-
+	VIEW_ADMIN_HOME("admin/adminConsole"),
+	VIEW_PROFIL("profil/profil"),
+	VIEW_PROFIL_PARAM("profil/parametres"),
+	VIEW_PROFIL_COURS("profil/mesCours"),
+	VIEW_PROFIL_MESS("profil/mesMessages");
+	
 	private String page;
 
 	private Views(String page){
@@ -27,6 +31,5 @@ public enum Views {
 	public void setPage(String page) {
 		this.page = page;
 	}
-	
-	
+
 }

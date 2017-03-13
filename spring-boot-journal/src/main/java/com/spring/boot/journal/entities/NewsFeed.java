@@ -21,7 +21,6 @@ public class NewsFeed {
 	private String content;
 	private int uri;
 	
-	
 	public NewsFeed() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -73,8 +72,7 @@ public class NewsFeed {
 	public int getUri() {
 		return uri;
 	}
-	
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -106,6 +104,7 @@ public class NewsFeed {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public void setUri(int uri) {
 		this.uri = uri;
 	}

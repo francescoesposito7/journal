@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+<head>
+<meta charset="UTF-8" />
+<title>Parametres</title>
+</head>
+
+<body layout:fragment="content">
+
+	<div class="container-fluid">
+		<div class="col-md-2"></div>
+		<ul class="nav nav-pills">
+			<li role="Profil"><a th:href="@{profil}">Profil</a></li>
+			<li role="Parametres"><a th:href="@{parametres}">Paramètres</a></li>
+			<li role="MesCours"><a th:href="@{courses}">Mes cours</a></li>
+			<li role="MesMessages"><a th:href="@{messages}">Mes messages</a></li>
+		</ul>
+	</div>
+	<div class="col-md-3"></div>
+	<div class="col-md-6 container">
+		<div class="row">
+			<form>
+				<h3>Changer mon email</h3>
+				<div class="form-group">
+					<label for="email">Mon email</label> <input type="text"
+						class="form-control" name="email" th:value="${user.email}"
+						disabled="disabled" />
+				</div>
+				<div class="form-group">
+					<label for="newEmail">Nouvel email</label> <input type="email"
+						class="form-control" name="newEmail" placeholder="" />
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-success pull-right">Envoyer</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="row">
+			<h3>Changer mon mot de passe</h3>
+			<form th:action="@{/}" method="post">
+				<div class="form-group">
+					<label>Nouveau mot de passe</label> <input type="text"
+						class="form-control" name="password" placeholder="Password" />
+				</div>
+				<div class="form-group">
+					<label>Confirmer nouveau mot de passe</label> <input
+						type="password" class="form-control" name="confPassword"
+						placeholder="Confirmer" />
+				</div>
+				<div th:if="${param.error}" class="text-danger">Mot de passe
+					differents</div>
+				<div th:if="${param.success}" class="text-success">Mot de
+					passe reinisialiser avec succès</div>
+				<div th:if="${param.success}" class="text-success"></div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-success pull-right">Envoyer</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="row">
+			<form>
+				<label>Changer langue</label> <select id="change_langue"
+					name="change_langue[langue]">
+					<option value="es">Italien</option>
+					<option value="fr" selected="selected">Français</option>
+				</select>
+				<button type="submit" class="btn btn-success">Envoyer</button>
+			</form>
+		</div>
+	</div>
+	<div class="col-md-3"></div>
+</body>
+</html>

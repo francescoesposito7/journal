@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html 	xmlns:th="http://www.thymeleaf.org"
-		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-		layout:decorator="index">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
 <head>
 <meta charset="utf-8" />
 <title>News</title>
 <style>
-.thumbnail {
-	border-color: gray;
-}
 .list-group-item {
 	background-color: #Aed581;
 	border-color: gray;
@@ -16,25 +13,22 @@
 }
 </style>
 </head>
-<body layout:fragment="content" class="body">
+<body layout:fragment="content">
 	<div class="jumbotron text-center">
 		<h1>NEWS</h1>
 		<p>Quoi de neuf ?</p>
-	</div>
+	</div> 
 	<div>
 		<div class="col-md-2">
 			<div class="list-group">
-				<button type="button" class="list-group-item">fevrier 2017</button>
-				<button type="button" class="list-group-item">janvier 2017</button>
-				<button type="button" class="list-group-item">decembre 2016</button>
-				<button type="button" class="list-group-item">novembre 2016</button>
-				<button type="button" class="list-group-item">octobre 2016</button>
-				<button type="button" class="list-group-item">septembre
-					2016</button>
-				<button type="button" class="list-group-item">aout 2016</button>
-				<button type="button" class="list-group-item">juillet 2016</button>
-				<button type="button" class="list-group-item">juin 2016</button>
-				<button type="button" class="list-group-item">mai 2016</button>
+				<a href="#" class="list-group-item disabled">Categories</a> <a
+					href="#" class="list-group-item">Ingenierie</a> <a href="#"
+					class="list-group-item">Release</a> <a href="#"
+					class="list-group-item">Actualités et événements</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item disabled">Date de Parution</a> <a
+					href="#" class="list-group-item">fevrier 2017</a>
 			</div>
 		</div>
 		<div class="col-md-8">
