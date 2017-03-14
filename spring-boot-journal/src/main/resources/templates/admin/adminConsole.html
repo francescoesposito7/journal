@@ -26,7 +26,7 @@
 				 	 <td th:text="${c.nom}"></td>
 				 	 <td th:text="${c.email}"></td>		 
 				 	 <td th:text="${c.objet}"></td>
-				 	 <td><a onclick="return confirm('Etes vous sure?')" th:href="@{answer(id=${c.id})}">Supprimer</a></td>
+				 	 <td><a onclick="return confirm('Etes vous sure?')" th:href="@{supprimer(id=${c.id})}">Supprimer</a></td>
 			 	 	<td><a th:href="@{edit(id=${c.id})}">Answer</a></td>
 			 	</tr>
 			 </tbody>

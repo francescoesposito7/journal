@@ -22,6 +22,13 @@ public class AdminContactController {
 	private ContactRepository contactRepository;
 	
 	@RequestMapping(value="/home")
+	public ModelAndView home(ModelAndView model){
+		model.setViewName(Views.VIEW_ADMIN_HOME.getPage());
+		return model;
+	}
+
+	
+	@RequestMapping(value="/contact")
 	public ModelAndView home(ModelAndView model,
 						@RequestParam(name="page",defaultValue="0")int p){
 		Page<Contact> contacts=contactRepository.findAll(new PageRequest(p, 10));
@@ -35,7 +42,7 @@ public class AdminContactController {
 		model.addObject("pages", pages);
 		model.addObject("pageMail",contacts);
 		model.addObject("pageCourante", p);
-		model.setViewName(Views.VIEW_ADMIN_HOME.getPage());
+		model.setViewName(Views.VIEW_ADMIN_CONSOLE.getPage());
 		return model;
 	}
 	
@@ -47,18 +54,10 @@ public class AdminContactController {
 	
 	@RequestMapping(value="/supprimer")
 	public String supprimer(Long id,ModelAndView model){
-		
 		contactRepository.delete(id);
-		
 		return "redirect:home";
 	}
-	
-	@RequestMapping(value="/answer")
-	public String edit(Long id){
-		
-		return "adminConsole";
-	}
-	
+
 	@PostMapping
 	public String saveSource(@ModelAttribute("source") String source){
 		System.out.println(source);

@@ -1,0 +1,67 @@
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorator="admin/adminTemplate">
+<head>
+    <title>Admin Home</title>
+    
+<style>
+
+.spacer{
+	margin-top: 30px;
+}
+</style>
+</head>
+<body layout:fragment="content">
+
+	<div class="container spacer" >
+		<div class="panel-group">
+		   		
+		   		<div class="panel panel-danger">
+				 	<div class="panel-body panel-danger">News</div>
+					<div class="panel-footer panel-danger">
+						<form th:action="@{/admin/news}">
+							<button class="btn-danger" type="submit" >Edit</button>
+						</form>
+					</div>
+				</div>
+							
+		    	<div class="panel panel-info">
+				 	<div class="panel-body">Users</div>
+					<div class="panel-footer">
+						<form th:action="@{/admin/users}">
+							<button class="btn-info" type="submit" >Edit</button>
+						</form>
+					</div>
+				</div>
+		    	<div class="panel panel-warning">
+				 	<div class="panel-body">Courses</div>
+					<div class="panel-footer">
+						<form th:action="@{/admin/courses}">
+							<button class="btn-warning" type="submit" >Edit</button>
+						</form>
+					</div>
+				</div>
+				
+				<div class="panel panel-success">
+				 	<div class="panel-body">Mail des Users</div>
+						<div class="panel-footer">
+						<form th:action="@{/admin/contact}">
+							<button class="btn-success" type="submit" >Edit</button>
+						</form>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary">
+				 	<div class="panel-body">Images</div>
+						<div class="panel-footer">
+						<form th:action="@{/admin/image}">
+							<button class="btn-primary" type="submit" >Edit</button>
+						</form>
+					</div>
+				</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
