@@ -14,21 +14,15 @@ public class SecurityController {
 		return "403";
 	}
 	
-	@RequestMapping("/login")
-	private String login(){
-		return "login";
-	}
-
 	@RequestMapping("/logout")
 	private String logout(HttpServletRequest request){
-		//request.getRemoteUser()
 		try {
 			request.logout();
 		} catch (ServletException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "login";
+		return "redirect:/login";
 
 	}
 	

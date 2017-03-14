@@ -59,7 +59,15 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					
-					<li><a th:href="@{/login?logout}" th:text="${#httpServletRequest.getRemoteUser()}"></a></li>		
+					<li th:if="${#httpServletRequest.getRemoteUser() != null}"
+						class="dropdown"><a
+						th:text="${#httpServletRequest.getRemoteUser()}"
+						class="dropdown-toggle" id="drop1" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false"><span
+							class="caret"></span> </a>
+						<ul class="dropdown-menu" aria-labelledby="drop1">
+							<li><a th:href="@{/logout}">Logout</a></li>
+						</ul></li>	
 				</ul>
 			</div>
 		</div>

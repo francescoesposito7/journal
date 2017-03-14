@@ -27,6 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	@Autowired
+	private CustomSuccessLoginHandler loginHandler;
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
@@ -49,7 +52,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				
 				.and()
-				.formLogin().loginPage("/login")
+				.formLogin().successHandler(loginHandler).loginPage("/login")
+				
+				.and()
+				.logout()
 				
 				.and()
 				.rememberMe();
