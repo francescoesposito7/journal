@@ -52,7 +52,7 @@ var imageFilePicker = function (callback, value, meta) {
 </head>
 <body layout:fragment="content">
 	<div>
-		<a th:href="@{/admin/home}">Back</a>
+		<a th:href="@{/admin/home}">Home</a>
 	</div>
 	<form class="form-vertical" th:action="@{saveNewsSource}" method="post"
 		th:object="${feed}" enctype="multipart/form-data">
