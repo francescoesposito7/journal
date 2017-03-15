@@ -1,30 +1,71 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="admin/adminTemplate">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <script src="/js/tinymce/tinymce.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/prism.css" />
 <script src="/js/prism.js"></script>
 <script>
-tinymce.init({
-    selector: "textarea",
-    height: '500px',
-    plugins: [
-        "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste codesample save"
-    ],
-    link_list: window.__link_list_url,
-    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table | code fullscreen | codesample | save'
-});
+	tinymce
+			.init({
+				selector : "textarea",
+				height : '500px',
+				plugins : [ "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste codesample save" ],
+				link_list : window.__link_list_url,
+				toolbar : 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table | code fullscreen | codesample | save'
+			});
 </script>
 <title>Insert title here</title>
 </head>
 <body layout:fragment="content">
-	<form class = "form-vertical" th:action="@{saveSource}" method="post">
-	<textarea name="source" th:text="${source}"></textarea>
-	<!-- <button class="btn btn-success pull-right" type="submit">Save</button> -->
+
+	<div>
+		<a th:href="@{/admin/home}">Back</a>
+	</div>
+	<form class="form-vertical" th:action="@{saveNewsSource}" method="post"
+		th:object="${feed}" enctype="multipart/form-data">
+ 		<div class="form-group">
+			<label class="control-label">Id:</label> 
+				<input type="text" th:field="*{id}" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">Title:</label> 
+				<input type="text" th:field="*{title}" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">Link:</label> 
+				<input type="text" th:field="*{link}" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">Category:</label> 
+				<input type="text" th:field="*{category}" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">Author:</label> 
+				<input type="text" th:field="*{author}" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">Id_feed:</label> 
+				<input type="text" th:field="*{id_Feed}" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">Date:</label> 
+				<input type="text" th:field="*{updatedDate}" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">Uri:</label> 
+				<input type="text" th:field="*{uri}" class="form-control" />
+		</div>
+ 		<div>
+			<textarea name="source" th:text="${source}" ></textarea>
+		</div>
+		
+		<button class="btn btn-success pull-right" type="submit" name="saveAll" value="saveAll">Save All</button>
 	</form>
+
+	
 </body>
 </html>
 

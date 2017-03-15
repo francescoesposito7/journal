@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+<head>
+<meta charset="utf-8"/>
+<title>Insert title here</title>
+</head>
+<body layout:fragment="content">
+<h3>Connected to Facebook</h3>
+		
+		
+		<form class="form-vertical" action="/fb"
+		enctype="multipart/form-data">
+ 		
+		<p>
+			You are now connected to your Facebook account.
+			<button type="submit">Click Me</button>
+		</p>
+</form>
+</body>
+</html>

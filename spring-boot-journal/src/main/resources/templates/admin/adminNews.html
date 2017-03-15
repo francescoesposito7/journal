@@ -46,11 +46,10 @@
 
 		</div>
 	</div>
-
 	<div class="container">
 		<ul class="nav nav-pills">
 			<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
-				<a th:text="${p}" th:href="@{news(page=${p})}"></a>
+				<a th:text="${p}" th:href="@{listNews(page=${p})}"></a>
 			</li>
 		</ul>
 	</div>

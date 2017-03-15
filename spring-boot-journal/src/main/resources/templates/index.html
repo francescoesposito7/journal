@@ -53,7 +53,7 @@
 							class="glyphicon glyphicon-education"></span> Cours</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li th:if="${#httpServletRequest.getRemoteUser() == null}"><a
+					<li th:if="${#httpServletRequest.getRemoteUser() == null }"><a
 						href="/inscription"><span
 							class="glyphicon glyphicon-floppy-saved"></span> Inscription</a></li>
 					<li th:if="${#httpServletRequest.getRemoteUser() == null}"><a
@@ -98,14 +98,19 @@
 					<h4 class="modal-title" id="myModalLabel">Connexion</h4>
 				</div>
 				<div class="modal-body">
-					<br /> <a class="btn btn-block btn-social btn-lg btn-facebook"
-						onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-lg']);"><span
+					<br /> 
+					<form action="/connect/facebook" method="POST">
+					<button type="submit" class="btn btn-block btn-social btn-lg btn-facebook"
+						><span
 						class="fa fa-facebook-official" aria-hidden="true"></span>Se
-						connecter avec Facebook</a> <a
+						connecter avec Facebook</button>
+						
+						<a
 						class="btn btn-block btn-social btn-lg btn-google"
 						onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-lg']);"><span
 						class="fa fa-google" aria-hidden="true"></span>Se connecter avec
 						Google</a> <br />
+					</form>	
 					<div class="panel panel-default panelConnexion">
 						<div class="panel-body">
 							<form th:action="@{/login}" method="post">

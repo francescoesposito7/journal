@@ -5,6 +5,9 @@ public enum Views {
 	VIEW_INDEX("index"),
 	VIEW_ACCUEIL("acceuil"),
 	VIEW_INSCRIPTION("inscription"),
+	
+	VIEW_INSCRIPTION_FB("completeInscription"),
+	
 	VIEW_INSCRIPTION_SUCCESS("inscriptionSuccess"),
 	VIEW_NEWS("news"),
 	VIEW_LOGIN("login"),
@@ -16,6 +19,8 @@ public enum Views {
 	VIEW_ADMIN_NEWS("admin/adminNews"),
 	VIEW_ADMIN_MAIL_USERS("admin/adminMailUsers"),
 	VIEW_ADMIN_CREATION_CONTENU("admin/creationContenu"),
+	
+	VIEW_ADMIN_CREATION_NEWS("admin/creationNews"),
 	
 	VIEW_PROFIL("profil/profil"),
 	VIEW_PROFIL_PARAM("profil/parametres"),
