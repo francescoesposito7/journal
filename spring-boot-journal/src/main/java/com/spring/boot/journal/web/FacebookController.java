@@ -49,7 +49,6 @@ public class FacebookController {
         
 		model.addObject("facebookProfile", facebook.userOperations().getUserProfile());
         
-		model.setViewName(Views.VIEW_INSCRIPTION_FB.getPage());
 		
 		return "/completeInscription";
     }
@@ -64,5 +63,4 @@ public class FacebookController {
 	}
 	
 	
->>>>>>> f8384dd 
 }

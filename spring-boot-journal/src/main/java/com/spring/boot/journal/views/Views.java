@@ -5,9 +5,7 @@ public enum Views {
 	VIEW_INDEX("index"),
 	VIEW_ACCUEIL("acceuil"),
 	VIEW_INSCRIPTION("inscription"),
-	
-	VIEW_INSCRIPTION_FB("completeInscription"),
-	
+
 	VIEW_INSCRIPTION_SUCCESS("inscriptionSuccess"),
 	VIEW_NEWS("news"),
 	VIEW_LOGIN("login"),
