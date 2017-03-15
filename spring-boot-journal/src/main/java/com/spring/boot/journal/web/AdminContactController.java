@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.boot.journal.entities.Contact;
+import com.spring.boot.journal.entities.NewsFeed;
 import com.spring.boot.journal.repository.ContactRepository;
+import com.spring.boot.journal.repository.NewsFeedRepository;
 import com.spring.boot.journal.views.Views;
 
 @Controller
@@ -21,6 +23,9 @@ public class AdminContactController {
 	@Autowired
 	private ContactRepository contactRepository;
 	
+	@Autowired
+	private NewsFeedRepository feedRepository;
+	
 	@RequestMapping(value="/home")
 	public ModelAndView home(ModelAndView model){
 		model.setViewName(Views.VIEW_ADMIN_HOME.getPage());
@@ -29,7 +34,7 @@ public class AdminContactController {
 
 	
 	@RequestMapping(value="/contact")
-	public ModelAndView home(ModelAndView model,
+	public ModelAndView contacts(ModelAndView model,
 						@RequestParam(name="page",defaultValue="0")int p){
 		Page<Contact> contacts=contactRepository.findAll(new PageRequest(p, 10));
 
@@ -42,7 +47,50 @@ public class AdminContactController {
 		model.addObject("pages", pages);
 		model.addObject("pageMail",contacts);
 		model.addObject("pageCourante", p);
-		model.setViewName(Views.VIEW_ADMIN_CONSOLE.getPage());
+		model.setViewName(Views.VIEW_ADMIN_MAIL_USERS.getPage());
+		return model;
+	}
+	
+	@RequestMapping(value="/news")
+	public ModelAndView news(ModelAndView model,
+						@RequestParam(name="page",defaultValue="0")int p){
+		
+		Page<NewsFeed> news=feedRepository.findAll(new PageRequest(p, 10));
+
+		int pageCount=news.getTotalPages();
+		
+		int pages[]=new int[pageCount];
+		
+		for(int i=0;i<pageCount;i++){pages[i]=i;}
+		
+		model.addObject("pages", pages);
+		model.addObject("pageNews",news);
+		model.addObject("pageCourante", p);
+		model.setViewName(Views.VIEW_ADMIN_NEWS.getPage());
+		return model;
+	}
+	
+	@RequestMapping(value="/editNews")
+	public ModelAndView editNews(ModelAndView model,Long id){		
+		
+		NewsFeed feed = feedRepository.findOne(id);
+		
+		model.addObject("feed", feed);
+		model.addObject("source",feed.getContent());
+		
+		model.setViewName(Views.VIEW_ADMIN_CREATION_CONTENU.getPage());
+		return model;
+	}
+	
+	@RequestMapping(value="/editMailReponse")
+	public ModelAndView editMailReponse(ModelAndView model,Long id){		
+		
+		Contact contact = contactRepository.findOne(id);
+		
+		model.addObject("feed", contact);
+		model.addObject("source",contact.getSujet());
+		
+		model.setViewName(Views.VIEW_ADMIN_CREATION_CONTENU.getPage());
 		return model;
 	}
 	
@@ -55,11 +103,12 @@ public class AdminContactController {
 	@RequestMapping(value="/supprimer")
 	public String supprimer(Long id,ModelAndView model){
 		contactRepository.delete(id);
-		return "redirect:home";
+		return "redirect:contact";
 	}
 
-	@PostMapping
+	@RequestMapping(value="/saveSource")
 	public String saveSource(@ModelAttribute("source") String source){
+		
 		System.out.println(source);
 		return "admin/creationContenu";
 	}

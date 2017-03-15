@@ -84,13 +84,20 @@
 		
 		<!-- Password Validation - END - -->
 		
-		<!-- Password Validation - END - -->
+		<!-- NEWS FEED framework  -->
 		<dependency>
     		<groupId>com.rometools</groupId>
    			<artifactId>rome</artifactId>
     		<version>1.7.1</version>
 		</dependency>
-		<!-- Password Validation - END - -->
+		<!-- NEWS FEED framework  - END - -->
+		
+		<!-- Facebook   -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-social-facebook</artifactId>
+		</dependency>
+		<!-- Facebook  - END - -->
 		
 	</dependencies>
 

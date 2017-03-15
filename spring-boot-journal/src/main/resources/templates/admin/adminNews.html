@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin/adminTemplate">
+<head>
+<title>Admin Console</title>
+
+<style>
+.spacer {
+	margin-top: 30px;
+}
+</style>
+</head>
+<body layout:fragment="content">
+
+	<div class="container spacer">
+		<div>
+			<a th:href="@{/admin/home}">Back</a>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-body">
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Titre</th>
+							<th>Author</th>
+							<th>Category</th>
+							<th>Update Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="n:${pageNews.content}">
+							<td th:text="${n.id}"></td>
+							<td th:text="${n.title}"></td>
+							<td th:text="${n.author}"></td>
+							<td th:text="${n.category}"></td>
+							<td th:text="${n.updatedDate}"></td>
+							<td><a onclick="return confirm('Etes vous sure?')"
+								th:href="@{supprimer(id=${c.id})}">Supprimer</a></td>
+							<td><a th:href="@{editNews(id=${c.id})}">Edit</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container">
+		<ul class="nav nav-pills">
+			<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
+				<a th:text="${p}" th:href="@{news(page=${p})}"></a>
+			</li>
+		</ul>
+	</div>
+
+
+</body>
+</html>

@@ -11,8 +11,12 @@ public enum Views {
 	VIEW_CONTACT("contact"),
 	VIEW_CONTACT_SUCCESS("contactSuccess"),
 	VIEW_INSCFORM("inscriptionForm"),
+	
 	VIEW_ADMIN_HOME("admin/adminHome"),
-	VIEW_ADMIN_CONSOLE("admin/adminConsole"),
+	VIEW_ADMIN_NEWS("admin/adminNews"),
+	VIEW_ADMIN_MAIL_USERS("admin/adminMailUsers"),
+	VIEW_ADMIN_CREATION_CONTENU("admin/creationContenu"),
+	
 	VIEW_PROFIL("profil/profil"),
 	VIEW_PROFIL_PARAM("profil/parametres"),
 	VIEW_PROFIL_COURS("profil/mesCours"),

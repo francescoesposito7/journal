@@ -22,7 +22,7 @@ tinymce.init({
 </head>
 <body layout:fragment="content">
 	<form class = "form-vertical" th:action="@{saveSource}" method="post">
-	<textarea name="source"></textarea>
+	<textarea name="source" th:text="${source}"></textarea>
 	<!-- <button class="btn btn-success pull-right" type="submit">Save</button> -->
 	</form>
 </body>
