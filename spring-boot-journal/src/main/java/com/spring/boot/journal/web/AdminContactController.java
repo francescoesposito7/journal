@@ -48,6 +48,7 @@ public class AdminContactController {
 		model.setViewName(Views.VIEW_ADMIN_MAIL_USERS.getPage());
 		return model;
 	}
+
 	
 	@RequestMapping(value="/editMailReponse")
 	public ModelAndView editMailReponse(ModelAndView model,Long id){		

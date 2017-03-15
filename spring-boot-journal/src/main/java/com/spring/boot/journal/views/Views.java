@@ -17,6 +17,8 @@ public enum Views {
 	VIEW_ADMIN_NEWS("admin/adminNews"),
 	VIEW_ADMIN_MAIL_USERS("admin/adminMailUsers"),
 	VIEW_ADMIN_CREATION_CONTENU("admin/creationContenu"),
+	VIEW_ADMIN_USERS("admin/adminUsers"),
+	VIEW_ADMIN_EDIT_USERS("admin/adminEditUser"),
 	
 	VIEW_ADMIN_CREATION_NEWS("admin/creationNews"),
 	

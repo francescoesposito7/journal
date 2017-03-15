@@ -1,0 +1,77 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin/adminTemplate">
+<head>
+<title>Admin Console</title>
+
+<style>
+.spacer {
+	margin-top: 30px;
+}
+</style>
+</head>
+<body layout:fragment="content">
+
+	<div class="container spacer" >
+		<div>
+			<a th:href="@{/admin/home}">Back</a>
+		</div>
+		
+		<form th:action="@{listUsers}" method="get">
+			<div class="form-group">
+				<label>Username:</label>
+				<input type="text" name="motCle" th:value="${motCle}"/>
+				<button type="submit">Chercher</button>			
+			</div>
+		</form>
+	</div>
+
+	<div class="container spacer">
+		<div class="panel panel-info">
+			<div class="panel-body">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>Date Naissance</th>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Photo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="u:${users.content}">
+							<td th:text="${u.id}"></td>
+							<td th:text="${u.nom}"></td>
+							<td th:text="${u.prenom}"></td>
+							<td th:text="${u.dateNaissance}"></td>
+							<td th:text="${u.username}"></td>
+							<td th:text="${u.email}"></td>
+							<td th:text="${u.photo}"></td>
+<!-- 							<td>
+			 	  				<img class="img-circle" th:src="@{getPhoto(id=${e.id})}" width="100px" height="100px"/>
+			 	 			</td>
+ -->							<td><a onclick="return confirm('Etes vous sure?')"
+								th:href="@{supprimerUser(id=${u.id})}">Supprimer</a></td>
+							<td><a th:href="@{editUser(id=${u.id})}">Editer</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container">
+		<ul class="nav nav-pills">
+			<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
+				<a th:text="${p}" th:href="@{listUsers(page=${p},motCle=${motCle})}"></a>
+			</li>
+		</ul>
+	</div>
+
+
+</body>
+</html>

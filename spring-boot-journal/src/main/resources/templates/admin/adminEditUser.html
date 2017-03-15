@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin/adminTemplate">
+<head>
+<title>Edit user</title>	
+</head>
+
+<body layout:fragment="content">
+	
+	<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+	 <div class="panel panel-default">
+	 <div>
+			<a th:href="@{/admin/home}">Back</a>
+		</div>
+	 	<div class="panel-heading">Saisie Utilisateur</div>
+	 	<div class="panel-body">
+			<form th:action="@{UpdateUser}" method="post" th:object="${user}" 
+				enctype="multipart/form-data">
+				
+				<div class="form-group">
+					<label class="control-label">Id:</label>
+					<input type="text" th:field="*{id}" class="form-control"/>
+					<span class="text-danger" th:errors="*{id}"></span>					
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label">Nom:</label>
+					<input type="text" th:field="*{nom}" class="form-control"/>
+					<span class="text-danger" th:errors="*{nom}"></span>					
+				</div>
+				<div class="form-group">
+					<label class="control-label">Prenom:</label>
+					<input type="text" th:field="*{prenom}" class="form-control"/>
+					<span class="text-danger" th:errors="*{prenom}"></span>					
+				</div>
+				<div class="form-group">
+					<label class="control-label">Date Naissance:</label>
+					<input type="date" th:field="*{dateNaissance}" class="form-control"/>
+					<span class="text-danger" th:errors="*{dateNaissance}"></span>					
+				</div>
+				<div class="form-group">
+					<label class="control-label">Username:</label>
+					<input type="text" th:field="*{username}" class="form-control"/>
+					<span class="text-danger" th:errors="*{username}"></span>					
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label">Email:</label>
+					<input type="email" th:field="*{email}" class="form-control"/>
+					<span class="text-danger" th:errors="*{email}"></span>					
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label">Photo:</label>
+					<input type="file" name="picture" class="form-control"/>
+					<span class="text-danger" th:errors="*{photo}"></span>
+<!-- 					<td>
+			 	  <img class="img-circle" th:src="@{getPhoto(id=${etudiant.id})}" width="100px" height="100px"/>
+			 	 </td> -->					
+				</div>
+				
+				<div>
+				<button type="submit" class="btn-primary">Save</button>
+				
+				</div>
+				
+			</form>	 	
+		</div>
+	 </div>
+	</div>
+</body>
+</html>
