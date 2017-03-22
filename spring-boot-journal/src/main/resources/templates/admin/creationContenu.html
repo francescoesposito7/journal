@@ -12,15 +12,45 @@
 			.init({
 				selector : "textarea",
 				height : '500px',
-				plugins : [ "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste codesample save" ],
+				plugins : [ "imageserveur advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste codesample save" ],
 				link_list : window.__link_list_url,
-				toolbar : 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table | code fullscreen | codesample | save'
+				toolbar : 'imageserveur | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table | code fullscreen | codesample | save',
+				file_picker_callback: function(callback, value, meta) {
+			        imageFilePicker(callback, value, meta);
+			    }
 			});
+</script>
+<script>
+var imageFilePicker = function (callback, value, meta) {             
+    tinymce.activeEditor.windowManager.open({
+        title: 'Selectionnez une image',
+        url: '/tinymce/dialog',
+        width: 700,
+        height: 600,
+        buttons: [{
+            text: 'Insert',
+            onclick: function () {
+            	var t = tinymce.activeEditor.windowManager.getWindows()[0];
+            	//window.alert(tinymce.activeEditor.windowManager.getWindows()[0].getContentWindow().document.getElementById("content").value);
+            	tinymce.activeEditor.windowManager.getParams().oninsert("/imgs/imageDisplay?id=" + top.document.getElementById("content").value);
+	           	tinymce.activeEditor.windowManager.close();
+            }
+        }, 
+        {
+            text: 'Close',
+            onclick: 'close'
+        }],
+    }, 
+    {
+        oninsert: function (url) {
+            callback(url);
+        }
+    });
+};
 </script>
 <title>Insert title here</title>
 </head>
 <body layout:fragment="content">
-
 	<div>
 		<a th:href="@{/admin/home}">Back</a>
 	</div>
@@ -60,12 +90,11 @@
 		</div>
  		<div>
 			<textarea name="source" th:text="${source}" ></textarea>
+				<iframe id="form_target" name="form_target" style="display:none"></iframe>
 		</div>
 		
 		<button class="btn btn-success pull-right" type="submit" name="saveAll" value="saveAll">Save All</button>
 	</form>
-
-	
 </body>
 </html>
 
