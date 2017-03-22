@@ -65,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		http
 			.exceptionHandling().accessDeniedPage("/403");
-		
+		http.headers().frameOptions().sameOrigin(); //TODO permet l'utilisation de iframes
 	}
 
 
