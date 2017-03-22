@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Insertion Images</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<h3>Images</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Miniature</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="n:${image}">
+					<td th:text="${n.id}"></td>
+					<td th:text="${n.name}"></td>
+					<td><img th:src="${'/imgs/imageMinDisplay?id=' + n.id}" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<br />
+	Insérer image ID : <input type="text" name="imageId" id="content"></input>
+</body>
+</html>

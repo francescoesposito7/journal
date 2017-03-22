@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.boot.journal.entities.Contact;
-import com.spring.boot.journal.entities.NewsFeed;
 import com.spring.boot.journal.repository.ContactRepository;
 import com.spring.boot.journal.repository.NewsFeedRepository;
 import com.spring.boot.journal.views.Views;
@@ -47,37 +46,6 @@ public class AdminContactController {
 		model.addObject("pageMail",contacts);
 		model.addObject("pageCourante", p);
 		model.setViewName(Views.VIEW_ADMIN_MAIL_USERS.getPage());
-		return model;
-	}
-	
-	@RequestMapping(value="/news")
-	public ModelAndView news(ModelAndView model,
-						@RequestParam(name="page",defaultValue="0")int p){
-		
-		Page<NewsFeed> news=feedRepository.findAll(new PageRequest(p, 10));
-
-		int pageCount=news.getTotalPages();
-		
-		int pages[]=new int[pageCount];
-		
-		for(int i=0;i<pageCount;i++){pages[i]=i;}
-		
-		model.addObject("pages", pages);
-		model.addObject("pageNews",news);
-		model.addObject("pageCourante", p);
-		model.setViewName(Views.VIEW_ADMIN_NEWS.getPage());
-		return model;
-	}
-	
-	@RequestMapping(value="/editNews")
-	public ModelAndView editNews(ModelAndView model,Long id){		
-		
-		NewsFeed feed = feedRepository.findOne(id);
-		
-		model.addObject("feed", feed);
-		model.addObject("source",feed.getContent());
-		
-		model.setViewName(Views.VIEW_ADMIN_CREATION_CONTENU.getPage());
 		return model;
 	}
 	
