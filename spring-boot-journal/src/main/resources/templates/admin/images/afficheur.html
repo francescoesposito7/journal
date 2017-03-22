@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	 <table>
+      <tr>
+      	<th>images</th>
+      	<th>data</th>
+      </tr>
+      <tr th:each="image  : ${pictures}">
+      	<td th:text="${image.name}"></td>
+        <td><img th:src="@{/imgs/imageDisplay?id=}+${image.id}"/></td>
+      </tr>
+    </table>
+</body>
+</html>
