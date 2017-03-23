@@ -199,4 +199,13 @@ public class ImageServiceImpl implements ImageService {
 		
 		return imgUsrRepository.save(picture);
 	}
+
+
+	@Override
+	public ImageUser getUserOne(Long id) {
+		
+		ImageUser picture = imgUsrRepository.getOne(id);
+		Hibernate.initialize(picture.getData());
+		return picture;		
+	}
 }

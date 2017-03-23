@@ -104,6 +104,7 @@ public class Utilisateur implements Serializable {
 		this.typeCompte=typeCompte;
 		this.photo = photo;
 		this.setActive(false);
+		this.newsletter=false;
 	}
 
 	public void addRole(Role role) {
