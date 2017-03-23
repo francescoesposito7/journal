@@ -23,5 +23,6 @@ public interface ImageService {
 	
 	ImageUser findImgByName(String name);
 	ImageUser savePhotoUser(String path) throws IOException;
+	ImageUser getUserOne(Long id);
 	
 }

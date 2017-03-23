@@ -166,20 +166,20 @@
 					<form th:action="@{SendUsQuestions}" method="post"
 						th:object="${contact}">
 						<div class="form-group">
-							<label for="pNom">Votre Nom (Requis)</label> <input type="text"
-								class="form-control" id="pNom" placeholder="Nom" />
+							<label>Votre Nom (Requis)</label> <input type="text"
+								class="form-control" name="nom" placeholder="Nom" />
 						</div>
 						<div class="form-group">
-							<label for="pMail">Votre Email (Requis)</label> <input
-								type="email" class="form-control" id="pMail" placeholder="Email" />
+							<label>Votre Email (Requis)</label> <input
+								type="email" class="form-control" name="email" placeholder="Email" />
 						</div>
 						<div class="form-group">
-							<label for="pSujet">Sujet</label> <input type="text"
-								class="form-control" id="pSujet" placeholder="Sujet" />
+							<label>Sujet</label> <input type="text"
+								class="form-control" name="objet" placeholder="Sujet" />
 						</div>
 						<div class="form-group">
-							<label for="pSujet">Message</label>
-							<textarea name="pMessage" class="form-control"
+							<label>Message</label>
+							<textarea name="sujet" class="form-control"
 								placeholder="Message"></textarea>
 						</div>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>

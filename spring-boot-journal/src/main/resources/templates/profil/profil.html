@@ -20,15 +20,16 @@
 	<div class="col-md-6 container">
 		<h3>Mon Profil</h3>
 		<div class="media">
-			<img class="media-object" th:src="@{/img/avatar_defaut.png}"
+			<img class="media-object" th:src="@{imageDisplay?id=}+${user.id}"
 				alt="memberAvatar" width="150" height="150" />
 		</div>
 		<br />
 		<div th:object="${user}">
-			<label>Username :</label><font th:text="*{username}"></font><br /> <label>Nom
-				:</label><font th:text="*{nom}"></font><br /> <label>Prenom :</label><font
-				th:text="*{prenom}"></font><br /> <label>Langue :</label><font></font><br />
-			<label>Date d'inscription :</label><font></font><br />
+			<label>Username :</label><font th:text="*{username}"></font><br /> 
+			<label>Nom:</label><font th:text="*{nom}"></font><br /> 
+			<label>Prenom :</label><font th:text="*{prenom}"></font><br /> 
+			<label>Langue :</label><font></font><br />
+			<label>Date d'inscription :</label><font th:text="*{dateInscription}"></font><br />
 		</div>
 	</div>
 	<div class="col-md-3"></div>

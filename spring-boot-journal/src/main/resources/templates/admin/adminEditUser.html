@@ -53,11 +53,10 @@
 				
 				<div class="form-group">
 					<label class="control-label">Photo:</label>
-					<input type="file" name="picture" class="form-control"/>
-					<span class="text-danger" th:errors="*{photo}"></span>
-<!-- 					<td>
-			 	  <img class="img-circle" th:src="@{getPhoto(id=${etudiant.id})}" width="100px" height="100px"/>
-			 	 </td> -->					
+ 					<td>
+			 	  		<img class="img-circle" th:src="@{imageDisplay?id=}+${user.id}" width="100px" height="100px"/>
+			 	 	</td> 
+			 	 	<span class="text-danger" th:errors="*{photo}"></span>				
 				</div>
 				
 				<div>

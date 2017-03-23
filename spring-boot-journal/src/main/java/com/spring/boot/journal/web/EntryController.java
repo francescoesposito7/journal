@@ -19,8 +19,7 @@ public class EntryController{
 	
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView modelAndView){
-		modelAndView.setViewName(Views.VIEW_INDEX.getPage());
-		//modelAndView.addObject("journal", repo.findAll());
+		modelAndView.setViewName(Views.VIEW_ACCUEIL.getPage());
 		return modelAndView;
 	}
 	

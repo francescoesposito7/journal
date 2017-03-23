@@ -1,7 +1,6 @@
 package com.spring.boot.journal.back.images.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -28,6 +27,8 @@ public class ImageAffichageController {
 	@RequestMapping(value = "/imageDisplay", method = RequestMethod.GET)
 	public void showImage(@RequestParam("id") Long itemId, HttpServletResponse response,HttpServletRequest request) throws ServletException, IOException {
 	
+		
+		
 	    Image picture = imageService.getOne(itemId);        
 	    response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
 	    response.getOutputStream().write(picture.getData());
