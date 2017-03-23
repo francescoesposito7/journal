@@ -92,13 +92,15 @@ public class UtilisateurController {
 				// Suppression des fichiers temporaires
 		        imageService.tempDelete(file.getOriginalFilename());
 		        
+		        user.setPhoto(image);
+		        
 			} catch (IOException e) {
 				// TODO Gérer ce message d'erreur
 				e.printStackTrace();
 			}
 			
 			
-			user.setPhoto(image);
+			
 			userService.saveUser(user);
 			regService.confirmRegistration(user);
 			
@@ -146,14 +148,14 @@ public class UtilisateurController {
 				image = imageService.savePhotoUser(file.getOriginalFilename());
 				// Suppression des fichiers temporaires
 		        imageService.tempDelete(file.getOriginalFilename());
-		        
+		        user.setPhoto(image);
 			} catch (IOException e) {
 				// TODO Gérer ce message d'erreur
 				e.printStackTrace();
 			}
 			
 			
-			user.setPhoto(image);
+			
 			userService.saveUser(user);
 			regService.confirmRegistration(user);
 		}

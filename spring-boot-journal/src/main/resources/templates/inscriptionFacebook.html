@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+<head>
+<meta charset="utf-8" />
+<title>Inscription Facebook</title>
+<style>
+.panel {
+	margin-top: 40px;
+	border-color: threeddarkshadow;
+}
+</style>
+</head>
+<body layout:fragment="content">
+	<div class="container panel-body">
+		<form th:action="@{SaveUtilisateurFacebook}" method="post"
+			th:object="${utilisateur}" enctype="multipart/form-data">
+			<div class="form-group">
+				<label class="control-label">Photo:</label> <input type="file"
+					name="picture" class="form-control" /> <span class="text-danger"
+					th:errors="*{photo}"></span>
+			</div>
+			<div class="form-group">
+				<label class="control-label" >Username</label> <input type="text"
+					th:field="*{username}" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label class="control-label">Email</label> <input type="email"
+					th:field="*{email}" class="form-control" /> <span
+					class="text-danger" th:errors="*{email}"></span>
+			</div>
+			<input type="hidden" th:field="*{password}" class="form-control" /> 
+			<input type="hidden" th:field="*{passwordConfirmation}" class="form-control" />
+			<input type="hidden" th:field="*{facebookId}" class="form-control" />
+			<button type="submit" class="btn btn-succes pull-right">Envoyer</button>
+		</form>
+	</div>
+</body>
+</html>
