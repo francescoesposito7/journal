@@ -22,7 +22,15 @@
 			</div>
 
 			<div class="panel-body">
-				
+				<br />
+				<form action="/signin/facebook" method="POST">
+					<input type="hidden" name="scope" value="public_profile" />
+					<button class="btn btn-block btn-social btn-lg btn-facebook">
+						<span class="fa fa-facebook-official" aria-hidden="true"></span>Se
+						connecter avec Facebook
+					</button>
+				</form>
+				<br />
 				<div th:if="${param.error}" class="text-danger">
 					username ou mot de passe incorrect
 				</div>

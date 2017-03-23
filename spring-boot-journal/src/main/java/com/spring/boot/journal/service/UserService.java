@@ -6,6 +6,8 @@ public interface UserService {
 
 	public Utilisateur findUserbyEmail(String email);
 	
+	public Utilisateur findUserbyFacebookId(Long facebookId);
+	
 	public Utilisateur findUserbyUsername(String username);
 	
 	public void saveUser(Utilisateur user);

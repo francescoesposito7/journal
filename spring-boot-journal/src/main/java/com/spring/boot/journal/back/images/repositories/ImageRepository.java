@@ -8,4 +8,5 @@ import com.spring.boot.journal.back.images.entities.Image;
 
 public interface ImageRepository extends JpaRepository<Image, Long> {
 	public List<Image> findByName(String name);
+		
 }

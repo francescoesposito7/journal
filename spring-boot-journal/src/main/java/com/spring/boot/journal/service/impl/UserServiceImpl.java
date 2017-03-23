@@ -53,6 +53,12 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(user);		
 	}
 	
+	@Override
+	public Utilisateur findUserbyFacebookId(Long facebookId) {
+		// TODO Auto-generated method stub
+		return userRepository.findByFacebookId(facebookId);
+	}
+	
 
 	@Override
 	public Utilisateur findUserbyEmail(String email) {

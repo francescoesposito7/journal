@@ -98,7 +98,11 @@
 			<artifactId>spring-boot-starter-social-facebook</artifactId>
 		</dependency>
 		<!-- Facebook  - END - -->
-		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

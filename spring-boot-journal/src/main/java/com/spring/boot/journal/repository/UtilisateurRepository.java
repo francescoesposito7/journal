@@ -17,6 +17,7 @@ import com.spring.boot.journal.entities.Utilisateur;
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
 
 	public Utilisateur findByUsername(String username);
+	public Utilisateur findByFacebookId(Long facebookId);
 	public Utilisateur findByEmail(String email);
 
 	@Query("select u from Utilisateur u where u.dateInscription <= ?  and u.active=false")

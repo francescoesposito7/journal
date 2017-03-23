@@ -53,6 +53,19 @@
 							class="glyphicon glyphicon-education"></span> Cours</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<li><div>
+						<form class="navbar-form" role="search">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Recherche..."
+									name="q"/>
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div></li>
 					<li th:if="${#httpServletRequest.getRemoteUser() == null }"><a
 						href="/inscription"><span
 							class="glyphicon glyphicon-floppy-saved"></span> Inscription</a></li>
@@ -98,19 +111,15 @@
 					<h4 class="modal-title" id="myModalLabel">Connexion</h4>
 				</div>
 				<div class="modal-body">
-					<br /> 
-					<form action="/connect/facebook" method="POST">
-					<button type="submit" class="btn btn-block btn-social btn-lg btn-facebook"
-						><span
-						class="fa fa-facebook-official" aria-hidden="true"></span>Se
-						connecter avec Facebook</button>
-						
-						<a
-						class="btn btn-block btn-social btn-lg btn-google"
-						onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-lg']);"><span
-						class="fa fa-google" aria-hidden="true"></span>Se connecter avec
-						Google</a> <br />
-					</form>	
+					<br />
+					<form action="/signin/facebook" method="POST">
+						<input type="hidden" name="scope" value="public_profile" />
+						<button class="btn btn-block btn-social btn-lg btn-facebook">
+							<span class="fa fa-facebook-official" aria-hidden="true"></span>Se
+							connecter avec Facebook
+						</button>
+					</form>
+					<br />
 					<div class="panel panel-default panelConnexion">
 						<div class="panel-body">
 							<form th:action="@{/login}" method="post">
