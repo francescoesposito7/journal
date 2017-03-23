@@ -22,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.boot.journal.back.images.entities.Image;
 import com.spring.boot.journal.back.images.repositories.ImageRepository;
+import com.spring.boot.journal.entities.ImageUser;
+import com.spring.boot.journal.repository.ImageUserRepository;
 
 @Service
 @Transactional
@@ -37,7 +39,10 @@ public class ImageServiceImpl implements ImageService {
 	private int minMaxSize;
 	
 	@Autowired
-	ImageRepository imageRepository;
+	private ImageRepository imageRepository;
+	
+	@Autowired
+	private ImageUserRepository imgUsrRepository;
 	
 	@Override
     public Resource load(String filename) throws MalformedURLException {
@@ -165,5 +170,33 @@ public class ImageServiceImpl implements ImageService {
 		} catch (IOException e) {
 			throw e;
 		}
+	}
+
+	@Override
+	public ImageUser findImgByName(String name) {
+		
+		return imgUsrRepository.findByName(name);
+	}
+
+	@Override
+	public ImageUser savePhotoUser(String path) throws IOException {
+		
+		File file = new File(path);
+		String filename = file.getName();
+		
+		Path realPath = tempLocation.resolve(path);
+		Path realPathMin = tempMinLocation.resolve(path);
+		byte[] data = null;
+		byte[] dataMin = null;
+		try {
+			data = Files.readAllBytes(realPath);
+			dataMin = Files.readAllBytes(realPathMin);
+		} catch (IOException e) {
+			throw e;
+		}
+		
+		ImageUser picture = new ImageUser(filename, data, dataMin);
+		
+		return imgUsrRepository.save(picture);
 	}
 }

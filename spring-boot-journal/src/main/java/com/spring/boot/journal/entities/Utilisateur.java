@@ -6,9 +6,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -70,21 +73,26 @@ public class Utilisateur implements Serializable {
 	
 	private int typeCompte;
 	
-	@Size(max=30)
-	private String photo; 
+	
+	
+	@OneToOne(targetEntity = ImageUser.class, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false, name = "PHOTO_USER_ID")
+	private ImageUser photo;
 	
 	// Creation TABLE utilisateur_roles 
 	@ManyToMany
 	private Collection<Role> roles;
 
 	private boolean active;
+	
+	private boolean newsletter;
 
 	public Utilisateur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Utilisateur(String nom, String prenom, Date dateNaissance, String username,String email, String password,String passwordConfirm,int typeCompte, String photo) {
+	public Utilisateur(String nom, String prenom, Date dateNaissance, String username,String email, String password,String passwordConfirm,int typeCompte, ImageUser photo) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -142,7 +150,7 @@ public class Utilisateur implements Serializable {
 		return typeCompte;
 	}
 
-	public String getPhoto() {
+	public ImageUser getPhoto() {
 		return photo;
 	}
 	
@@ -153,6 +161,10 @@ public class Utilisateur implements Serializable {
 	
 	public boolean isActive() {
 		return active;
+	}
+	
+	public boolean isNewsletter() {
+		return newsletter;
 	}
 
 	public void setId(Long id) {
@@ -191,8 +203,8 @@ public class Utilisateur implements Serializable {
 		this.passwordConfirmation = passwordConf;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setPhoto(ImageUser photo1) {
+		this.photo = photo1;
 	}
 
 	public void setActive(boolean active) {
@@ -206,5 +218,9 @@ public class Utilisateur implements Serializable {
 	public void setTypeCompte(int typeCompte){
 		this.typeCompte=typeCompte;
 	}
-	
+
+	public void setNewsletter(boolean newsletter) {
+		this.newsletter = newsletter;
+	}
+
 }

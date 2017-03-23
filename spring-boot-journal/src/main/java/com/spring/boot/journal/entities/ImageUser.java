@@ -1,6 +1,4 @@
-package com.spring.boot.journal.back.images.entities;
-
-import java.io.Serializable;
+package com.spring.boot.journal.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,12 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-@SuppressWarnings("serial")
 @Entity
-public class Image implements Serializable {
+public class ImageUser {
+
 	@Id
 	@GeneratedValue
-	@Column(name="PHOTO_ID")
+	@Column(name="PHOTO_USER_ID")
 	private Long id;
 	private String name;
 	@Lob
@@ -21,11 +19,11 @@ public class Image implements Serializable {
 	@Lob
 	private byte[] minData;
 	
-	public Image() {
+	public ImageUser() {
 		super();
 	}
 
-	public Image(String name, byte[] data, byte[] minData) {
+	public ImageUser(String name, byte[] data, byte[] minData) {
 		super();
 		this.name = name;
 		this.data = data;

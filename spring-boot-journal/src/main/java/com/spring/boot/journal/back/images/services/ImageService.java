@@ -8,6 +8,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.boot.journal.back.images.entities.Image;
+import com.spring.boot.journal.entities.ImageUser;
 
 public interface ImageService {
 	void save(String path) throws IOException;
@@ -18,4 +19,9 @@ public interface ImageService {
 	void resize(String path, boolean isMiniature) throws IOException;
 	Resource load(String filename) throws MalformedURLException;
 	void tempDelete(String filename) throws IOException;
+	
+	
+	ImageUser findImgByName(String name);
+	ImageUser savePhotoUser(String path) throws IOException;
+	
 }
