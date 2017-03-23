@@ -69,7 +69,6 @@
 		</dependency>
 		
 		<!-- Password Validation -->
-
 		<dependency>
 			<groupId>org.passay</groupId>
 			<artifactId>passay</artifactId>
@@ -81,7 +80,6 @@
    			<artifactId>guava</artifactId>
     		<version>r05</version>
 		</dependency>
-		
 		<!-- Password Validation - END - -->
 		
 		<!-- NEWS FEED framework  -->
@@ -98,6 +96,7 @@
 			<artifactId>spring-boot-starter-social-facebook</artifactId>
 		</dependency>
 		<!-- Facebook  - END - -->
+		
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
