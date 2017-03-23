@@ -6,13 +6,25 @@
 
 <style>
 .spacer {
-	margin-top: 30px;
+	margin-top: 40px;
 }
 </style>
 </head>
 <body layout:fragment="content">
-
-	<div class="container spacer">
+	
+	<div class="container spacer col-md-2">
+		<div class="list-group">
+			<a href="#" class="list-group-item disabled">Menu</a> 
+			<a th:href="@{/admin/home}" class="list-group-item">Home</a> 
+			<a th:href="@{/admin/listNews}" class="list-group-item">News</a>
+			<a th:href="@{/admin/listUsers}" class="list-group-item">Users</a>
+			<a th:href="@{/admin/courses}" class="list-group-item">Courses</a>
+			<a th:href="@{/admin/contact}" class="list-group-item">Mail Users</a>
+			<a th:href="@{/admin/image}" class="list-group-item">Images</a>
+		</div>
+	</div>
+	
+	<div class="container col-md-10">
 		<div>
 			<a th:href="@{/admin/home}">Back</a>
 			<a th:href="@{/admin/createNews}">Create News</a>

@@ -7,94 +7,134 @@
 <script src="/js/tinymce/tinymce.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/prism.css" />
 <script src="/js/prism.js"></script>
-<script>
-	tinymce
-			.init({
-				selector : "textarea",
-				height : '500px',
-				plugins : [ "imageserveur advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste codesample save" ],
-				link_list : window.__link_list_url,
-				toolbar : 'imageserveur | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table | code fullscreen | codesample | save',
-				file_picker_callback: function(callback, value, meta) {
-			        imageFilePicker(callback, value, meta);
-			    }
-			});
-</script>
-<script>
-var imageFilePicker = function (callback, value, meta) {             
-    tinymce.activeEditor.windowManager.open({
-        title: 'Selectionnez une image',
-        url: '/tinymce/dialog',
-        width: 700,
-        height: 600,
-        buttons: [{
-            text: 'Insert',
-            onclick: function () {
-            	var t = tinymce.activeEditor.windowManager.getWindows()[0];
-            	//window.alert(tinymce.activeEditor.windowManager.getWindows()[0].getContentWindow().document.getElementById("content").value);
-            	tinymce.activeEditor.windowManager.getParams().oninsert("/imgs/imageDisplay?id=" + top.document.getElementById("content").value);
-	           	tinymce.activeEditor.windowManager.close();
-            }
-        }, 
-        {
-            text: 'Close',
-            onclick: 'close'
-        }],
-    }, 
-    {
-        oninsert: function (url) {
-            callback(url);
-        }
-    });
-};
-</script>
 <title>Insert title here</title>
+<style type="text/css">
+.container{
+	margin-top: 40px;
+}
+</style>
 </head>
+
 <body layout:fragment="content">
-	<div>
-		<a th:href="@{/admin/home}">Home</a>
+	<div class="container col-md-2">
+		<div class="list-group">
+			<a href="#" class="list-group-item disabled">Menu</a> 
+			<a th:href="@{/admin/home}" class="list-group-item">Home</a> 
+			<a th:href="@{/admin/listNews}" class="list-group-item">News</a>
+			<a th:href="@{/admin/listUsers}" class="list-group-item">Users</a>
+			<a th:href="@{/admin/courses}" class="list-group-item">Courses</a>
+			<a th:href="@{/admin/contact}" class="list-group-item">Mail Users</a>
+			<a th:href="@{/admin/image}" class="list-group-item">Images</a>
+		</div>
 	</div>
-	<form class="form-vertical" th:action="@{saveNewsSource}" method="post"
-		th:object="${feed}" enctype="multipart/form-data">
- 		<div class="form-group">
-			<label class="control-label">Id:</label> 
-				<input type="text" th:field="*{id}" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label class="control-label">Title:</label> 
-				<input type="text" th:field="*{title}" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label class="control-label">Link:</label> 
-				<input type="text" th:field="*{link}" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label class="control-label">Category:</label> 
-				<input type="text" th:field="*{category}" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label class="control-label">Author:</label> 
-				<input type="text" th:field="*{author}" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label class="control-label">Id_feed:</label> 
-				<input type="text" th:field="*{id_Feed}" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label class="control-label">Date:</label> 
-				<input type="text" th:field="*{updatedDate}" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label class="control-label">Uri:</label> 
-				<input type="text" th:field="*{uri}" class="form-control" />
-		</div>
- 		<div>
-			<textarea name="source" th:text="${source}" ></textarea>
-				<iframe id="form_target" name="form_target" style="display:none"></iframe>
-		</div>
-		
-		<button class="btn btn-success pull-right" type="submit" name="saveAll" value="saveAll">Save All</button>
-	</form>
+	
+	<div class="container col-md-10">
+
+		<form class="form-vertical" th:action="@{saveNewsSource}"
+			method="post" th:object="${feed}" enctype="multipart/form-data">
+
+			<div class="container">
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Titre:</label> <input type="text"
+							th:field="*{title}" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label class="control-label">Categorie:</label> <input type="text"
+							th:field="*{category}" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label class="control-label">Autheur:</label> <input type="text"
+							th:field="*{author}" class="form-control" />
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Lien (Source):</label> <input
+							type="text" th:field="*{link}" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label class="control-label">Date:</label> <input type="text"
+							th:field="*{updatedDate}" class="form-control"
+							disabled="disabled" />
+					</div>
+					<div class="form-group">
+						<!-- <label class="control-label">Uri:</label> -->
+						<input type="hidden" th:field="*{uri}" class="form-control" />
+					</div>
+					<div class="form-group">
+						<!-- <label class="control-label">Id:</label> -->
+						<input type="hidden" th:field="*{id}" class="form-control" />
+					</div>
+					<div class="form-group">
+						<!-- <label class="control-label">Id_feed:</label> -->
+						<input type="hidden" th:field="*{id_Feed}" class="form-control" />
+					</div>
+					<br/>
+					<button class="btn btn-success pull-right" type="submit" name="saveAll" value="saveAll">Save All</button>
+				</div>
+
+			</div>
+
+			<div class="container">
+				<textarea name="source" th:text="${source}"></textarea>
+				<iframe id="form_target" name="form_target" style="display: none"></iframe>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		tinymce
+				.init({
+					selector : "textarea",
+					height : '500px',
+					plugins : [ "imageserveur advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste codesample save" ],
+					link_list : window.__link_list_url,
+					toolbar : 'imageserveur | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table | code fullscreen | codesample | save',
+					file_picker_callback : function(callback, value, meta) {
+						imageFilePicker(callback, value, meta);
+					}
+				});
+	</script>
+	<script>
+		var imageFilePicker = function(callback, value, meta) {
+			tinymce.activeEditor.windowManager
+					.open(
+							{
+								title : 'Selectionnez une image',
+								url : '/tinymce/dialog',
+								width : 700,
+								height : 600,
+								buttons : [
+										{
+											text : 'Insert',
+											onclick : function() {
+												var t = tinymce.activeEditor.windowManager
+														.getWindows()[0];
+												//window.alert(tinymce.activeEditor.windowManager.getWindows()[0].getContentWindow().document.getElementById("content").value);
+												tinymce.activeEditor.windowManager
+														.getParams()
+														.oninsert(
+																"/imgs/imageDisplay?id="
+																		+ top.document
+																				.getElementById("content").value);
+												tinymce.activeEditor.windowManager
+														.close();
+											}
+										}, {
+											text : 'Close',
+											onclick : 'close'
+										} ],
+							}, {
+								oninsert : function(url) {
+									callback(url);
+								}
+							});
+		};
+	</script>
+
 </body>
 </html>
 
