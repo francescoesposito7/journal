@@ -78,7 +78,7 @@ public class Utilisateur implements Serializable {
 	
 	
 	@OneToOne(targetEntity = ImageUser.class, fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false, name = "PHOTO_USER_ID")
+    @JoinColumn(nullable = true, name = "PHOTO_USER_ID")
 	private ImageUser photo;
 	
 	// Creation TABLE utilisateur_roles 
