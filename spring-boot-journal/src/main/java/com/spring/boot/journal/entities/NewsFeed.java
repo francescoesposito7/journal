@@ -6,7 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 @Entity
+@Document(indexName = "newsfeed", type = "news")
 public class NewsFeed {
 	
 	@Id @GeneratedValue
@@ -18,6 +24,7 @@ public class NewsFeed {
 	private String id_Feed;
 	private String updatedDate;
 	@Column(columnDefinition="TEXT")
+	@Field(type=FieldType.String, index=FieldIndex.analyzed)
 	private String content;
 	private int uri;
 	
