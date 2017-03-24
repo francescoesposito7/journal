@@ -113,6 +113,7 @@
 		    <artifactId>jna</artifactId>
 		    </dependency>
 		<!-- Elasticsearch - END -->
+		
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
