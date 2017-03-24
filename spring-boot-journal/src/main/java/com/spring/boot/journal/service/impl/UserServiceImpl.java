@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.spring.boot.journal.entities.Role;
 import com.spring.boot.journal.entities.Utilisateur;
 import com.spring.boot.journal.entities.VerificationToken;
+import com.spring.boot.journal.repository.ImageUserRepository;
 import com.spring.boot.journal.repository.RoleRepository;
 import com.spring.boot.journal.repository.UtilisateurRepository;
 import com.spring.boot.journal.repository.VerificationTokenRepository;
@@ -32,6 +33,9 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private VerificationTokenRepository tokenRepository;
+    
+    @Autowired
+    private ImageUserRepository imageUserRepository;
 
     
 
@@ -42,10 +46,13 @@ public class UserServiceImpl implements UserService {
 		
 		//Definition role utilisateur
 		Role role = roleRepository.findOne((long) 1);
-		
+				
 		role.setUtilisateurs(new ArrayList<Utilisateur>());
 		role.getUtilisateurs().add(user);
 		user.setRole(new ArrayList<Role>());
+		
+		user.setPhoto(imageUserRepository.findByName("avatar_defaut.png"));
+		
 		user.getRole().add(role);
 		user.setActive(false);
 		user.setDateInscription(Date.from(Instant.now()));

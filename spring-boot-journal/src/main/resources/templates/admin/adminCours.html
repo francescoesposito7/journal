@@ -11,27 +11,28 @@
 </style>
 </head>
 <body layout:fragment="content">
-	
+
 	<div class="container spacer col-md-2">
 		<div class="list-group">
-			<a href="#" class="list-group-item disabled">Menu</a> 
-			<a th:href="@{/admin/home}" class="list-group-item">Home</a> 
-			<a th:href="@{/admin/listNews}" class="list-group-item">News</a>
-			<a th:href="@{/admin/listUsers}" class="list-group-item">Users</a>
-			<a th:href="@{/admin/listCours}" class="list-group-item">Cours</a>
-			<a th:href="@{/admin/contact}" class="list-group-item">Mail Users</a>
-			<a th:href="@{/admin/image}" class="list-group-item">Images</a>
+			<a href="#" class="list-group-item disabled">Menu</a> <a
+				th:href="@{/admin/home}" class="list-group-item">Home</a> <a
+				th:href="@{/admin/listNews}" class="list-group-item">News</a> <a
+				th:href="@{/admin/listUsers}" class="list-group-item">Users</a> <a
+				th:href="@{/admin/listCours}" class="list-group-item">Cours</a> <a
+				th:href="@{/admin/contact}" class="list-group-item">Mail Users</a> <a
+				th:href="@{/admin/image}" class="list-group-item">Images</a>
 		</div>
 	</div>
-	
-	<div class="container col-md-10">
-		<div>
-			<a th:href="@{/admin/home}">Back</a>
-			<a th:href="@{/admin/createCours}">Create Cours</a>
-		</div>
+
+	<div class="container spacer col-md-10">
 		<div class="panel panel-info">
 			<div class="panel-body">
-
+				<div>
+					<a th:href="@{/admin/home}"><button class="btn btn-danger">Back</button></a>
+					<a th:href="@{/admin/createCours}"><button
+							class="btn btn-success">Create Cours</button></a>
+				</div>
+				<br />
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -39,6 +40,7 @@
 							<th>Titre</th>
 							<th>Auteur</th>
 							<th>Update Date</th>
+							<th>Options</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,24 +49,23 @@
 							<td th:text="${n.titre}"></td>
 							<td th:text="${n.auteur}"></td>
 							<td th:text="${n.updatedDate}"></td>
-							<td><a onclick="return confirm('Etes vous sure?')"
-								th:href="@{supprimerCours(id=${n.id})}">Supprimer</a></td>
-							<td><a th:href="@{editCours(id=${n.id})}">Edit</a></td>
+							<td><ul class="nav nav-pills">
+									<li><a th:href="@{editCours(id=${n.id})}">Edit</a></li>
+									<li><a onclick="return confirm('Etes vous sure?')"
+										th:href="@{supprimerCours(id=${n.id})}">Supprimer</a></li>
+								</ul></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-
+		</div>
+		<div class="container">
+			<ul class="nav nav-pills">
+				<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
+					<a th:text="${p}" th:href="@{listCours(page=${p})}"></a>
+				</li>
+			</ul>
 		</div>
 	</div>
-	<div class="container">
-		<ul class="nav nav-pills">
-			<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
-				<a th:text="${p}" th:href="@{listCours(page=${p})}"></a>
-			</li>
-		</ul>
-	</div>
-
-
 </body>
 </html>

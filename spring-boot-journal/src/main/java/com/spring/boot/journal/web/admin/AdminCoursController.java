@@ -52,8 +52,8 @@ public class AdminCoursController {
 		//Supprimer la news selectionée
 		@RequestMapping(value="/supprimerCours")
 		public String supprimerNews(Long id){
-			coursRepository.delete(id);
 			searchService.supprimerCours(coursRepository.getOne(id));
+			coursRepository.delete(id);
 			return "redirect:listCours";
 		}
 		

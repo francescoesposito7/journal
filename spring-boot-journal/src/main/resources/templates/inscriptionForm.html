@@ -17,67 +17,85 @@
 </style>
 </head>
 <body layout:fragment="content">
-	<div class="row">
-		<div class="col-md-4"></div>
-		<div class="container col-md-4">
-			<div class="panel panel-default">
+	<div class="col-md-2"></div>
+	<div class="container col-md-4">
+		<div class="panel panel-default">
 
-				<div class="panel-heading text-center">
-					<h2>Formulaire</h2>
-				</div>
+			<div class="panel-heading text-center">
+				<h2>Inscription</h2>
+			</div>
 
-				<div class="panel-body">
-					<form th:action="@{SaveUtilisateur}" method="post"
-						th:object="${utilisateur}" enctype="multipart/form-data">
-						<div class="form-group">
-							<label class="control-label">Nom</label> <input type="text"
-								th:field="*{nom}" class="form-control" /> <span
-								class="text-danger" th:errors="*{nom}"></span>
-						</div>
-						<div class="form-group">
-							<label class="control-label">Prenom</label> <input type="text"
-								th:field="*{prenom}" class="form-control" /> <span
-								class="text-danger" th:errors="*{prenom}"></span>
-						</div>
-						<div class="form-group">
-							<label class="control-label">Date Naissance</label> <input
-								type="date" th:field="*{dateNaissance}" class="form-control"
-								pattern="yyyy-MM-dd" /> <span class="text-danger"
-								th:errors="*{dateNaissance}"></span>
-						</div>
-						<div class="form-group">
-							<label class="control-label">Username</label> <input type="text"
-								th:field="*{username}" class="form-control" /> <span
-								class="text-danger" th:errors="*{username}"></span>
-						</div> 
-						<div class="form-group">
-							<label class="control-label">Email</label> <input type="email"
-								th:field="*{email}" class="form-control" /> <span
-								class="text-danger" th:errors="*{email}"></span>
-						</div>
-						<div class="form-group">
-							<label class="control-label">Mot De Passe</label> <input
-							 type="password" th:field="*{password}" class="form-control" />
-							<span class="text-danger" th:errors="*{password}"></span>
-						</div>
-						<div class="form-group">
-							<label class="control-label">Confirmation</label> <input
-								 type="password" th:field="*{passwordConfirmation}" class="form-control" />
-								 <span class="text-danger" th:errors="*{passwordConfirmation}"></span>
-						</div>
-						<div class="form-group">
-							<label class="control-label">Photo:</label> <input type="file"
-								name="picture" class="form-control" /> <span
-								class="text-danger" th:errors="*{photo}"></span>
-						</div>
-						<div class="checkbox">
-							<label> <input type="checkbox" />J'ai lu et j'accepte
-								les Conditions Générales de Vente*
-							</label>
-						</div>
-						<button type="submit" class="btn btn-succes pull-right">Envoyer</button>
-					</form>
-				</div>
+			<div class="panel-body">
+				<form th:action="@{SaveUtilisateur}" method="post"
+					th:object="${utilisateur}" enctype="multipart/form-data">
+					<div class="form-group">
+						<label class="control-label">Nom</label> <input type="text"
+							th:field="*{nom}" class="form-control" /> <span
+							class="text-danger" th:errors="*{nom}"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Prenom</label> <input type="text"
+							th:field="*{prenom}" class="form-control" /> <span
+							class="text-danger" th:errors="*{prenom}"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Date Naissance</label> <input
+							type="date" th:field="*{dateNaissance}" class="form-control"
+							pattern="yyyy-MM-dd" /> <span class="text-danger"
+							th:errors="*{dateNaissance}"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Username*</label> <input type="text"
+							th:field="*{username}" class="form-control" /> <span
+							class="text-danger" th:errors="*{username}"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Email*</label> <input type="email"
+							th:field="*{email}" class="form-control" /> <span
+							class="text-danger" th:errors="*{email}"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Mot De Passe*</label> <input
+							type="password" th:field="*{password}" class="form-control" /> <span
+							class="text-danger" th:errors="*{password}"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Confirmation*</label> <input
+							type="password" th:field="*{passwordConfirmation}"
+							class="form-control" /> <span class="text-danger"
+							th:errors="*{passwordConfirmation}"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Photo:</label> <input type="file"
+							name="picture" class="form-control" /> <span class="text-danger"
+							th:errors="*{photo}"></span>
+					</div>
+					<div class="checkbox">
+						<label> <input type="checkbox" />J'ai lu et j'accepte les
+							Conditions Générales de Vente*
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>Les champs notés d'un * sont obligatoires</label>
+					</div>
+					<button type="submit" class="btn btn-succes pull-right">Envoyer</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+	<div class="container col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<br />
+				<form action="/signin/facebook" method="POST">
+					<input type="hidden" name="scope" value="public_profile" />
+					<button class="btn btn-block btn-social btn-lg btn-facebook">
+						<span class="fa fa-facebook-official" aria-hidden="true"></span>Se
+						connecter avec Facebook
+					</button>
+				</form>
+				<br />
 			</div>
 		</div>
 	</div>

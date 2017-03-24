@@ -53,8 +53,8 @@ public class AdminNewsController {
 	//Supprimer la news selectionée
 	@RequestMapping(value="/supprimerNews")
 	public String supprimerNews(Long id){
-		feedRepository.delete(id);
 		searchService.supprimerNews(feedRepository.getOne(id));
+		feedRepository.delete(id);
 		return "redirect:listNews";
 	}
 

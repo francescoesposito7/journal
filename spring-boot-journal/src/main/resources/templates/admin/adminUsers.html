@@ -14,26 +14,26 @@
 
 	<div class="container spacer col-md-2">
 		<div class="list-group">
-			<a href="#" class="list-group-item disabled">Menu</a> 
-			<a th:href="@{/admin/home}" class="list-group-item">Home</a> 
-			<a th:href="@{/admin/listNews}" class="list-group-item">News</a>
-			<a th:href="@{/admin/listUsers}" class="list-group-item">Users</a>
-			<a th:href="@{/admin/listCours}" class="list-group-item">Courses</a>
-			<a th:href="@{/admin/contact}" class="list-group-item">Mail Users</a>
-			<a th:href="@{/admin/image}" class="list-group-item">Images</a>
+			<a href="#" class="list-group-item disabled">Menu</a> <a
+				th:href="@{/admin/home}" class="list-group-item">Home</a> <a
+				th:href="@{/admin/listNews}" class="list-group-item">News</a> <a
+				th:href="@{/admin/listUsers}" class="list-group-item">Users</a> <a
+				th:href="@{/admin/listCours}" class="list-group-item">Courses</a> <a
+				th:href="@{/admin/contact}" class="list-group-item">Mail Users</a> <a
+				th:href="@{/admin/image}" class="list-group-item">Images</a>
 		</div>
 	</div>
 
-	<div class="container col-md-10">
+	<div class="container spacer col-md-10">
 		<div>
 			<a th:href="@{/admin/home}">Back</a>
 		</div>
-		
+
 		<form th:action="@{listUsers}" method="get">
 			<div class="form-group">
-				<label>Username:</label>
-				<input type="text" name="motCle" th:value="${motCle}"/>
-				<button type="submit">Chercher</button>			
+				<label>Username:</label> <input type="text" name="motCle"
+					th:value="${motCle}" />
+				<button type="submit">Chercher</button>
 			</div>
 		</form>
 
@@ -49,6 +49,7 @@
 							<th>Username</th>
 							<th>Email</th>
 							<th>Photo</th>
+							<th>Options</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -60,27 +61,28 @@
 							<td th:text="${u.username}"></td>
 							<td th:text="${u.email}"></td>
 							<td th:text="${u.photo}"></td>
-<!-- 							<td>
+							<!-- 							<td>
 			 	  				<img class="img-circle" th:src="@{getPhoto(id=${e.id})}" width="100px" height="100px"/>
 			 	 			</td>
- -->							<td><a onclick="return confirm('Etes vous sure?')"
-								th:href="@{supprimerUser(id=${u.id})}">Supprimer</a></td>
-							<td><a th:href="@{editUser(id=${u.id})}">Editer</a></td>
+ -->
+							<td><ul class="nav nav-pills">
+									<li><a th:href="@{editUser(id=${u.id})}">Editer</a></li>
+									<li><a onclick="return confirm('Etes vous sure?')"
+										th:href="@{supprimerUser(id=${u.id})}">Supprimer</a></li>
+								</ul></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-
-	<div class="container">
-		<ul class="nav nav-pills">
-			<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
-				<a th:text="${p}" th:href="@{listUsers(page=${p},motCle=${motCle})}"></a>
-			</li>
-		</ul>
+		<div class="container">
+			<ul class="nav nav-pills">
+				<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
+					<a th:text="${p}"
+					th:href="@{listUsers(page=${p},motCle=${motCle})}"></a>
+				</li>
+			</ul>
+		</div>
 	</div>
-	
-	</div>
-
 </body>
 </html>

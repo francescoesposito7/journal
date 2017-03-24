@@ -14,7 +14,7 @@ public enum Views {
 	VIEW_CONTACT("contact"),
 	VIEW_CONTACT_SUCCESS("contactSuccess"),
 	VIEW_INSCFORM("inscriptionForm"),
-	VIEW_INSCFACEBOOK("inscriptionFacebook"),
+	VIEW_INSCFACEBOOK("facebook/inscriptionFacebook"),
 	
 	VIEW_ADMIN_HOME("admin/adminHome"),
 	VIEW_ADMIN_NEWS("admin/adminNews"),

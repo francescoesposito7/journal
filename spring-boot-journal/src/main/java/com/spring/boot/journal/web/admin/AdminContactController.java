@@ -56,7 +56,7 @@ public class AdminContactController {
 	}
 	
 	@RequestMapping(value="/supprimerMail")
-	public String supprimer(Long id,ModelAndView model){
+	public String supprimer(Long id){
 		contactRepository.delete(id);
 		return "redirect:contact";
 	}

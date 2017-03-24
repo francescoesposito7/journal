@@ -6,11 +6,8 @@ INSERT INTO NEWS(title,summary,created) VALUES('Spring Boot in the Cloud','Learn
 
 -- ROLE
 INSERT INTO ROLE(roles) VALUES('USER');
-INSERT INTO ROLE(roles) VALUES('FISRT');
-INSERT INTO ROLE(roles) VALUES('PREMIUM');
+INSERT INTO ROLE(roles) VALUES('FACEBOOK_USER');
 INSERT INTO ROLE(roles) VALUES('ADMIN');
-INSERT INTO ROLE(roles) VALUES('ACTUATOR');
-
 -- UTILISATEUR
 INSERT INTO UTILISATEUR(nom,prenom,username,email,password,password_confirmation,type_compte,active,date_naissance,newsletter) VALUES('Esposito','Francesco','frank','francescoesposito7@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',0,TRUE,'1982-11-18 00:00:00.00',FALSE);
 INSERT INTO UTILISATEUR(nom,prenom,username,email,password,password_confirmation,type_compte,active,date_naissance,newsletter) VALUES('Lefaix','Jimmy','jimmy','jimmy@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',0,TRUE,'1991-10-26 00:00:00.00',FALSE);
