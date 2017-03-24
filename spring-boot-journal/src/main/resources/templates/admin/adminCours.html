@@ -18,7 +18,7 @@
 			<a th:href="@{/admin/home}" class="list-group-item">Home</a> 
 			<a th:href="@{/admin/listNews}" class="list-group-item">News</a>
 			<a th:href="@{/admin/listUsers}" class="list-group-item">Users</a>
-			<a th:href="@{/admin/listCours}" class="list-group-item">Courses</a>
+			<a th:href="@{/admin/listCours}" class="list-group-item">Cours</a>
 			<a th:href="@{/admin/contact}" class="list-group-item">Mail Users</a>
 			<a th:href="@{/admin/image}" class="list-group-item">Images</a>
 		</div>
@@ -27,7 +27,7 @@
 	<div class="container col-md-10">
 		<div>
 			<a th:href="@{/admin/home}">Back</a>
-			<a th:href="@{/admin/createNews}">Create News</a>
+			<a th:href="@{/admin/createCours}">Create Cours</a>
 		</div>
 		<div class="panel panel-info">
 			<div class="panel-body">
@@ -37,21 +37,19 @@
 						<tr>
 							<th>ID</th>
 							<th>Titre</th>
-							<th>Author</th>
-							<th>Category</th>
+							<th>Auteur</th>
 							<th>Update Date</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="n:${pageNews.content}">
+						<tr th:each="n:${pageCours.content}">
 							<td th:text="${n.id}"></td>
-							<td th:text="${n.title}"></td>
-							<td th:text="${n.author}"></td>
-							<td th:text="${n.category}"></td>
+							<td th:text="${n.titre}"></td>
+							<td th:text="${n.auteur}"></td>
 							<td th:text="${n.updatedDate}"></td>
 							<td><a onclick="return confirm('Etes vous sure?')"
-								th:href="@{supprimerNews(id=${n.id})}">Supprimer</a></td>
-							<td><a th:href="@{editNews(id=${n.id})}">Edit</a></td>
+								th:href="@{supprimerCours(id=${n.id})}">Supprimer</a></td>
+							<td><a th:href="@{editCours(id=${n.id})}">Edit</a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -62,7 +60,7 @@
 	<div class="container">
 		<ul class="nav nav-pills">
 			<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
-				<a th:text="${p}" th:href="@{listNews(page=${p})}"></a>
+				<a th:text="${p}" th:href="@{listCours(page=${p})}"></a>
 			</li>
 		</ul>
 	</div>

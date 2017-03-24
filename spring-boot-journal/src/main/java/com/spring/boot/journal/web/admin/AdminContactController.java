@@ -24,13 +24,6 @@ public class AdminContactController {
 	@Autowired
 	private NewsFeedRepository feedRepository;
 	
-	@RequestMapping(value="/home")
-	public ModelAndView home(ModelAndView model){
-		model.setViewName(Views.VIEW_ADMIN_HOME.getPage());
-		return model;
-	}
-
-	
 	@RequestMapping(value="/contact")
 	public ModelAndView contacts(ModelAndView model,
 						@RequestParam(name="page",defaultValue="0")int p){

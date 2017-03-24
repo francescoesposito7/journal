@@ -22,7 +22,7 @@
 			<a th:href="@{/admin/home}" class="list-group-item">Home</a> 
 			<a th:href="@{/admin/listNews}" class="list-group-item">News</a>
 			<a th:href="@{/admin/listUsers}" class="list-group-item">Users</a>
-			<a th:href="@{/admin/courses}" class="list-group-item">Courses</a>
+			<a th:href="@{/admin/listCours}" class="list-group-item">Courses</a>
 			<a th:href="@{/admin/contact}" class="list-group-item">Mail Users</a>
 			<a th:href="@{/admin/image}" class="list-group-item">Images</a>
 		</div>
@@ -31,7 +31,7 @@
 	<div class="container col-md-10">
 
 		<form class="form-vertical" th:action="@{saveNewsSource}"
-			method="post" th:object="${feed}" enctype="multipart/form-data">
+			method="post" th:object="${feed}" enctype="multipart/form-data" th:if="${feed != null}">
 
 			<div class="container">
 
@@ -45,7 +45,7 @@
 							th:field="*{category}" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label class="control-label">Autheur:</label> <input type="text"
+						<label class="control-label">Auteur:</label> <input type="text"
 							th:field="*{author}" class="form-control" />
 					</div>
 				</div>
@@ -83,6 +83,45 @@
 				<iframe id="form_target" name="form_target" style="display: none"></iframe>
 			</div>
 		</form>
+		
+		<form class="form-vertical" th:action="@{saveCoursSource}"
+			method="post" th:object="${cours}" enctype="multipart/form-data" th:if="${cours != null}">
+
+			<div class="container">
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Titre:</label> <input type="text"
+							th:field="*{titre}" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label class="control-label">Auteur:</label> <input type="text"
+							th:field="*{auteur}" class="form-control" />
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Date:</label> <input type="text"
+							th:field="*{updatedDate}" class="form-control"
+							disabled="disabled" />
+					</div>
+					<div class="form-group">
+						<!-- <label class="control-label">Id:</label> -->
+						<input type="hidden" th:field="*{id}" class="form-control" />
+					</div>
+					<br/>
+					<button class="btn btn-success pull-right" type="submit" name="saveAll" value="saveAll">Save All</button>
+				</div>
+
+			</div>
+
+			<div class="container">
+				<textarea name="source" th:text="${source}"></textarea>
+				<iframe id="form_target" name="form_target" style="display: none"></iframe>
+			</div>
+		</form>
+		
 	</div>
 
 	<script>

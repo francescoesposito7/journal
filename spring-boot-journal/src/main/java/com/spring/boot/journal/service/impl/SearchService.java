@@ -5,7 +5,9 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.boot.journal.entities.Cours;
 import com.spring.boot.journal.entities.NewsFeed;
+import com.spring.boot.journal.repositoryES.CoursRepositoryES;
 import com.spring.boot.journal.repositoryES.NewsRepositoryES;
 import com.spring.boot.journal.service.ISearchService;
 
@@ -13,7 +15,10 @@ import com.spring.boot.journal.service.ISearchService;
 public class SearchService implements ISearchService {
 
 	@Autowired
-	NewsRepositoryES newsRepositoryES;
+	private NewsRepositoryES newsRepositoryES;
+	
+	@Autowired
+	private CoursRepositoryES coursRepositoryES;
 	
 	@Override
 	public Collection<NewsFeed> chercherNews(String q) {
@@ -28,5 +33,20 @@ public class SearchService implements ISearchService {
 	@Override
 	public void supprimerNews(NewsFeed newsFeed) {
 		newsRepositoryES.delete(newsFeed);		
+	}
+
+	@Override
+	public Collection<Cours> chercherCours(String q) {
+		return coursRepositoryES.findByContent(q);
+	}
+
+	@Override
+	public Cours indexerCours(Cours cours) {
+		return coursRepositoryES.save(cours);
+	}
+
+	@Override
+	public void supprimerCours(Cours cours) {
+		coursRepositoryES.delete(cours);
 	}
 }

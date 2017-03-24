@@ -27,7 +27,7 @@ public class NewsFeed implements Serializable {
 	private String id_Feed;
 	private String updatedDate;
 	@Column(columnDefinition="TEXT")
-	@Field(type=FieldType.Attachment, index=FieldIndex.analyzed, analyzer="french", searchAnalyzer="french")
+	@Field(type=FieldType.String, index=FieldIndex.analyzed, analyzer="english", searchAnalyzer="english")
 	private String content;
 	private int uri;
 	

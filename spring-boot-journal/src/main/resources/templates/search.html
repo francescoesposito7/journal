@@ -10,6 +10,8 @@
 	<ul>
 		<li th:each="feed : ${news}" th:text="${feed.content}" th:remove="tag">
 		</li>
+		<li th:each="uncours : ${cours}" th:text="${uncours.content}" th:remove="tag">
+		</li>
 	</ul>
 </body>
 </html>

@@ -97,15 +97,13 @@ public class AdminNewsController {
 			
 			feed.setContent(source);
 			searchService.indexerNews(feed);
-			NewsFeed returnedFeed = newsService.updateNewsSource(feed);
-			//searchService.indexerNews(returnedFeed);
+			newsService.updateNewsSource(feed);
 			return "redirect:listNews";
 		}
 		
 		feed.setContent(source);
 		searchService.indexerNews(feed);
-		NewsFeed returnedFeed = newsService.updateNewsSource(feed);
-		//searchService.indexerNews(returnedFeed);
+		newsService.updateNewsSource(feed);
 		return "redirect:editNews?id="+feed.getId();
 	}
 

@@ -7,5 +7,5 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 import com.spring.boot.journal.entities.NewsFeed;
 
 public interface NewsRepositoryES extends ElasticsearchRepository<NewsFeed, Long> {
-	Collection<NewsFeed> findByContent(String content);
+	public Collection<NewsFeed> findByContent(String content);
 }
