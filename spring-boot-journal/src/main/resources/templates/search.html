@@ -7,6 +7,9 @@
 <title>Recherche</title>
 </head>
 <body layout:fragment="content">
-
+	<ul>
+		<li th:each="feed : ${news}" th:text="${feed.content}" th:remove="tag">
+		</li>
+	</ul>
 </body>
 </html>

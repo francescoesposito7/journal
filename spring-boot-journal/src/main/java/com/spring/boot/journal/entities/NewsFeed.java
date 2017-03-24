@@ -15,7 +15,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 
 @SuppressWarnings("serial")
 @Entity
-@Document(indexName = "newsfeed", type = "news")
+@Document(indexName = "newsfeed", type = "newsfeed")
 public class NewsFeed implements Serializable {
 	
 	@Id @GeneratedValue
@@ -27,7 +27,7 @@ public class NewsFeed implements Serializable {
 	private String id_Feed;
 	private String updatedDate;
 	@Column(columnDefinition="TEXT")
-	@Field(type=FieldType.String, index=FieldIndex.analyzed, analyzer="english", searchAnalyzer="english")
+	@Field(type=FieldType.Attachment, index=FieldIndex.analyzed, analyzer="french", searchAnalyzer="french")
 	private String content;
 	private int uri;
 	

@@ -6,5 +6,5 @@ public interface NewsService {
 
 	public NewsFeed saveNews(String content,String author,String category,String title);
 
-	public void updateNewsSource(NewsFeed feed);
+	public NewsFeed updateNewsSource(NewsFeed feed);
 }

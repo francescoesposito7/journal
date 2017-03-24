@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.boot.journal.entities.NewsFeed;
 import com.spring.boot.journal.repository.NewsFeedRepository;
+import com.spring.boot.journal.service.ISearchService;
 import com.spring.boot.journal.service.NewsService;
 import com.spring.boot.journal.views.Views;
 
@@ -25,6 +26,9 @@ public class AdminNewsController {
 	
 	@Autowired
 	private NewsService newsService;
+	
+	@Autowired
+	private ISearchService searchService;
 	
 	//Affichage de la liste des toutes les news
 	@RequestMapping(value="/listNews")
@@ -50,6 +54,7 @@ public class AdminNewsController {
 	@RequestMapping(value="/supprimerNews")
 	public String supprimerNews(Long id){
 		feedRepository.delete(id);
+		searchService.supprimerNews(feedRepository.getOne(id));
 		return "redirect:listNews";
 	}
 
@@ -82,14 +87,6 @@ public class AdminNewsController {
 		return model;
 	}
 	
-	@RequestMapping(value="/saveNews")
-	public String saveNews(NewsFeed feed){
-		
-		//newsService.saveNewsEdition(feed);
-
-		return "admin/home";
-	}
-	
 	@PostMapping(value="/saveNewsSource")
 	public String saveSource(@ModelAttribute("source") String source,
 							 NewsFeed feed,
@@ -99,13 +96,16 @@ public class AdminNewsController {
 		if(j.equals("saveAll")){
 			
 			feed.setContent(source);
-			newsService.updateNewsSource(feed);
+			searchService.indexerNews(feed);
+			NewsFeed returnedFeed = newsService.updateNewsSource(feed);
+			//searchService.indexerNews(returnedFeed);
 			return "redirect:listNews";
 		}
 		
 		feed.setContent(source);
-		newsService.updateNewsSource(feed);
-		
+		searchService.indexerNews(feed);
+		NewsFeed returnedFeed = newsService.updateNewsSource(feed);
+		//searchService.indexerNews(returnedFeed);
 		return "redirect:editNews?id="+feed.getId();
 	}
 

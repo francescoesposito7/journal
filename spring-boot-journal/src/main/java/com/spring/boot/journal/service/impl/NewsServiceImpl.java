@@ -33,10 +33,10 @@ public class NewsServiceImpl implements NewsService {
 
 
 	@Override
-	public void updateNewsSource(NewsFeed feed){
+	public NewsFeed updateNewsSource(NewsFeed feed){
 		
 		feed.setUpdatedDate(Date.from(Instant.now()).toString());
-		feedRepository.save(feed);
+		return feedRepository.save(feed);
 	}
 
 }

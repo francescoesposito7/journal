@@ -5,6 +5,8 @@ public enum Views {
 	VIEW_INDEX("index"),
 	VIEW_ACCUEIL("acceuil"),
 	VIEW_INSCRIPTION("inscription"),
+	
+	VIEW_SEARCH("search"),
 
 	VIEW_INSCRIPTION_SUCCESS("inscriptionSuccess"),
 	VIEW_NEWS("news"),
