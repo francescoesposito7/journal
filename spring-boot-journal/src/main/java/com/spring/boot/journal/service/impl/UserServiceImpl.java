@@ -122,4 +122,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+	@Override
+	public void changerMotDePasse(Utilisateur user, String motDePasse, String confirmationMotDePasse) {
+		
+		user.setPassword(bCryptPasswordEncoder.encode(motDePasse));
+		user.setPasswordConfirmation((bCryptPasswordEncoder.encode(confirmationMotDePasse)));
+		userRepository.save(user);
+		
+	}
+
+
 }

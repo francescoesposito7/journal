@@ -22,6 +22,6 @@ public interface CoursRepositoryES extends ElasticsearchRepository<Cours, Long> 
 	 * @param String
 	 * @return Collection
 	 */
-	@Query("{\"query\": {\"fuzzy\" : { \"content\" : \"?0\" }}}")
+    @Query("{\"query\": {\"fuzzy\" : { \"content\" : \"?0\" }}}")
 	public Collection<Cours> findFuzzyByContent(String content);
 }

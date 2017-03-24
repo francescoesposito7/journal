@@ -17,4 +17,6 @@ public interface UserService {
 	public String validateVerificationToken(String token);
 	
 	public Utilisateur getUser(String verificationToken);
+	
+	public void changerMotDePasse(Utilisateur user,String motDePasse,String confirmationMotDePasse);
 }
