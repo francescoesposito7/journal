@@ -1,4 +1,4 @@
-package com.spring.boot.journal.back.images.services;
+package com.spring.boot.journal.service;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.spring.boot.journal.back.images.entities.Image;
+import com.spring.boot.journal.entities.Image;
 import com.spring.boot.journal.entities.ImageUser;
 
 public interface ImageService {

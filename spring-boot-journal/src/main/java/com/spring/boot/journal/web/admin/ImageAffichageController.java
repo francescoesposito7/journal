@@ -1,4 +1,4 @@
-package com.spring.boot.journal.back.images.controllers;
+package com.spring.boot.journal.web.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.boot.journal.back.images.entities.Image;
-import com.spring.boot.journal.back.images.services.ImageService;
+import com.spring.boot.journal.entities.Image;
+import com.spring.boot.journal.service.ImageService;
 
 
 @Controller

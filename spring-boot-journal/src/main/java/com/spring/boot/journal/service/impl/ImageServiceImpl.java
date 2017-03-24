@@ -1,4 +1,4 @@
-package com.spring.boot.journal.back.images.services;
+package com.spring.boot.journal.service.impl;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -20,10 +20,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.spring.boot.journal.back.images.entities.Image;
-import com.spring.boot.journal.back.images.repositories.ImageRepository;
+import com.spring.boot.journal.entities.Image;
 import com.spring.boot.journal.entities.ImageUser;
+import com.spring.boot.journal.repository.ImageRepository;
 import com.spring.boot.journal.repository.ImageUserRepository;
+import com.spring.boot.journal.service.ImageService;
 
 @Service
 @Transactional

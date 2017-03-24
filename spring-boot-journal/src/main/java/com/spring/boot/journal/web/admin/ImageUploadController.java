@@ -1,4 +1,4 @@
-package com.spring.boot.journal.back.images.controllers;
+package com.spring.boot.journal.web.admin;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spring.boot.journal.back.images.entities.Image;
-import com.spring.boot.journal.back.images.services.ImageService;
+import com.spring.boot.journal.entities.Image;
+import com.spring.boot.journal.service.ImageService;
 
 @Controller
 public class ImageUploadController {

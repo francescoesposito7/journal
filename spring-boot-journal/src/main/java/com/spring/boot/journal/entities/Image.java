@@ -1,4 +1,4 @@
-package com.spring.boot.journal.back.images.entities;
+package com.spring.boot.journal.entities;
 
 import java.io.Serializable;
 

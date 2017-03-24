@@ -1,4 +1,4 @@
-package com.spring.boot.journal.back.images.controllers;
+package com.spring.boot.journal.web.admin;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.boot.journal.back.images.entities.Image;
-import com.spring.boot.journal.back.images.services.ImageService;
+import com.spring.boot.journal.entities.Image;
+import com.spring.boot.journal.service.ImageService;
 
 @Controller
 public class ImageSelectionController {

@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableElasticsearchRepositories(basePackages = "com.spring.boot.journal.repositoryES")
-@EnableJpaRepositories("com.spring.boot.journal.repository")
+@EnableJpaRepositories(basePackages = "com.spring.boot.journal.repository")
 @ComponentScan(basePackages = {"com.spring.boot.journal.entities"})
 public class ElasticsearchConfig {
  

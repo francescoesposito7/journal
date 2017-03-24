@@ -1,6 +1,8 @@
 package com.spring.boot.journal.entities;
 
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,9 +13,10 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldIndex;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+@SuppressWarnings("serial")
 @Entity
 @Document(indexName = "newsfeed", type = "news")
-public class NewsFeed {
+public class NewsFeed implements Serializable {
 	
 	@Id @GeneratedValue
 	private Long id;
@@ -24,7 +27,7 @@ public class NewsFeed {
 	private String id_Feed;
 	private String updatedDate;
 	@Column(columnDefinition="TEXT")
-	@Field(type=FieldType.String, index=FieldIndex.analyzed)
+	@Field(type=FieldType.String, index=FieldIndex.analyzed, analyzer="english", searchAnalyzer="english")
 	private String content;
 	private int uri;
 	
