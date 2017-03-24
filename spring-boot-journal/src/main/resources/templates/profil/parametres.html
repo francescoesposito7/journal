@@ -40,21 +40,19 @@
 
 		<div class="row">
 			<h3>Changer mon mot de passe</h3>
-			<form th:action="@{/}" method="post">
+			<form th:action="@{/changerMotDePasse}" method="post" th:object="${changedPassword}">
 				<div class="form-group">
-					<label>Nouveau mot de passe</label> <input type="text"
-						class="form-control" name="password" placeholder="Password" />
+					<label>Nouveau mot de passe</label> 
+					<input type="password" class="form-control" th:field="*{password}" />
+					<span class="text-danger" th:errors="*{password}"></span>
 				</div>
 				<div class="form-group">
-					<label>Confirmer nouveau mot de passe</label> <input
-						type="password" class="form-control" name="confPassword"
-						placeholder="Confirmer" />
-				</div>
-				<div th:if="${param.error}" class="text-danger">Mot de passe
-					differents</div>
-				<div th:if="${param.success}" class="text-success">Mot de
+					<label>Confirmer nouveau mot de passe</label> 
+					<input type="password" class="form-control" th:field="*{confirmationPassword}"/>
+					<span class="text-danger" th:errors="*{confirmationPassword}"></span>
+					<div th:if="${message != null}" class="text-success">Mot de
 					passe reinisialiser avec succès</div>
-				<div th:if="${param.success}" class="text-success"></div>
+				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-success pull-right">Envoyer</button>
 				</div>

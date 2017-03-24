@@ -4,17 +4,23 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.boot.journal.entities.ChangedPassword;
 import com.spring.boot.journal.entities.ImageUser;
 import com.spring.boot.journal.entities.Utilisateur;
 import com.spring.boot.journal.repository.RoleRepository;
@@ -22,6 +28,7 @@ import com.spring.boot.journal.repository.UtilisateurRepository;
 import com.spring.boot.journal.service.ImageService;
 import com.spring.boot.journal.service.RegistrationService;
 import com.spring.boot.journal.service.UserService;
+import com.spring.boot.journal.views.Views;
 
 
 @Controller
@@ -161,5 +168,39 @@ public class UtilisateurController {
 		}
 		
 		return "redirect:iscriptionSuccess";
+	}
+	
+	
+	@PostMapping(value="/changerMotDePasse")
+	public ModelAndView changerMotDePasse(HttpServletRequest request,
+									@Valid ChangedPassword pass,
+									BindingResult bindingResult,
+									ModelAndView modelAndView/*,
+									@RequestParam(name="password") String motDePasse,
+									@RequestParam(name="confirmationPassword") String confirmationMotDePasse*/){
+		String remote = request.getRemoteUser();
+		Utilisateur user = userService.findUserbyUsername(remote);
+		
+		if(!pass.getPassword().equals(pass.getConfirmationPassword())){
+			bindingResult
+			.rejectValue("passwordConfirmation", "passwordConfirmation.user",
+				"Password doesn't match!");
+		}
+		
+		if(bindingResult.hasErrors()){
+			modelAndView.addObject("user", user);
+			modelAndView.setViewName(Views.VIEW_PROFIL_PARAM.getPage());
+			return modelAndView;
+		
+		}else{
+				modelAndView.addObject("message", "ok");
+				modelAndView.addObject("user", user);
+				modelAndView.setViewName(Views.VIEW_PROFIL_PARAM.getPage());
+				userService.changerMotDePasse(user, pass.getPassword(), pass.getConfirmationPassword());
+		}
+		
+		
+		
+		return modelAndView;
 	}
 }

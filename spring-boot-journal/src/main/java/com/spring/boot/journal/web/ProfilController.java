@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.boot.journal.entities.ChangedPassword;
 import com.spring.boot.journal.entities.Utilisateur;
 import com.spring.boot.journal.service.UserService;
 import com.spring.boot.journal.views.Views;
@@ -33,6 +34,7 @@ import com.spring.boot.journal.views.Views;
 		String remote = req.getRemoteUser();
 		Utilisateur user = service.findUserbyUsername(remote);
 		modelAndView.addObject("user", user);
+		modelAndView.addObject("changedPassword", new ChangedPassword());
 		modelAndView.setViewName(Views.VIEW_PROFIL_PARAM.getPage());
 		return modelAndView;
 	}
