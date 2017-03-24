@@ -38,9 +38,9 @@
 						<img src="" alt="" />
 						<div class="caption">
 							<h3 th:text="${n.title}"></h3>
-							<p th:text="${n.summary}"></p>
+							<p th:text="${n.category}"></p>
 							<p>
-								<a href="#" class="btn btn-primary" role="button">Button</a> <a
+								<a th:href="@{detailNews(id=${n.id})}" class="btn btn-primary" role="button">GO</a> <a
 									href="#" class="btn btn-default" role="button">Button</a>
 							</p>
 						</div>

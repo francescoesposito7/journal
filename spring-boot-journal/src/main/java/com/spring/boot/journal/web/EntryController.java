@@ -29,13 +29,6 @@ public class EntryController{
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/news", method = RequestMethod.GET)
-	public ModelAndView news(ModelAndView modelAndView){
-		modelAndView.setViewName(Views.VIEW_NEWS.getPage());
-		modelAndView.addObject("listNews", serviceNews.listNews());
-		return modelAndView;
-	}
-	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public ModelAndView inscription(ModelAndView modelAndView){
 		modelAndView.setViewName(Views.VIEW_LOGIN.getPage());

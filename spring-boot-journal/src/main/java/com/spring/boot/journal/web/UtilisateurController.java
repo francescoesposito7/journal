@@ -175,9 +175,8 @@ public class UtilisateurController {
 	public ModelAndView changerMotDePasse(HttpServletRequest request,
 									@Valid ChangedPassword pass,
 									BindingResult bindingResult,
-									ModelAndView modelAndView/*,
-									@RequestParam(name="password") String motDePasse,
-									@RequestParam(name="confirmationPassword") String confirmationMotDePasse*/){
+									ModelAndView modelAndView){
+
 		String remote = request.getRemoteUser();
 		Utilisateur user = userService.findUserbyUsername(remote);
 		

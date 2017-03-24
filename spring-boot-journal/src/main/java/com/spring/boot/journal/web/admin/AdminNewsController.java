@@ -55,6 +55,7 @@ public class AdminNewsController {
 	public String supprimerNews(Long id){
 		searchService.supprimerNews(feedRepository.getOne(id));
 		feedRepository.delete(id);
+
 		return "redirect:listNews";
 	}
 

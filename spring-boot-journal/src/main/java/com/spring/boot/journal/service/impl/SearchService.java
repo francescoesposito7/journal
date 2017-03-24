@@ -39,7 +39,6 @@ public class SearchService implements ISearchService {
 	public Collection<Cours> chercherCours(String q) {
 		Collection<Cours> cours = coursRepositoryES.findByContent(q);
 		if (cours.isEmpty()) {
-			System.out.println("*************************");
 			cours = coursRepositoryES.findFuzzyByContent(q);
 		}
 		return cours;

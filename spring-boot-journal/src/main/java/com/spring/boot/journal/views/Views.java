@@ -10,6 +10,7 @@ public enum Views {
 
 	VIEW_INSCRIPTION_SUCCESS("inscriptionSuccess"),
 	VIEW_NEWS("news"),
+	VIEW_DETAIL_NEWS("detailNews"),
 	VIEW_LOGIN("login"),
 	VIEW_CONTACT("contact"),
 	VIEW_CONTACT_SUCCESS("contactSuccess"),
