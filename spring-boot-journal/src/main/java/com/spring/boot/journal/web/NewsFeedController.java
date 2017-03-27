@@ -40,4 +40,16 @@ public class NewsFeedController {
 		
 		return modelAndView;
 	}
+	
+	@GetMapping("/listNewsCat")
+	public ModelAndView listNewsCategory(ModelAndView modelAndView){
+		
+		List<NewsFeed> feeds = new ArrayList<NewsFeed>();		
+		feeds = feedRepository.findAll();
+		
+		modelAndView.addObject("listNews", feeds);
+		modelAndView.setViewName(Views.VIEW_NEWS.getPage());
+		
+		return modelAndView;
+	}
 }

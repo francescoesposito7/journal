@@ -10,4 +10,6 @@ public interface NewsFeedRepository extends JpaRepository<NewsFeed, Long>{
 	
 	public NewsFeed findTopByOrderByUriDesc();
 	
+	public NewsFeed findpByCategory();
+	
 }
