@@ -52,7 +52,12 @@ public class AdminCoursController {
 		//Supprimer la news selectionée
 		@RequestMapping(value="/supprimerCours")
 		public String supprimerNews(Long id){
-			searchService.supprimerCours(coursRepository.getOne(id));
+			try {
+				searchService.supprimerCoursParUpdatedDate(coursRepository.getOne(id).getUpdatedDate());
+			} catch (Exception e) {
+				// TODO Générer cette exception
+				e.printStackTrace();
+			}
 			coursRepository.delete(id);
 			return "redirect:listCours";
 		}

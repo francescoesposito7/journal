@@ -18,6 +18,7 @@ import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 import com.spring.boot.journal.entities.NewsFeed;
 import com.spring.boot.journal.repository.NewsFeedRepository;
+import com.spring.boot.journal.service.ISearchService;
 
 @Service
 @Transactional
@@ -27,7 +28,10 @@ public class RSSFeedParser {
 	private String url;
 
 	@Autowired
-	NewsFeedRepository feedRepository;
+	private NewsFeedRepository feedRepository;
+	
+	@Autowired
+	private ISearchService searchService;
 	
 	@Scheduled(cron = "${purge.cron.feed}")
 	public void parseFeed() throws IllegalArgumentException, MalformedURLException, FeedException, IOException{
@@ -53,7 +57,8 @@ public class RSSFeedParser {
 				
 				newsFeed.setUri(uriId);
 			
-				feedRepository.save(newsFeed);			
+				feedRepository.save(newsFeed);
+				searchService.indexerNews(newsFeed);
 			}
 		}else{
 			
@@ -76,6 +81,7 @@ public class RSSFeedParser {
 			
 				if(oldUriFeed<uriId ){
 					feedRepository.save(newsFeed);
+					searchService.indexerNews(newsFeed);
 					System.out.println("***");
 				}else
 					if(oldUriFeed>uriId){
