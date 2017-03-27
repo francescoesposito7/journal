@@ -1,5 +1,7 @@
 package com.spring.boot.journal.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +12,6 @@ public interface NewsFeedRepository extends JpaRepository<NewsFeed, Long>{
 	
 	public NewsFeed findTopByOrderByUriDesc();
 	
-	public NewsFeed findpByCategory();
+	public List<NewsFeed> findByCategory(String category);
 	
 }

@@ -42,10 +42,11 @@ public class NewsFeedController {
 	}
 	
 	@GetMapping("/listNewsCat")
-	public ModelAndView listNewsCategory(ModelAndView modelAndView){
+	public ModelAndView listNewsCategory(ModelAndView modelAndView,String category){
 		
 		List<NewsFeed> feeds = new ArrayList<NewsFeed>();		
-		feeds = feedRepository.findAll();
+		
+		feeds = feedRepository.findByCategory(category);
 		
 		modelAndView.addObject("listNews", feeds);
 		modelAndView.setViewName(Views.VIEW_NEWS.getPage());

@@ -4,7 +4,7 @@
 	layout:decorator="index">
 <head>
 <meta charset="utf-8" />
-<title>News</title>
+<title>Cours</title>
 <style>
 .list-group-item {
 	background-color: #Aed581;
@@ -15,16 +15,15 @@
 </head>
 <body layout:fragment="content">
 	<div class="jumbotron text-center">
-		<h1>NEWS</h1>
-		<p>Quoi de neuf ?</p>
+		<h1>Cours</h1>
 	</div> 
 	<div>
 		<div class="col-md-2">
 			<div class="list-group">
 				<a href="#" class="list-group-item disabled">Categories</a> 
-				<a th:href="@{listNewsCat(category=ENGINEERING)}" class="list-group-item">Ingenierie</a> 
-				<a th:href="@{listNewsCat(category=RELEASES)}" class="list-group-item">Release</a>
-				<a th:href="@{listNewsCat(category=NEWS)}" class="list-group-item">Actualités et événements</a>
+				<a href="#" class="list-group-item">Ingenierie</a> 
+				<a href="#" class="list-group-item">Release</a>
+				<a href="#" class="list-group-item">Actualités et événements</a>
 			</div>
 			<div class="list-group">
 				<a href="#" class="list-group-item disabled">Date de Parution</a> <a
@@ -32,15 +31,15 @@
 			</div>
 		</div>
 		<div class="col-md-8">
-			<div th:each="n:${listNews}">
+			<div th:each="n:${listCours}">
 				<div class="col-sm-5 col-md-3">
 					<div class="thumbnail">
 						<img src="" alt="" />
 						<div class="caption">
 							<h3 th:text="${n.title}"></h3>
-							<p th:text="${n.category}"></p>
+							<p th:text="${n.tag}"></p>
 							<p>
-								<a th:href="@{detailNews(id=${n.id})}" class="btn btn-primary" role="button">GO</a> <a
+								<a th:href="@{detailCours(id=${n.id})}" class="btn btn-primary" role="button">GO</a> <a
 									href="#" class="btn btn-default" role="button">Button</a>
 							</p>
 						</div>

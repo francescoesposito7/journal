@@ -12,6 +12,7 @@ public enum Views {
 	VIEW_NEWS("news"),
 	VIEW_DETAIL_NEWS("detailNews"),
 	VIEW_LOGIN("login"),
+	VIEW_COURS("cours"),
 	VIEW_CONTACT("contact"),
 	VIEW_CONTACT_SUCCESS("contactSuccess"),
 	VIEW_INSCFORM("inscriptionForm"),
