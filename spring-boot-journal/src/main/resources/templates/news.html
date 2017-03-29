@@ -21,7 +21,8 @@
 	<div>
 		<div class="col-md-2">
 			<div class="list-group">
-				<a href="#" class="list-group-item disabled">Categories</a> 
+				<a href="#" class="list-group-item disabled">Categories</a>
+				<a th:href="@{news}" class="list-group-item">Tous les news</a>  
 				<a th:href="@{listNewsCat(category=ENGINEERING)}" class="list-group-item">Ingenierie</a> 
 				<a th:href="@{listNewsCat(category=RELEASES)}" class="list-group-item">Release</a>
 				<a th:href="@{listNewsCat(category=NEWS)}" class="list-group-item">Actualités et événements</a>
