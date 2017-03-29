@@ -11,6 +11,12 @@
 	border-color: gray;
 	margin-left: 15px;
 }
+.pbnews {
+	height: 120px;
+}
+.pfnews{
+	height: 55px;
+}
 </style>
 </head>
 <body layout:fragment="content">
@@ -36,17 +42,16 @@
 		</div>
 		<div class="col-md-8">
 			<div th:each="n:${listNews}">
-				<div class="col-sm-5 col-md-3">
-					<div class="thumbnail">
-						<img src="" alt="" />
-						<div class="caption">
-							<h3 th:text="${n.title}"></h3>
+				<div class="container news col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-body pbnews">
+							<h3 class="media-heading" th:text="${n.title}"></h3>
 							<p th:text="${n.category}"></p>
-							<p>
-								<a th:href="@{detailNews(id=${n.id})}" class="btn btn-primary"
-									role="button">GO</a> <a href="#" class="btn btn-default"
-									role="button">Button</a>
-							</p>
+						</div>
+						<div class="panel-footer pfnews">
+						<div>
+							<a th:href="@{detailNews(id=${n.id})}" class="btn btn-success pull-right"
+								role="button">Voir</a></div>
 						</div>
 					</div>
 				</div>
