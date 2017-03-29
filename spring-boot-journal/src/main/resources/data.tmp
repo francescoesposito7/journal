@@ -1,0 +1,19 @@
+-- ROLE
+INSERT INTO ROLE(roles) VALUES('USER');
+INSERT INTO ROLE(roles) VALUES('FACEBOOK_USER');
+INSERT INTO ROLE(roles) VALUES('ADMIN');
+-- UTILISATEUR
+INSERT INTO UTILISATEUR(nom,prenom,username,email,password,password_confirmation,type_compte,active,date_naissance,newsletter) VALUES('Esposito','Francesco','frank','francescoesposito7@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',0,TRUE,'1982-11-18 00:00:00.00',FALSE);
+INSERT INTO UTILISATEUR(nom,prenom,username,email,password,password_confirmation,type_compte,active,date_naissance,newsletter) VALUES('Lefaix','Jimmy','jimmy','jimmy@gmail.com','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da','$2a$10$a06n27PtOlt25AIzbz5goOzLdMrjU65kjplE87TUO3/wpw3vPS9Da',0,TRUE,'1991-10-26 00:00:00.00',FALSE);
+
+
+-- JOIN TABLE
+INSERT INTO UTILISATEUR_ROLES(utilisateurs_user_id,roles_role_id) 
+VALUES((SELECT user_id FROM UTILISATEUR WHERE username='frank'),
+		(SELECT role_id FROM ROLE WHERE roles='ADMIN'));
+		
+INSERT INTO UTILISATEUR_ROLES(utilisateurs_user_id,roles_role_id) 
+VALUES((SELECT user_id FROM UTILISATEUR WHERE username='jimmy'),
+		(SELECT role_id FROM ROLE WHERE roles='USER'));
+
+

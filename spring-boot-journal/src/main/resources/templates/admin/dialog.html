@@ -13,24 +13,29 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h3>Images</h3>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Nom</th>
-					<th>Miniature</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="n:${image}">
-					<td th:text="${n.id}"></td>
-					<td th:text="${n.name}"></td>
-					<td><img th:src="${'/imgs/imageMinDisplay?id=' + n.id}" /></td>
-				</tr>
-			</tbody>
-		</table>
-		<br />
-	Insérer image ID : <input type="text" name="imageId" id="content"></input>
+<nav class="navbar navbar-fixed-top">
+	<div class="container-fluid">
+	<ul class="nav navbar-nav">
+		<li>Insérer image ID : <input type="text" name="imageId" id="content"></input></li>
+	</ul>
+	</div>
+	</nav>
+	<br/>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nom</th>
+				<th>Miniature</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="n:${image}">
+				<td th:text="${n.id}"></td>
+				<td th:text="${n.name}"></td>
+				<td><img th:src="${'/imgs/imageMinDisplay?id=' + n.id}" /></td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>

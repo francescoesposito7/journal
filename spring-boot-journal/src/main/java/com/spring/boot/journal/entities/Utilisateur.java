@@ -88,6 +88,9 @@ public class Utilisateur implements Serializable {
 	private boolean active;
 	
 	private boolean newsletter;
+	
+	@ManyToMany
+	private Collection<Cours> cours;
 
 	public Utilisateur() {
 		super();

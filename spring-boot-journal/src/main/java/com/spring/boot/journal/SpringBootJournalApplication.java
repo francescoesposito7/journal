@@ -25,9 +25,9 @@ public class SpringBootJournalApplication implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 		
-		ImageUser imageUser = new ImageUser();
+		/*ImageUser imageUser = new ImageUser();
 		
-		File file = new File("C:\\Users\\94010-24-09\\git\\journal\\spring-boot-journal\\src\\main\\resources\\static\\img\\avatar_defaut.png");
+		File file = new File("C:\\Users\\94010-24-02\\git\\journal\\spring-boot-journal\\src\\main\\resources\\static\\img\\avatar_defaut.png");
 		
 		byte[] data = IOUtils.toByteArray(new FileInputStream(file));
 		
@@ -35,7 +35,7 @@ public class SpringBootJournalApplication implements CommandLineRunner {
 		
 		imageUser.setName("avatar_defaut.png");
 		
-		imageRepository.save(imageUser);
+		imageRepository.save(imageUser);*/
 		
 	}
 }

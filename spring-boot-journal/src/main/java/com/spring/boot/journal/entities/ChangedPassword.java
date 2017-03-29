@@ -1,6 +1,5 @@
 package com.spring.boot.journal.entities;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
@@ -10,7 +9,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.spring.boot.journal.service.validator.ValidPassword;
 
-@Entity
+
 public class ChangedPassword {
 
 	@Id @GeneratedValue

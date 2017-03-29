@@ -1,6 +1,5 @@
 package com.spring.boot.journal.entities;
 
-
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -25,6 +24,7 @@ public class NewsFeed implements Serializable {
 	private String category;
 	private String author;
 	private String id_Feed;
+	@Field(type=FieldType.String, index=FieldIndex.not_analyzed, store=true)
 	private String updatedDate;
 	@Column(columnDefinition="TEXT")
 	@Field(type=FieldType.String, index=FieldIndex.analyzed, analyzer="english", searchAnalyzer="english")

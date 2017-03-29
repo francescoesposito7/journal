@@ -1,6 +1,5 @@
 package com.spring.boot.journal.web;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -10,9 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -175,15 +172,14 @@ public class UtilisateurController {
 	public ModelAndView changerMotDePasse(HttpServletRequest request,
 									@Valid ChangedPassword pass,
 									BindingResult bindingResult,
-									ModelAndView modelAndView/*,
-									@RequestParam(name="password") String motDePasse,
-									@RequestParam(name="confirmationPassword") String confirmationMotDePasse*/){
+									ModelAndView modelAndView){
+
 		String remote = request.getRemoteUser();
 		Utilisateur user = userService.findUserbyUsername(remote);
 		
 		if(!pass.getPassword().equals(pass.getConfirmationPassword())){
 			bindingResult
-			.rejectValue("passwordConfirmation", "passwordConfirmation.user",
+			.rejectValue("confirmationPassword", "confirmationPassword.user",
 				"Password doesn't match!");
 		}
 		
@@ -193,7 +189,7 @@ public class UtilisateurController {
 			return modelAndView;
 		
 		}else{
-				modelAndView.addObject("message", "ok");
+				modelAndView.addObject("messagePass", "ok");
 				modelAndView.addObject("user", user);
 				modelAndView.setViewName(Views.VIEW_PROFIL_PARAM.getPage());
 				userService.changerMotDePasse(user, pass.getPassword(), pass.getConfirmationPassword());
@@ -203,4 +199,25 @@ public class UtilisateurController {
 		
 		return modelAndView;
 	}
+	
+	@PostMapping(value="/changerEmail")
+	public ModelAndView changerEmail(HttpServletRequest request,
+									@RequestParam(name="newEmail") String email,
+									ModelAndView modelAndView){
+		
+		String remote = request.getRemoteUser();
+		Utilisateur user = userService.findUserbyUsername(remote);
+		
+		modelAndView.addObject("messageEmail", "mail");
+		modelAndView.addObject("changedPassword", new ChangedPassword());
+		modelAndView.addObject("user", user);
+		
+		modelAndView.setViewName(Views.VIEW_PROFIL_PARAM.getPage());
+		
+		userService.changerEmail(user,email);
+		
+		
+		return modelAndView;
+	}
+	
 }

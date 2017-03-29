@@ -2,6 +2,7 @@ package com.spring.boot.journal.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 @Entity
 @Document(indexName = "cours", type = "cours")
 public class Cours implements Serializable {
+	
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -40,6 +42,9 @@ public class Cours implements Serializable {
 	
 	@ManyToMany
 	private Collection<Tag> tags;
+	
+	@ManyToMany(mappedBy="cours")
+	private List<Utilisateur> utilisateurs;
 
 	public Cours() {
 		super();

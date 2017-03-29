@@ -11,6 +11,8 @@
 	th:href="@{/css/bootstrap-social.css}" />
 <link rel="stylesheet" type="text/css"
 	th:href="@{/css/font-awesome.min.css}" />
+<link rel="stylesheet" type="text/css" href="/css/prism.css" />
+<script src="/js/prism.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -50,7 +52,7 @@
 					<li><a href="/acceuil">Accueil</a></li>
 					<li><a href="/news">News</a></li>
 					<li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/home}">Admin Home</a></li>
-					<li><a href="/Test"><span
+					<li><a href="/cours"><span
 							class="glyphicon glyphicon-education"></span> Cours</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

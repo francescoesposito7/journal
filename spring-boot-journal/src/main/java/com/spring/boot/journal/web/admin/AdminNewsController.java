@@ -53,8 +53,16 @@ public class AdminNewsController {
 	//Supprimer la news selectionée
 	@RequestMapping(value="/supprimerNews")
 	public String supprimerNews(Long id){
-		searchService.supprimerNews(feedRepository.getOne(id));
+		try {
+			String updatedDate = feedRepository.getOne(id).getUpdatedDate();
+			System.out.println("------------------------------------->>>>> " + updatedDate);
+			searchService.supprimerNewsParUpdatedDate(updatedDate);
+		} catch (Exception e) {
+			// TODO Gérer cette exception
+			e.printStackTrace();
+		}
 		feedRepository.delete(id);
+
 		return "redirect:listNews";
 	}
 
@@ -96,14 +104,14 @@ public class AdminNewsController {
 		if(j.equals("saveAll")){
 			
 			feed.setContent(source);
-			searchService.indexerNews(feed);
 			newsService.updateNewsSource(feed);
+			searchService.indexerNews(feed);
 			return "redirect:listNews";
 		}
 		
 		feed.setContent(source);
-		searchService.indexerNews(feed);
 		newsService.updateNewsSource(feed);
+		searchService.indexerNews(feed);
 		return "redirect:editNews?id="+feed.getId();
 	}
 

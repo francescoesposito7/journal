@@ -25,7 +25,7 @@ public class NewsServiceImpl implements NewsService {
 		feed.setCategory(category);
 		feed.setContent(content);
 		feed.setTitle(title);
-		feed.setUpdatedDate(Date.from(Instant.now()).toString());
+		feed.setUpdatedDate(Date.from(Instant.now()).toString().replaceAll(":", "-"));
 		feed.setUri(1);
 
 		return feedRepository.save(feed);
@@ -35,7 +35,7 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public NewsFeed updateNewsSource(NewsFeed feed){
 		
-		feed.setUpdatedDate(Date.from(Instant.now()).toString());
+		feed.setUpdatedDate(Date.from(Instant.now()).toString().replaceAll(":", "-"));
 		return feedRepository.save(feed);
 	}
 
