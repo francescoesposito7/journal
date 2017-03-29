@@ -10,42 +10,42 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Repository;
 
-import com.spring.boot.journal.entities.NewsFeed;
-import com.spring.boot.journal.repositoryES.NewsRepositoryCustomES;
+import com.spring.boot.journal.entities.Cours;
+import com.spring.boot.journal.repositoryES.CoursRepositoryCustomES;
 
 @Repository
-public class NewsRepositoryCustom implements NewsRepositoryCustomES {
+public class CoursRepositoryCustom implements CoursRepositoryCustomES {
 
 	@Autowired
 	private ElasticsearchTemplate ElasticsearchTemplate;
 	
 	@Override
-	public List<NewsFeed> findByDate(String date) {
+	public List<Cours> findByDate(String date) {
 		SearchQuery searchQuery = new NativeSearchQueryBuilder()
 			.withQuery(new MatchQueryBuilder("updatedDate", date))
 			.build();
-		return ElasticsearchTemplate.queryForList(searchQuery, NewsFeed.class);
+		return ElasticsearchTemplate.queryForList(searchQuery, Cours.class);
 	}
 
+	
 	@Override
-	public List<NewsFeed> findSecondChance(String q) {
+	public List<Cours> findSecondChance(String q) {
 		MatchQueryBuilder matchQuery = new MatchQueryBuilder("content", q);
 		matchQuery.operator(Operator.OR);
 		SearchQuery searchQuery = new NativeSearchQueryBuilder()
 				.withQuery(matchQuery)
 				.build();
-		return ElasticsearchTemplate.queryForList(searchQuery, NewsFeed.class);
+		return ElasticsearchTemplate.queryForList(searchQuery, Cours.class);
 	}
 	
 	@Override
-	public List<NewsFeed> findLastChance(String q) {
+	public List<Cours> findLastChance(String q) {
 		MatchQueryBuilder matchQuery = new MatchQueryBuilder("content", q);
 		matchQuery.fuzziness(1)
 		.operator(Operator.OR);
 		SearchQuery searchQuery = new NativeSearchQueryBuilder()
 				.withQuery(matchQuery)
 				.build();
-		return ElasticsearchTemplate.queryForList(searchQuery, NewsFeed.class);
+		return ElasticsearchTemplate.queryForList(searchQuery, Cours.class);
 	}
-
 }

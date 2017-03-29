@@ -17,12 +17,13 @@ import com.spring.boot.journal.views.Views;
 public class SearchController {
 	
 	@Autowired
-	ISearchService searchService;
+	private ISearchService searchService;
 	
 	@RequestMapping("search")
 	public ModelAndView search(@RequestParam(name="q")String q) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName(Views.VIEW_SEARCH.getPage());
+
 		Collection<NewsFeed> newsFeeds = searchService.chercherNews(q);
 		Collection<Cours> cours = searchService.chercherCours(q);
 		

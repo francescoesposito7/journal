@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.boot.journal.entities.Cours;
 import com.spring.boot.journal.entities.NewsFeed;
+import com.spring.boot.journal.repositoryES.CoursRepositoryCustomES;
 import com.spring.boot.journal.repositoryES.CoursRepositoryES;
 import com.spring.boot.journal.repositoryES.NewsRepositoryCustomES;
 import com.spring.boot.journal.repositoryES.NewsRepositoryES;
@@ -25,9 +26,19 @@ public class SearchService implements ISearchService {
 	@Autowired
 	private NewsRepositoryCustomES newsRepositoryCustomES;
 	
+	@Autowired
+	private CoursRepositoryCustomES coursRepositoryCustomES;
+	
 	@Override
-	public Collection<NewsFeed> chercherNews(String q) {
-		return newsRepositoryES.findByContent(q);
+	public List<NewsFeed> chercherNews(String q) {
+		List<NewsFeed> news = newsRepositoryES.findByContent(q);
+		if (news.isEmpty()) {
+			news = newsRepositoryCustomES.findSecondChance(q);
+			if (news.isEmpty()) {
+				news = newsRepositoryCustomES.findLastChance(q);
+			}
+		}
+		return news;
 	}
 
 	@Override
@@ -38,10 +49,6 @@ public class SearchService implements ISearchService {
 	@Override
 	public void supprimerNewsParUpdatedDate(String updatedDate) throws Exception {
 		List<NewsFeed> newsFeeds = newsRepositoryCustomES.findByDate(updatedDate);
-		for (NewsFeed newsFeed : newsFeeds) {
-			System.out.println("------------------>" + newsFeed.getTitle());
-		}
-		System.out.println("------------->" + newsFeeds.get(0).getUpdatedDate());
 		if (newsFeeds.size() != 1) {
 			throw new Exception("Index corrompu nb resultats : " + newsFeeds.size());
 		} else {
@@ -51,9 +58,12 @@ public class SearchService implements ISearchService {
 
 	@Override
 	public Collection<Cours> chercherCours(String q) {
-		Collection<Cours> cours = coursRepositoryES.findByContent(q);
+		List<Cours> cours = coursRepositoryES.findByContent(q);
 		if (cours.isEmpty()) {
-			cours = coursRepositoryES.findFuzzyByContent(q);
+			cours = coursRepositoryCustomES.findSecondChance(q);
+			if (cours.isEmpty()) {
+				cours = coursRepositoryCustomES.findLastChance(q);
+			}
 		}
 		return cours;
 	}
@@ -65,13 +75,11 @@ public class SearchService implements ISearchService {
 
 	@Override
 	public void supprimerCoursParUpdatedDate(String updatedDate) throws Exception {
-		Collection<Cours> cCours = coursRepositoryES.findByUpdatedDate(updatedDate);
+		List<Cours> cCours = coursRepositoryCustomES.findByDate(updatedDate);
 		if (cCours.size() != 1) {
-			throw new Exception("Index corrompu");
+			throw new Exception("Index corrompu nb resultats : " + cCours.size());
 		} else {
-			for (Cours cours : cCours) {
-				coursRepositoryES.delete(cours);
-			}
+			coursRepositoryES.delete(cCours.get(0));
 		}
 	}
 }
