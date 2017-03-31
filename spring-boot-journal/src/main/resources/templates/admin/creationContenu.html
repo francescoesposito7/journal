@@ -9,73 +9,84 @@
 <script src="/js/prism.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-.spacer{
+.spacer {
 	margin-top: 60px;
 }
 </style>
 </head>
 
 <body layout:fragment="content">
-	<div class="container spacer col-md-2">
+	<div class="container spacer col-md-2 fixed-top">
 		<div class="list-group">
-			<a href="#" class="list-group-item disabled">Menu</a> 
-			<a th:href="@{/admin/home}" class="list-group-item">Home</a> 
-			<a th:href="@{/admin/listNews}" class="list-group-item">News</a>
-			<a th:href="@{/admin/listUsers}" class="list-group-item">Users</a>
-			<a th:href="@{/admin/listCours}" class="list-group-item">Courses</a>
-			<a th:href="@{/admin/contact}" class="list-group-item">Mail Users</a>
-			<a th:href="@{/admin/image}" class="list-group-item">Images</a>
+			<a href="#" class="list-group-item disabled">Menu</a> <a
+				th:href="@{/admin/home}" class="list-group-item">Home</a> <a
+				th:href="@{/admin/listNews}" class="list-group-item">News</a> <a
+				th:href="@{/admin/listUsers}" class="list-group-item">Users</a> <a
+				th:href="@{/admin/listCours}" class="list-group-item">Courses</a> <a
+				th:href="@{/admin/contact}" class="list-group-item">Mail Users</a> <a
+				th:href="@{/admin/image}" class="list-group-item">Images</a>
 		</div>
 	</div>
-	
-	<div class="container spacer col-md-10">
+
+	<div class="container spacer">
 
 		<form class="form-vertical" th:action="@{saveNewsSource}"
-			method="post" th:object="${feed}" enctype="multipart/form-data" th:if="${feed != null}">
+			method="post" th:object="${feed}" enctype="multipart/form-data"
+			th:if="${feed != null}">
 
 			<div class="container">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="row">
+							<div class="container col-md-6">
+								<div class="form-group">
+									<label class="control-label">Titre:</label> <input type="text"
+										th:field="*{title}" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label class="control-label">Categorie:</label> <input
+										type="text" th:field="*{category}" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label class="control-label">Auteur:</label> <input type="text"
+										th:field="*{author}" class="form-control" />
+								</div>
+							</div>
+							<div class="container col-md-5">
+								<div class="form-group">
+									<label class="control-label">Lien (Source):</label> <input
+										type="text" th:field="*{link}" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label class="control-label">Date:</label> <input type="text"
+										th:field="*{updatedDate}" class="form-control"
+										disabled="disabled" />
+								</div>
+								<div class="form-group">
+									<!-- <label class="control-label">Uri:</label> -->
+									<input type="hidden" th:field="*{uri}" class="form-control" />
+								</div>
+								<div class="form-group">
+									<!-- <label class="control-label">Id:</label> -->
+									<input type="hidden" th:field="*{id}" class="form-control" />
+								</div>
+								<div class="form-group">
+									<!-- <label class="control-label">Id_feed:</label> -->
+									<input type="hidden" th:field="*{id_Feed}" class="form-control" />
+								</div>
+							</div>
+						</div>
 
-				<div class="col-md-6">
-					<div class="form-group">
-						<label class="control-label">Titre:</label> <input type="text"
-							th:field="*{title}" class="form-control" />
-					</div>
-					<div class="form-group">
-						<label class="control-label">Categorie:</label> <input type="text"
-							th:field="*{category}" class="form-control" />
-					</div>
-					<div class="form-group">
-						<label class="control-label">Auteur:</label> <input type="text"
-							th:field="*{author}" class="form-control" />
+						<div class="row">
+							<div class="container">
+								<button class="btn btn-success pull-right" type="submit"
+									name="saveAll" value="saveAll" style="margin-right: 35px;">Save
+									All</button>
+							</div>
+						</div>
+
 					</div>
 				</div>
-
-				<div class="col-md-6">
-					<div class="form-group">
-						<label class="control-label">Lien (Source):</label> <input
-							type="text" th:field="*{link}" class="form-control" />
-					</div>
-					<div class="form-group">
-						<label class="control-label">Date:</label> <input type="text"
-							th:field="*{updatedDate}" class="form-control"
-							disabled="disabled" />
-					</div>
-					<div class="form-group">
-						<!-- <label class="control-label">Uri:</label> -->
-						<input type="hidden" th:field="*{uri}" class="form-control" />
-					</div>
-					<div class="form-group">
-						<!-- <label class="control-label">Id:</label> -->
-						<input type="hidden" th:field="*{id}" class="form-control" />
-					</div>
-					<div class="form-group">
-						<!-- <label class="control-label">Id_feed:</label> -->
-						<input type="hidden" th:field="*{id_Feed}" class="form-control" />
-					</div>
-					<br/>
-					<button class="btn btn-success pull-right" type="submit" name="saveAll" value="saveAll">Save All</button>
-				</div>
-
 			</div>
 
 			<div class="container">
@@ -83,37 +94,49 @@
 				<iframe id="form_target" name="form_target" style="display: none"></iframe>
 			</div>
 		</form>
-		
+
+
 		<form class="form-vertical" th:action="@{saveCoursSource}"
-			method="post" th:object="${cours}" enctype="multipart/form-data" th:if="${cours != null}">
+			method="post" th:object="${cours}" enctype="multipart/form-data"
+			th:if="${cours != null}">
 
 			<div class="container">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="row">
+							<div class="container col-md-6">
+								<div class="form-group">
+									<label class="control-label">Titre:</label> <input type="text"
+										th:field="*{titre}" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label class="control-label">Auteur:</label> <input type="text"
+										th:field="*{auteur}" class="form-control" />
+								</div>
+							</div>
 
-				<div class="col-md-6">
-					<div class="form-group">
-						<label class="control-label">Titre:</label> <input type="text"
-							th:field="*{titre}" class="form-control" />
-					</div>
-					<div class="form-group">
-						<label class="control-label">Auteur:</label> <input type="text"
-							th:field="*{auteur}" class="form-control" />
+							<div class="container col-md-5">
+								<div class="form-group">
+									<label class="control-label">Date:</label> <input type="text"
+										th:field="*{updatedDate}" class="form-control"
+										disabled="disabled" />
+								</div>
+								<div class="form-group">
+									<!-- <label class="control-label">Id:</label> -->
+									<input type="hidden" th:field="*{id}" class="form-control" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="container">
+								<button class="btn btn-success pull-right" type="submit"
+									name="saveAll" value="saveAll" style="margin-right: 35px;">Save
+									All</button>
+							</div>
+						</div>
 					</div>
 				</div>
-
-				<div class="col-md-6">
-					<div class="form-group">
-						<label class="control-label">Date:</label> <input type="text"
-							th:field="*{updatedDate}" class="form-control"
-							disabled="disabled" />
-					</div>
-					<div class="form-group">
-						<!-- <label class="control-label">Id:</label> -->
-						<input type="hidden" th:field="*{id}" class="form-control" />
-					</div>
-					<br/>
-					<button class="btn btn-success pull-right" type="submit" name="saveAll" value="saveAll">Save All</button>
-				</div>
-
 			</div>
 
 			<div class="container">
@@ -121,7 +144,7 @@
 				<iframe id="form_target" name="form_target" style="display: none"></iframe>
 			</div>
 		</form>
-		
+
 	</div>
 
 	<script>
