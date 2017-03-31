@@ -20,10 +20,10 @@ public class RegistrationServiceImpl implements RegistrationService{
     private UserService service;
 	
 	/*@Autowired
-    private MessageSource messages;
+    private MessageSource messages;*/
 	
-	/* @Autowired
-	 private JavaMailSender mailSender;*/
+	@Autowired
+	 private JavaMailSender mailSender;
 	 
 	 @Autowired
 	 private Environment environment;
@@ -36,8 +36,8 @@ public class RegistrationServiceImpl implements RegistrationService{
 		service.createVerificationTokenForUser(user, token);
 		
 		final SimpleMailMessage email = constructEmailMessage(/*event,*/ user, token);
-		System.out.println("----> EMAIL : "+email);
-        //mailSender.send(email);
+		//System.out.println("----> EMAIL : "+email);
+        mailSender.send(email);
 	}
 	
 	private final SimpleMailMessage constructEmailMessage(/*final OnRegistrationCompleteEvent event,*/ final Utilisateur user, final String token) {
