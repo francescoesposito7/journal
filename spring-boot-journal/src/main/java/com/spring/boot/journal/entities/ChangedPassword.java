@@ -12,8 +12,8 @@ import com.spring.boot.journal.service.validator.ValidPassword;
 
 public class ChangedPassword {
 
-	@Id @GeneratedValue
-	private Long id;
+	/*@Id @GeneratedValue
+	private Long id;*/
 	
 	@NotEmpty
 	@NotNull

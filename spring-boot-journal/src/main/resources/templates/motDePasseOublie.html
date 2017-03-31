@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+<head>
+<meta charset="utf-8" />
+<title>Mot De Passe Oublie</title>
+<style>
+.panel {
+	margin-top: 40px;
+	border-color: threeddarkshadow;
+}
+</style>
+</head>
+<body layout:fragment="content">
+	<div class="col-md-4"></div>
+	<div class="container col-md-4">
+		<div class="panel panel-default">
+
+			<div class="panel-heading text-center">
+				<h2>Mot De Passe Oublie</h2>
+			</div>
+
+			<div class="panel-body">
+		
+				<form th:action="@{resendPassword}" method="post" th:object="${mdpOublie}">
+					<div class="form-group">
+						<label class="control-label">Username</label> 
+						<input type="text" class="form-control" th:field="*{username}" placeholder="username" />
+						<span class="text-danger" th:errors="*{username}"></span>
+					</div> 
+					<div class="form-group">
+						<label class="control-label">Email</label> 
+						<input type="text" class="form-control" th:field="*{email}" placeholder="email" />
+						<span class="text-danger" th:errors="*{email}"></span>
+					</div>
+				
+					<div class="form-group">
+						<button type="submit" class="btn btn-success pull-right">Envoyer</button>
+					</div>				
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

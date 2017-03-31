@@ -1,7 +1,9 @@
 package com.spring.boot.journal.web;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -9,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.boot.journal.entities.ChangedPassword;
 import com.spring.boot.journal.entities.ImageUser;
+import com.spring.boot.journal.entities.MotDePasseOublie;
 import com.spring.boot.journal.entities.Utilisateur;
 import com.spring.boot.journal.repository.RoleRepository;
 import com.spring.boot.journal.repository.UtilisateurRepository;
@@ -220,4 +224,74 @@ public class UtilisateurController {
 		return modelAndView;
 	}
 	
+	@PostMapping(value="/resendPassword")
+	public ModelAndView resendPassword(@Valid MotDePasseOublie mdpOublie,
+										BindingResult bindingResult,
+										ModelAndView modelAndView){
+		
+		//Utilisateur user = new Utilisateur();
+		
+		if(mdpOublie.getUsername().isEmpty()){
+			System.out.println("-1-");
+			bindingResult.rejectValue("username", "username.motDePasseOublie","Nom d'utilisateur vide. Veuillez inserir un username");		
+		}
+		
+		if(userService.findUserbyUsername(mdpOublie.getUsername()) == null){
+			System.out.println("-2-");
+			bindingResult.rejectValue("username", "username.motDePasseOublie","Nom d'utilisateur non utilisé. Veuillez utiliser un autre nom");		
+		}
+		
+		if(mdpOublie.getEmail().isEmpty()){
+			System.out.println("-3-");
+			bindingResult.rejectValue("email", "email.motDePasseOublie","Email vide. Veuillez utiliser un email");
+		}
+				
+		if ( userService.findUserbyEmail(mdpOublie.getEmail()) == null){
+			System.out.println("-4-");
+			bindingResult.rejectValue("email", "email.motDePasseOublie","Email non utilisé. Veuillez utiliser un autre email");
+		}
+		
+		if(bindingResult.hasErrors()){
+			System.out.println("-5-");
+			System.out.println(bindingResult.getAllErrors());
+			modelAndView.addObject("mdpOublie", mdpOublie);
+			modelAndView.setViewName(Views.VIEW_MOT_DE_PASSE_OUBLIE.getPage());
+			return modelAndView;
+		}else{
+				//user = userService.findUserbyEmail(mdpOublie.getEmail());
+				//modelAndView.setViewName(Views.VIEW_MOT_DE_PASSE_SUCCESS.getPage());
+				//regService.resendPassword(user);
+		}
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/resetPassword", method = RequestMethod.GET)
+    public ModelAndView motDePasseReset(final Locale locale, 
+    								  final ModelAndView modelAndView,
+    								  @RequestParam("token") final String token) throws UnsupportedEncodingException {
+        
+    	final String result = userService.validateVerificationToken(token);
+    	final Utilisateur user = userService.getUser(token);
+    	
+    	if (result.equals("valid")) {
+    		modelAndView.addObject("user",user);
+    		
+    		modelAndView.setViewName(Views.VIEW_MOT_DE_PASSE_RESET.getPage());
+            return modelAndView;
+        }else {
+        	modelAndView.setViewName(Views.VIEW_BAD_USER.getPage());
+        	 return modelAndView;
+        }
+    }
+	
+	
+	@RequestMapping(value = "/resetNewPassword")
+    public ModelAndView motDePasseNewReset( ModelAndView modelAndView, Utilisateur user) throws UnsupportedEncodingException {
+        
+    		userService.changerMotDePasse(user, user.getPassword(), user.getPasswordConfirmation());
+    		modelAndView.setViewName(Views.VIEW_LOGIN.getPage());
+        	 return modelAndView;
+        
+    }
 }

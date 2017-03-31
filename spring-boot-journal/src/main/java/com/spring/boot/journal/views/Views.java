@@ -7,11 +7,16 @@ public enum Views {
 	VIEW_INSCRIPTION("inscription"),
 	
 	VIEW_SEARCH("search"),
+	
+	VIEW_BAD_USER("badUser"),
 
 	VIEW_INSCRIPTION_SUCCESS("inscriptionSuccess"),
 	VIEW_NEWS("news"),
 	VIEW_DETAIL_NEWS("detailNews"),
 	VIEW_LOGIN("login"),
+	VIEW_MOT_DE_PASSE_OUBLIE("motDePasseOublie"),
+	VIEW_MOT_DE_PASSE_SUCCESS("motDePasseSucc"),
+	VIEW_MOT_DE_PASSE_RESET("motDePasseReset"),
 	VIEW_COURS("cours"),
 	VIEW_CONTACT("contact"),
 	VIEW_CONTACT_SUCCESS("contactSuccess"),
