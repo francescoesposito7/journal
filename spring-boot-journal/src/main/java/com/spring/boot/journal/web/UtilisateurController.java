@@ -261,6 +261,7 @@ public class UtilisateurController {
 		}
 		
 		return modelAndView;
+		
 	}
 	
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.GET)

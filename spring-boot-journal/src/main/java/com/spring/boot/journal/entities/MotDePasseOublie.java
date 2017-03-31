@@ -8,7 +8,8 @@ import com.spring.boot.journal.service.validator.ValidEmail;
 
 public class MotDePasseOublie {
 
-	@NotEmpty
+
+	@NotEmpty(message="Nom d'utilisateur vide. Veuillez inserir un username")
 	private String username;
 	
 	@ValidEmail
