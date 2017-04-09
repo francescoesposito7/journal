@@ -231,24 +231,21 @@ public class UtilisateurController {
 		
 		//Utilisateur user = new Utilisateur();
 		
-		if(mdpOublie.getUsername().isEmpty()){
-			System.out.println("-1-");
-			bindingResult.rejectValue("username", "username.motDePasseOublie","Nom d'utilisateur vide. Veuillez inserir un username");		
-		}
+
 		
 		if(userService.findUserbyUsername(mdpOublie.getUsername()) == null){
 			System.out.println("-2-");
-			bindingResult.rejectValue("username", "username.motDePasseOublie","Nom d'utilisateur non utilisé. Veuillez utiliser un autre nom");		
+			bindingResult.rejectValue("username", "username.mdpOublie","Nom d'utilisateur non utilisé. Veuillez utiliser un autre nom");		
 		}
 		
 		if(mdpOublie.getEmail().isEmpty()){
 			System.out.println("-3-");
-			bindingResult.rejectValue("email", "email.motDePasseOublie","Email vide. Veuillez utiliser un email");
+			bindingResult.rejectValue("email", "email.mdpOublie","Email vide. Veuillez utiliser un email");
 		}
 				
 		if ( userService.findUserbyEmail(mdpOublie.getEmail()) == null){
 			System.out.println("-4-");
-			bindingResult.rejectValue("email", "email.motDePasseOublie","Email non utilisé. Veuillez utiliser un autre email");
+			bindingResult.rejectValue("email", "email.mdpOublie","Email non utilisé. Veuillez utiliser un autre email");
 		}
 		
 		if(bindingResult.hasErrors()){
