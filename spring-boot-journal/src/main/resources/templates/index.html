@@ -125,7 +125,7 @@
 					<br />
 					<div class="panel panel-default panelConnexion">
 						<div class="panel-body">
-							<form th:action="@{/login}" method="post">
+							<form th:action="@{login}" method="post">
 								<div class="form-group">
 									<label for="email">Email</label> <input type="text"
 										class="form-control" name="username" placeholder="Username" />
@@ -139,7 +139,7 @@
 									</label>
 								</div>
 								<div class="pull-right">
-									<a th:href="@{/motDePasseOublie}">Mot de passe oublié ?...</a>
+									<a th:href="@{motDePasseOublie}">Mot de passe oublié ?...</a>
 								</div>
 								<br />
 								<button type="submit" class="btn btn-success">Login</button>
