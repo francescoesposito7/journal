@@ -34,7 +34,7 @@ public class CustomSuccessLoginHandler implements AuthenticationSuccessHandler {
 				}
 			} else if(authority.getAuthority().equals("ROLE_ADMIN")) {
 				try {
-					redirectStrategy.sendRedirect(request, response, "admin/home");
+					redirectStrategy.sendRedirect(request, response, "/admin/home");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
